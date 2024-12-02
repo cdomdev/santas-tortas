@@ -1,0 +1,88 @@
+---
+type PropModal = {
+  tittle: string;
+  textModal: string;
+};
+const { tittle, textModal } = Astro.props;
+---
+
+<button
+  id="btn-launch"
+  class="btn-modal-launch block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-500 duration-150 md:p-0 md:dark:hover:text-pink-400 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+>
+  {textModal}
+</button>
+<dialog class="dialog rounded-lg px-3 pt-2 pb-1">
+  <div class="flex justify-end">
+    <button id="btn-close" class="text-2xl">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        height="24"
+        stroke-width="2"
+      >
+        <path d="M18 6l-12 12"></path>
+        <path d="M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  <h2 class="text-center text-xl font-medium">{tittle}</h2>
+  <slot />
+</dialog>
+
+<style>
+  .dialog {
+    width: 25%;
+    height: max-content;
+    margin: auto;
+
+    opacity: 0;
+    transition:
+      display 0.7s,
+      overlay 0.6s,
+      opacity 0.6s;
+    transition-behavior: allow-discrete;
+
+    &[open] {
+      opacity: 1;
+
+      &::backdrop {
+        transform: translateY(0);
+      }
+
+      @starting-style {
+        opacity: 0;
+
+        &::backdrop {
+          transform: translateY(100%);
+        }
+      }
+    }
+
+    &::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+      transform: translateY(100%);
+      transition: transform 0.6s;
+    }
+  }
+</style>
+<script is:inline>
+  const dialog = document.querySelector("dialog");
+  const btnModal = document.getElementById("btn-launch");
+  const btnClose = document.getElementById("btn-close");
+
+  btnModal.addEventListener("click", () => {
+    dialog.showModal();
+    console.log("click para abrir modal");
+  });
+
+  btnClose.addEventListener("click", () => {
+    dialog.close();
+    console.log("click para cerrar modal");
+  });
+</script>
