@@ -1,16 +1,16 @@
 ---
 import Modal from "../Modal.astro";
-import ButtonCarShop from "./ButtonCarShop.astro";
+import ButtonCarShop from "./BtnCarShop.astro";
 import FormLogin from "@/components/FormLogin.astro";
 ---
 
-<nav class="bg-[#ffffff] relative dark:bg-gray-900 w-full z-20 start-0">
+<nav class="bg-[#ffffff]  dark:bg-gray-900 fixed w-full z-20 start-0">
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 pt-3"
   >
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img
-          src="/st-logo.jpeg"
+          src="/public/st-logo.jpeg"
           class="h-14 w-auto"
           alt="Santas tortas Logo"
         />
@@ -84,9 +84,9 @@ import FormLogin from "@/components/FormLogin.astro";
 
 <style>
   .wave-image {
-    background-image: url("/bg-header.png");
+    background-image: url("/public/bg-header.png");
     background-repeat: repeat-x;
-    height: 19px;
+    height: 37px;
     position: absolute;
     bottom: -39px;
     left: 0;
