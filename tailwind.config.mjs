@@ -9,7 +9,7 @@ export default {
       },
       backgroundImage: {
         gradient:
-          "linear-gradient(90deg, rgba(255,136,244,1) 20%, rgba(231,55,211,1) 63%, rgba(228,30,206,1) 88%, rgba(221,43,223,1) 100%);",
+          "linear-gradient(90deg, rgba(255,136,244,1) 20%, rgba(231,55,211,1) 63%, rgba(228,30,206,1) 88%, rgba(221,43,223,1) 100%)",
       },
     },
     colors: {
