@@ -1,0 +1,35 @@
+---
+type Props = {
+  id: number | string;
+  image: string;
+  nombre: string;
+  precio: string;
+  descuento: number | null;
+};
+
+const { id, image, nombre, descuento, precio } = Astro.props;
+---
+
+<a
+  href={`/detalle-producto/${id}`}
+  class="card-producto rounded-sm flex justify-between flex-col h-auto md:w-[16em] max-h-[32em] border border-gray-200 duration-150"
+>
+  <picture>
+    <img
+      src={image}
+      alt=""
+      class="rounded-sm w-full h-full object-cover duration-150"
+    />
+  </picture>
+  <div class="flex flex-col items-center justify-center py-1">
+    <p class="text-primary-txt pt-1 font-semibold text-base">{nombre}</p>
+    <p class="text-gray-800 font-bold">{precio}</p>
+  </div>
+  <div class="relative -bottom-6">
+    <button
+      class="flex justify-center uppercase m-auto py-2 px-3 text-[7px] max-w-[80%] mt-2 text-black rounded-[3px] bg-white hover:bg-[#d66a6e] border border-gray-200 hover:text-white duration-100 md:text-sm"
+    >
+      Agregar al carrito
+    </button>
+  </div>
+</a>
