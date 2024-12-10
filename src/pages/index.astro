@@ -1,55 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
+import Carrusel from "@/components/carrusel/Carrusel.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="">	  
-    <section class="w-full pt-20 bg-black h-[700px]">
-      <div class="">
-        <p>contenido </p>
-      </div>
+<Layout title="Bienvenido a santas tortas">
+  <main class="">
+    <section>
+        <Carrusel />
     </section>
-	</main>	
+  </main>
 </Layout>
 
-
 <style>
-.ticket {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  margin: 10px auto 0;
-  padding: 20px;
-  background: #fbfbfb;
-  border-radius: 10px; 
-  overflow: hidden; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Curva superior */
-.ticket::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: linear-gradient(to bottom, #fbfbfb 50%, transparent 100%);
-  border-radius: 0 0 50% 50%; 
-  z-index: 1;
-}
-
-/* Curva inferior */
-.ticket::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 40px; 
-  background: linear-gradient(to top, #fbfbfb 50%, transparent 100%);
-  border-radius: 50% 50% 0 0;
-  z-index: 1;
-}
+  body {
+    overflow-x: hidden;
+  }
 </style>
