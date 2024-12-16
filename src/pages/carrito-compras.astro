@@ -9,7 +9,7 @@ import Steps from "@/components/Steps.astro";
     <Steps />
     <!-- head -->
     <section>
-      <div class="bg-primary-bg border w-full p-3 mb-4 rounded-md pl-4">
+      <div class="bg-primary-bg border  w-full  p-3 mb-4 rounded-md pl-4">
         <h1 class="text-primary-txt text-lg uppercase font-semibold">
           Carrito de compras
         </h1>
@@ -20,8 +20,8 @@ import Steps from "@/components/Steps.astro";
 
     <section>
       <article>
-        <div class="flex w-full gap-2">
-          <div class="min-w-[65%] h-96">
+        <div class="flex w-full gap-2 flex-col md:flex-row ">
+          <div class="min-w-11/12 md:min-w-[65%] h-96">
             <div class="relative overflow-x-auto sm:rounded-lg max-h-[350px]">
               <table
                 class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -530,7 +530,7 @@ import Steps from "@/components/Steps.astro";
               </table>
             </div>
           </div>
-          <div class="h-200 border-4 w-[35%] max-h-80 px-4 py-5">
+          <div class="h-200 border-4 w-full md:w-[35%] max-h-80 px-4 py-5">
             <h2
               class="text-center text-lg font-semibold text-gray-600 uppercase py-2"
             >

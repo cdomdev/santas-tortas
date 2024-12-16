@@ -1,17 +1,56 @@
----
-import Modal from "../Modal.astro";
-import ButtonCarShop from "./BtnCarShop.astro";
-import FormLogin from "@/components/FormLogin.astro";
----
-<nav class="bg-white dark:bg-gray-900 fixed w-full z-20 start-0">
+
+<nav class="bg-white dark:bg-gray-900 w-full z-50 fixed start-0">
   <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 pt-3"
+    class="max-w-screen-xl flex flex-wrap items-center  justify-between mx-auto px-4 pt-3"
   >
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="/st-logo.jpeg" class="h-14 w-auto" alt="Santas tortas Logo" />
+      <img src="/st-logo.webp" class="h-14 w-auto" alt="Santas tortas Logo" />
     </a>
-    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <ButtonCarShop />
+
+    <div
+      class="flex md:order-2  gap-x-1 md:space-x-0 rtl:space-x-reverse items-center"
+    >
+      <a href="/acount/login">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          width="24"
+          height="24"
+          class="size-7 md:size-8"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          stroke="currentColor"
+        >
+          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+        </svg>
+      </a>
+
+      <a class="relative" href="/carrito-compras">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          height="24"
+          stroke-width="1"
+          class="size-7 md:size-8"
+        >
+          <path
+            d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"
+          ></path>
+          <path d="M9 11v-5a3 3 0 0 1 6 0v5"></path>
+        </svg>
+        <span
+          class="size-4 bg-red-600 rounded-full text-white m-auto inline-block text-center absolute -top-1 -right-1 text-xs"
+          >1</span
+        >
+      </a>
       <button
         data-collapse-toggle="navbar-sticky"
         type="button"
@@ -47,26 +86,22 @@ import FormLogin from "@/components/FormLogin.astro";
           <a
             href="/co"
             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-500 duration-150 md:p-0 md:dark:hover:text-pink-400 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            aria-current="page">Personalizados</a>
+            aria-current="page">Personalizados</a
+          >
         </li>
         <li>
           <a
             href="#"
             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-500 duration-150 md:p-0 md:dark:hover:text-pink-400 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Productos</a>
+            >Productos</a
+          >
         </li>
         <li>
           <a
             href="#"
             class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-500 duration-150 md:p-0 md:dark:hover:text-pink-400 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Mis compras</a>
-        </li>
-        <li>
-          <Modal textModal={"Mi cuenta"} tittle={"Bienvenido a santas tortas"}>
-            <div class="text-sm text-gray-500 dark:text-gray-400">
-              <FormLogin />
-            </div>
-          </Modal>
+            >Mis compras</a
+          >
         </li>
       </ul>
     </div>
@@ -78,14 +113,12 @@ import FormLogin from "@/components/FormLogin.astro";
   .wave-image {
     background-image: url("/bg-header.png");
     background-repeat: repeat-x;
-    height: 40px; 
+    height: 40px;
     position: absolute;
     bottom: -39px;
     left: 0;
     width: 100%;
-    z-index: -1; 
-    filter: drop-shadow(0 7px 4px rgba(209, 209, 209, 0.1))
+    /* z-index: -1; */
+    filter: drop-shadow(0 7px 4px rgba(209, 209, 209, 0.1));
   }
-
-  
 </style>
