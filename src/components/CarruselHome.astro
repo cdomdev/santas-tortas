@@ -122,7 +122,7 @@ const items = [
       height: 100%;
       position: absolute;
       inset: 0 0 0 0;
-      > img {
+      & img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -269,8 +269,7 @@ const items = [
   /* animation text in first item */
 
   .carousel .list .item:nth-child(1) .content .tittle,
-  .carousel .list .item:nth-child(1) .content .title,
-  .carousel .list .item:nth-child(1) .content .topic,
+  .carousel .list .item:nth-child(1) .content .tittle,
   .carousel .list .item:nth-child(1) .content .des,
   .carousel .list .item:nth-child(1) .content .buttons {
     transform: translateY(50px);
@@ -285,13 +284,8 @@ const items = [
       opacity: 1;
     }
   }
-  .carousel .list .item:nth-child(1) .content .title {
-    animation-delay: 1.2s !important;
-  }
-  .carousel .list .item:nth-child(1) .content .topic {
-    animation-delay: 1.4s !important;
-  }
-  .carousel .list .item:nth-child(1) .content .des {
+
+  */ .carousel .list .item:nth-child(1) .content .des {
     animation-delay: 1.6s !important;
   }
   .carousel .list .item:nth-child(1) .content .buttons {
@@ -373,8 +367,7 @@ const items = [
     pointer-events: none;
   }
   .carousel.prev .list .item:nth-child(2) .content .tittle,
-  .carousel.prev .list .item:nth-child(2) .content .title,
-  .carousel.prev .list .item:nth-child(2) .content .topic,
+  .carousel.prev .list .item:nth-child(2) .content .tittle,
   .carousel.prev .list .item:nth-child(2) .content .des,
   .carousel.prev .list .item:nth-child(2) .content .buttons {
     animation: contentOut 1.5s linear 1 forwards !important;
@@ -389,22 +382,24 @@ const items = [
   }
 
   @media screen and (max-width: 1024px) {
-    .carousel .item .content {
-      left: 38%;
-      top: 15%;
-      padding: 20px;
-      .tittle {
-        font-size: 16px;
-      }
-      .des {
-        font-size: 14px;
-        margin: 0px;
-      }
-      .buttons {
-        margin-top: 10px;
-      }
-      & button {
-        font-size: 12px;
+    .carousel {
+      .item .content {
+        left: 38%;
+        top: 15%;
+        padding: 20px;
+        .tittle {
+          font-size: 16px;
+        }
+        .des {
+          font-size: 14px;
+          margin: 0px;
+        }
+        .buttons {
+          margin-top: 10px;
+        }
+        & button {
+          font-size: 12px;
+        }
       }
     }
 
@@ -415,7 +410,7 @@ const items = [
     }
 
     .arrows button {
-      width: 33px;
+      width: 32px;
       height: 32px;
       font-size: 14px;
     }
@@ -428,7 +423,7 @@ const items = [
   } */
 </style>
 
-<script >
+<script>
   if (typeof window !== "undefined") {
     const nextDom = document.getElementById("next");
     const prevDom = document.getElementById("prev");
@@ -451,13 +446,13 @@ const items = [
       nextDom.onclick = () => showSlider("next");
       prevDom.onclick = () => showSlider("prev");
 
-      let runTimeOut;
+      let runTimeOut = 0;
 
       let runNextAuto = setTimeout(() => {
         nextDom.click();
       }, 10000);
 
-      function showSlider(type) {
+      function showSlider(type: any) {
         const SliderItemsDom = SliderDom?.querySelectorAll(".item");
         const thumbnailItemsDom = thumbnailBorderDom?.querySelectorAll(".item");
 
@@ -468,7 +463,7 @@ const items = [
           // Mueve el primer item al final
           thumbnailBorderDom?.appendChild(thumbnailItemsDom[0]);
         } else {
-          SliderDom?.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+          SliderDom?.prepend(SliderItemsDom[SliderItemsDom.length - 2]);
           // Mueve el último al inicio
           thumbnailBorderDom?.prepend(
             thumbnailItemsDom[thumbnailItemsDom.length - 1]
