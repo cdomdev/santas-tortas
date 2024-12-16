@@ -1,132 +1,112 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-
 const items = [
   {
     image: "/img1.webp",
-    title: "DESIGN SLIDER",
-    topic: "ANIMAL",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nesciunt nulla non, veritatis eos, reiciendis saepe soluta laborum, dignissimos doloremque natus minus. Sapiente eveniet consequuntur eum sed officia alias repudiandae?",
+    title: "ChocoChip Delicia",
+    text: " Pastel de chocolate intenso y húmedo, salpicado de chispas de chocolate que se derriten en cada bocado. Perfecto para los amantes del chocolate.",
     urlBtn: "/carrito-compras",
     thumbnail: {
-      title: "name slider",
-      description: "desc",
-      image: "/img1.webp",
+      image: "/imgthum1.webp",
     },
   },
   {
     image: "/img2.webp",
-    title: "DESIGN SLIDER",
-    topic: "ANIMAL",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nesciunt nulla non, veritatis eos, reiciendis saepe soluta laborum, dignissimos doloremque natus minus. Sapiente eveniet consequuntur eum sed officia alias repudiandae?",
+    title: "Tres Leches Frutal",
+    text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
     urlBtn: "/carrito-compras",
     thumbnail: {
-      title: "name slider",
-      description: "desc",
-      image: "/img2.webp",
+      image: "/imgthum2.webp",
     },
   },
   {
     image: "/img3.webp",
-    title: "DESIGN SLIDER",
-    topic: "ANIMAL",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nesciunt nulla non, veritatis eos, reiciendis saepe soluta laborum, dignissimos doloremque natus minus. Sapiente eveniet consequuntur eum sed officia alias repudiandae?",
+    title: "Dulce Encanto de Vainilla",
+    text: " Delicioso pastel de vainilla suave y esponjoso, cubierto con crema batida y decorado con frescas. Un clásico irresistible para cualquier ocasión especial.",
     urlBtn: "/carrito-compras",
     thumbnail: {
-      title: "name slider",
-      description: "desc",
-      image: "/img3.webp",
+      image: "/imgthum3.webp",
     },
   },
   {
     image: "/img4.webp",
-    title: "DESIGN SLIDER",
-    topic: "ANIMAL",
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nesciunt nulla non, veritatis eos, reiciendis saepe soluta laborum, dignissimos doloremque natus minus. Sapiente eveniet consequuntur eum sed officia alias repudiandae?",
+    title: "Sueño de Chocolate y Crema",
+    text: "Pastel de chocolate rico y esponjoso, con un suave relleno de crema batida, decorado con una mezcla de cacao en polvo y toques de crema para un acabado elegante y delicioso.",
     urlBtn: "/carrito-compras",
     thumbnail: {
-      title: "name slider",
-      description: "desc",
-      image: "/img4.webp",
+      image: "/imgthum4.webp",
     },
   },
 ];
 ---
 
-<Layout title="">
-  <div class="carousel">
-    <div class="list">
-      {
-        items.map((item) => (
-          <div class="item">
-            <img
-              src={item.image}
-              class="w-full h-full object-cover"
-              alt="image-carrusel"
-              loading="lazy"
-            />
-            <div class="content">
-              <div class="author">{item.title}</div>
-              <div class="title">{item.topic}</div>
-              <div class="topic">ANIMAL</div>
-              <div class="des">{item.text}</div>
-              <div class="buttons">
-                <button>VER PRODUCTO</button>
-                <button>HACER MI PEDIDO</button>
-              </div>
+<div class="carousel">
+  <div class="list">
+    {
+      items.map((item) => (
+        <div class="item">
+          <img
+            src={item.image}
+            class="w-full h-full object-cover"
+            alt="image-carrusel"
+            loading="lazy"
+          />
+          <div class="content">
+            <div class="tittle">{item.title}</div>
+            <div class="des">{item.text}</div>
+            <div class="buttons">
+              <button>VER PRODUCTO</button>
+              <button>HACER MI PEDIDO</button>
             </div>
           </div>
-        ))
-      }
-    </div>
-
-    <div class="thumbnail">
-      {
-        items.map((item) => (
-          <div class="item">
-            <img src={item.thumbnail.image} alt="image-carrusel-thumnail" />
-          </div>
-        ))
-      }
-    </div>
-
-    <!-- controls -->
-    <div
-      class="arrows absolute top-[80%] right-2/4 z-20 w-72 max-w-[30%] flex gap-3 items-center"
-    >
-      <button id="prev">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="24"
-          height="24"
-          stroke-width="2"
-        >
-          <path d="M15 6l-6 6l6 6"></path>
-        </svg>
-      </button>
-      <button id="next"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="24"
-          height="24"
-          stroke-width="2"
-        >
-          <path d="M9 6l6 6l-6 6"></path>
-        </svg></button
-      >
-    </div>
+        </div>
+      ))
+    }
   </div>
-</Layout>
+
+  <div class="thumbnail">
+    {
+      items.map((item) => (
+        <div class="item">
+          <img src={item.thumbnail.image} alt="image-carrusel-thumnail" />
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- controls -->
+  <div class="arrows">
+    <button id="prev">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        height="24"
+        stroke-width="2"
+      >
+        <path d="M15 6l-6 6l6 6"></path>
+      </svg>
+    </button>
+    <button id="next"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        height="24"
+        stroke-width="2"
+      >
+        <path d="M9 6l6 6l-6 6"></path>
+      </svg></button
+    >
+  </div>
+</div>
 
 <style>
   /* carousel */
@@ -146,14 +126,65 @@ const items = [
         width: 100%;
         height: 100%;
         object-fit: cover;
+        aspect-ratio: auto;
+      }
+
+      .tittle {
+        font-weight: bold;
+        letter-spacing: 6px;
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .des {
+        font-size: 18px;
+        margin: 30px 0px;
+      }
+
+      .buttons {
+        display: grid;
+        place-content: center;
+        padding: 10px;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: 40px;
+        gap: 15px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.267);
+        margin-top: 30px;
+        gap: 15px;
+        margin: auto;
+      }
+      & button {
+        border: none;
+        color: white;
+        padding: 0px 10px;
+        font-weight: 500;
+        background-color: #f1683a;
+        transition: ease 0.3s;
+        &:hover:nth-child(1) {
+          background-color: #cc3e0f;
+          color: rgb(34, 34, 34);
+        }
+        &:nth-child(2) {
+          background-color: transparent;
+          border: 1px solid #a57f7f;
+          color: #000000;
+          &:hover {
+            background-color: #fee9d0;
+            border: none;
+          }
+        }
       }
     }
+
+    /* content */
     .content {
       position: absolute;
       top: 20%;
       width: 550px;
       max-width: 80%;
-      left: 19%;
+      left: 25%;
       padding: 30px;
       transform: translateX(-50%);
       box-sizing: border-box;
@@ -161,115 +192,73 @@ const items = [
       background-color: rgba(255, 255, 255, 0.267);
       text-shadow: 0 5px 10px #0004;
     }
-  }
 
+    /* thumbail */
+    .thumbnail {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      width: max-content;
+      z-index: 1;
+      display: flex;
+      gap: 20px;
+      .item {
+        width: 150px;
+        height: 200px;
+        flex-shrink: 0;
+        position: relative;
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 20px;
+        }
+        .content {
+          color: #fff;
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          right: 10px;
+          min-height: 400px;
+          background-color: #f1683a;
+        }
+      }
+    }
 
+    /* arrows */
 
-  .carousel .list .item .author {
-    font-weight: bold;
-    letter-spacing: 10px;
-  }
-  .carousel .list .item .title,
-  .carousel .list .item .topic {
-    font-size: 5em;
-    font-weight: bold;
-    line-height: 1.3em;
-  }
-  .carousel .list .item .topic {
-    color: #f1683a;
-  }
-  .carousel .list .item .des {
-    margin-bottom: 20px;
-  }
-  .carousel .list .item .buttons {
-    display: grid;
-    place-content: center;
-    padding: 10px;
-    grid-template-columns: repeat(2, 40%);
-    grid-template-rows: 40px;
-    gap: 15px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.267);
-    margin-top: 30px;
-    gap: 15px;
-    margin: auto;
-  }
+    .arrows {
+      position: absolute;
+      top: 70%;
+      right: 60%;
+      z-index: 2;
+      width: 300px;
+      justify-content: center;
+      margin-top: 30px;
+      padding: 20px;
+      max-width: 30%;
+      display: flex;
+      gap: 10px;
+      align-items: center;
 
-  .carousel .list .item .buttons button {
-    border: none;
-    background-color: #eee;
-    padding: 0px 10px;
-    font-weight: 500;
-    background-color: #f1683a;
-  }
-  .carousel .list .item .buttons button:nth-child(2) {
-    background-color: transparent;
-    border: 1px solid #fff;
-    color: #000000;
-  }
-
-  /* thumbail */
-  .thumbnail {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    width: max-content;
-    z-index: 100;
-    display: flex;
-    gap: 20px;
-  }
-  .thumbnail .item {
-    width: 150px;
-    height: 200px;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .thumbnail .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-  }
-  .thumbnail .item .content {
-    color: #fff;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-  }
-
-  /* arrows */
-
-  .arrows {
-    position: absolute;
-    top: 80%;
-    right: 52%;
-    z-index: 100;
-    width: 300px;
-    justify-content: center;
-    margin-top: 30px;
-    padding: 10px;
-    max-width: 30%;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  .arrows button {
-    display: grid;
-    place-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.267);
-    border: none;
-    color: #fff;
-    font-family: monospace;
-    font-weight: bold;
-    transition: 0.5s;
-  }
-  .arrows button:hover {
-    background-color: #fff;
-    color: #000000;
+      & button {
+        display: grid;
+        place-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background-color: rgb(92, 91, 91);
+        color: #fff;
+        font-family: monospace;
+        font-weight: bold;
+        transition: 0.5s;
+        &:hover {
+          background-color: #fff;
+          color: #000000;
+        }
+      }
+    }
   }
 
   /* animation */
@@ -279,7 +268,7 @@ const items = [
 
   /* animation text in first item */
 
-  .carousel .list .item:nth-child(1) .content .author,
+  .carousel .list .item:nth-child(1) .content .tittle,
   .carousel .list .item:nth-child(1) .content .title,
   .carousel .list .item:nth-child(1) .content .topic,
   .carousel .list .item:nth-child(1) .content .des,
@@ -352,31 +341,6 @@ const items = [
     }
   }
 
-  /* running time */
-
-  .carousel .time {
-    position: absolute;
-    z-index: 1000;
-    width: 0%;
-    height: 3px;
-    background-color: #f1683a;
-    left: 0;
-    top: 0;
-  }
-
-  .carousel.next .time,
-  .carousel.prev .time {
-    animation: runningTime 3s linear 1 forwards;
-  }
-  @keyframes runningTime {
-    from {
-      width: 100%;
-    }
-    to {
-      width: 0;
-    }
-  }
-
   /* prev click */
 
   .carousel.prev .list .item:nth-child(2) {
@@ -408,7 +372,7 @@ const items = [
   .carousel.prev .arrows button {
     pointer-events: none;
   }
-  .carousel.prev .list .item:nth-child(2) .content .author,
+  .carousel.prev .list .item:nth-child(2) .content .tittle,
   .carousel.prev .list .item:nth-child(2) .content .title,
   .carousel.prev .list .item:nth-child(2) .content .topic,
   .carousel.prev .list .item:nth-child(2) .content .des,
@@ -423,14 +387,45 @@ const items = [
       opacity: 0;
     }
   }
-  @media screen and (max-width: 678px) {
-    .carousel .list .item .content {
-      padding-right: 0;
+
+  @media screen and (max-width: 1024px) {
+    .carousel .item .content {
+      left: 38%;
+      top: 15%;
+      padding: 20px;
+      .tittle {
+        font-size: 16px;
+      }
+      .des {
+        font-size: 14px;
+        margin: 0px;
+      }
+      .buttons {
+        margin-top: 10px;
+      }
+      & button {
+        font-size: 12px;
+      }
     }
-    .carousel .list .item .content .title {
-      font-size: 30px;
+
+    .thumbnail {
+      .item {
+        left: -4%;
+      }
+    }
+
+    .arrows button {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
     }
   }
+
+  /* @media screen and (max-width: 480px) {
+    .carousel button{
+    background-color: red;
+   }
+  } */
 </style>
 
 <script is:inline>
@@ -460,7 +455,7 @@ const items = [
 
       let runNextAuto = setTimeout(() => {
         nextDom.click();
-      }, 7000);
+      }, 10000);
 
       function showSlider(type) {
         const SliderItemsDom = SliderDom?.querySelectorAll(".item");
@@ -490,7 +485,7 @@ const items = [
         clearTimeout(runNextAuto);
         runNextAuto = setTimeout(() => {
           nextDom?.click();
-        }, 7000);
+        }, 10000);
       }
     }
   }
