@@ -1,4 +1,5 @@
 ---
+import Footer from "@/components/Footer.astro";
 import NavBar from "@/components/nav/NavBar.astro";
 
 interface Props {
@@ -20,12 +21,11 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <header>
-    <NavBar />
-  </header>
+  <NavBar />
   <body>
     <slot />
   </body>
+  <Footer />
   <script
     is:inline
     src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"

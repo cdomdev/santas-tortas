@@ -9,15 +9,15 @@ const items = [
       image: "/imgthum1.webp",
     },
   },
-  {
-    image: "/img2.webp",
-    title: "Tres Leches Frutal",
-    text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
-    urlBtn: "/carrito-compras",
-    thumbnail: {
-      image: "/imgthum2.webp",
-    },
-  },
+  // {
+  //   image: "/img2.webp",
+  //   title: "Tres Leches Frutal",
+  //   text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
+  //   urlBtn: "/carrito-compras",
+  //   thumbnail: {
+  //     image: "/imgthum2.webp",
+  //   },
+  // },
   {
     image: "/img3.webp",
     title: "Dulce Encanto de Vainilla",
@@ -285,12 +285,10 @@ const items = [
     }
   }
 
-  */ .carousel .list .item:nth-child(1) .content .des {
-    animation-delay: 1.6s !important;
-  }
+ 
   .carousel .list .item:nth-child(1) .content .buttons {
-    animation-delay: 1.8s !important;
-  }
+    animation-delay: 1.8s ;
+  } 
 
   /* create animation when next click */
   .carousel.next .list .item:nth-child(1) img {
@@ -376,7 +374,7 @@ const items = [
   @keyframes contentOut {
     to {
       transform: translateY(-150px);
-      filter: blur(20px);
+      filter: blur(10px);
       opacity: 0;
     }
   }
@@ -415,12 +413,6 @@ const items = [
       font-size: 14px;
     }
   }
-
-  /* @media screen and (max-width: 480px) {
-    .carousel button{
-    background-color: red;
-   }
-  } */
 </style>
 
 <script>
@@ -450,7 +442,7 @@ const items = [
 
       let runNextAuto = setTimeout(() => {
         nextDom.click();
-      }, 10000);
+      }, 9000);
 
       function showSlider(type: any) {
         const SliderItemsDom = SliderDom?.querySelectorAll(".item");
@@ -480,7 +472,7 @@ const items = [
         clearTimeout(runNextAuto);
         runNextAuto = setTimeout(() => {
           nextDom?.click();
-        }, 10000);
+        }, 9000);
       }
     }
   }
