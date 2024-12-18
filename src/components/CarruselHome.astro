@@ -6,25 +6,25 @@ const items = [
     text: " Pastel de chocolate intenso y húmedo, salpicado de chispas de chocolate que se derriten en cada bocado. Perfecto para los amantes del chocolate.",
     urlBtn: "/carrito-compras",
     thumbnail: {
+      image: "/imgthum4.webp",
+    },
+  },
+  {
+    image: "/img2.webp",
+    title: "Tres Leches Frutal",
+    text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
+    urlBtn: "/carrito-compras",
+    thumbnail: {
       image: "/imgthum1.webp",
     },
   },
-  // {
-  //   image: "/img2.webp",
-  //   title: "Tres Leches Frutal",
-  //   text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
-  //   urlBtn: "/carrito-compras",
-  //   thumbnail: {
-  //     image: "/imgthum2.webp",
-  //   },
-  // },
   {
     image: "/img3.webp",
     title: "Dulce Encanto de Vainilla",
     text: " Delicioso pastel de vainilla suave y esponjoso, cubierto con crema batida y decorado con frescas. Un clásico irresistible para cualquier ocasión especial.",
     urlBtn: "/carrito-compras",
     thumbnail: {
-      image: "/imgthum3.webp",
+      image: "/imgthum2.webp",
     },
   },
   {
@@ -33,29 +33,35 @@ const items = [
     text: "Pastel de chocolate rico y esponjoso, con un suave relleno de crema batida, decorado con una mezcla de cacao en polvo y toques de crema para un acabado elegante y delicioso.",
     urlBtn: "/carrito-compras",
     thumbnail: {
-      image: "/imgthum4.webp",
+      image: "/imgthum3.webp",
     },
   },
 ];
 ---
 
-<div class="carousel">
+<div class="carousel h-dvh w-screen overflow-hidden relative z-10">
   <div class="list">
     {
       items.map((item) => (
-        <div class="item">
+        <div class="item size-full absolute inset-0">
           <img
             src={item.image}
-            class="w-full h-full object-cover"
+            class="size-full object-cover "
             alt="image-carrusel"
             loading="lazy"
           />
-          <div class="content">
-            <div class="tittle">{item.title}</div>
-            <div class="des">{item.text}</div>
-            <div class="buttons">
-              <button>VER PRODUCTO</button>
-              <button>HACER MI PEDIDO</button>
+          <div class="content absolute top-24 md:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-[#f8f3f3]">
+            <div class="tittle font-bold tracking-tight text-2xl md:text-4xl mt-2 uppercase">
+              {item.title}
+            </div>
+            <div class="des text-sm md:text-base my-3 md:my-7">{item.text}</div>
+            <div class="buttons grid place-content-center p-4 grid-cols-2 grid-rows-1 gap-4 w-full bg-[#ffffff] mt-7 mx-auto">
+              <button class="border-none text-balance text-xs md:text-base  font-medium px-3 py-2 bg-[#f1683a] transition ease-linear text-white duration-150 hover:bg-[#c94c23]  ">
+                ver detalles
+              </button>
+              <button class="font-medium text-balance text-xs md:text-base px-3 py-2 bg-white border border-black transition ease-linear text-black duration-150 hover:bg-[#c94c23] hover:text-white ">
+               ver mas
+              </button>
             </div>
           </div>
         </div>
@@ -63,19 +69,30 @@ const items = [
     }
   </div>
 
-  <div class="thumbnail">
+  <div
+    class="thumbnail absolute bottom-12 left-1/3 md:left-2/4 w-max z-10 flex gap-4"
+  >
     {
       items.map((item) => (
-        <div class="item">
-          <img src={item.thumbnail.image} alt="image-carrusel-thumnail" />
+        <div class="item w-32 md:w-36 h-44 md:h-48 flex-shrink-0 relative">
+          <img
+            src={item.thumbnail.image}
+            alt="image-carrusel-thumnail"
+            class="size-full object-cover rounded-2xl"
+          />
         </div>
       ))
     }
   </div>
 
   <!-- controls -->
-  <div class="arrows">
-    <button id="prev">
+  <div
+    class="arrows absolute top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
+  >
+    <button
+      id="prev"
+      class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-white font-bold transition duration-150 hover:bg-white hover:text-black"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -90,7 +107,9 @@ const items = [
         <path d="M15 6l-6 6l6 6"></path>
       </svg>
     </button>
-    <button id="next"
+    <button
+      id="next"
+      class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-white font-bold transition duration-150 hover:bg-white hover:text-black"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -109,158 +128,6 @@ const items = [
 </div>
 
 <style>
-  /* carousel */
-
-  .carousel {
-    height: 100dvb;
-    width: 100vw;
-    overflow: hidden;
-    position: relative;
-
-    .item {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      inset: 0 0 0 0;
-      & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        aspect-ratio: auto;
-      }
-
-      .tittle {
-        font-weight: bold;
-        letter-spacing: 6px;
-        font-size: 20px;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-      }
-
-      .des {
-        font-size: 18px;
-        margin: 30px 0px;
-      }
-
-      .buttons {
-        display: grid;
-        place-content: center;
-        padding: 10px;
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: 40px;
-        gap: 15px;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.267);
-        margin-top: 30px;
-        gap: 15px;
-        margin: auto;
-      }
-      & button {
-        border: none;
-        color: white;
-        padding: 0px 10px;
-        font-weight: 500;
-        background-color: #f1683a;
-        transition: ease 0.3s;
-        &:hover:nth-child(1) {
-          background-color: #cc3e0f;
-          color: rgb(34, 34, 34);
-        }
-        &:nth-child(2) {
-          background-color: transparent;
-          border: 1px solid #a57f7f;
-          color: #000000;
-          &:hover {
-            background-color: #fee9d0;
-            border: none;
-          }
-        }
-      }
-    }
-
-    /* content */
-    .content {
-      position: absolute;
-      top: 20%;
-      width: 550px;
-      max-width: 80%;
-      left: 25%;
-      padding: 30px;
-      transform: translateX(-50%);
-      box-sizing: border-box;
-      color: #000000;
-      background-color: rgba(255, 255, 255, 0.267);
-      text-shadow: 0 5px 10px #0004;
-    }
-
-    /* thumbail */
-    .thumbnail {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      width: max-content;
-      z-index: 1;
-      display: flex;
-      gap: 20px;
-      .item {
-        width: 150px;
-        height: 200px;
-        flex-shrink: 0;
-        position: relative;
-        > img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          border-radius: 20px;
-        }
-        .content {
-          color: #fff;
-          position: absolute;
-          bottom: 10px;
-          left: 10px;
-          right: 10px;
-          min-height: 400px;
-          background-color: #f1683a;
-        }
-      }
-    }
-
-    /* arrows */
-
-    .arrows {
-      position: absolute;
-      top: 70%;
-      right: 60%;
-      z-index: 2;
-      width: 300px;
-      justify-content: center;
-      margin-top: 30px;
-      padding: 20px;
-      max-width: 30%;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-
-      & button {
-        display: grid;
-        place-content: center;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        background-color: rgb(92, 91, 91);
-        color: #fff;
-        font-family: monospace;
-        font-weight: bold;
-        transition: 0.5s;
-        &:hover {
-          background-color: #fff;
-          color: #000000;
-        }
-      }
-    }
-  }
-
   /* animation */
   .carousel .list .item:nth-child(1) {
     z-index: 1;
@@ -285,10 +152,9 @@ const items = [
     }
   }
 
- 
   .carousel .list .item:nth-child(1) .content .buttons {
-    animation-delay: 1.8s ;
-  } 
+    animation-delay: 1.8s;
+  }
 
   /* create animation when next click */
   .carousel.next .list .item:nth-child(1) img {
@@ -379,40 +245,6 @@ const items = [
     }
   }
 
-  @media screen and (max-width: 1024px) {
-    .carousel {
-      .item .content {
-        left: 38%;
-        top: 15%;
-        padding: 20px;
-        .tittle {
-          font-size: 16px;
-        }
-        .des {
-          font-size: 14px;
-          margin: 0px;
-        }
-        .buttons {
-          margin-top: 10px;
-        }
-        & button {
-          font-size: 12px;
-        }
-      }
-    }
-
-    .thumbnail {
-      .item {
-        left: -4%;
-      }
-    }
-
-    .arrows button {
-      width: 32px;
-      height: 32px;
-      font-size: 14px;
-    }
-  }
 </style>
 
 <script>
