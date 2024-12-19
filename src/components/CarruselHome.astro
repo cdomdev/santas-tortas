@@ -39,96 +39,107 @@ const items = [
 ];
 ---
 
-<div class="carousel h-dvh w-screen overflow-hidden relative z-10">
-  <div class="list">
-    {
-      items.map((item) => (
-        <div class="item size-full absolute inset-0">
-          <img
-            src={item.image}
-            class="size-full object-cover "
-            alt="image-carrusel"
-            loading="lazy"
-          />
-          <div class="content absolute top-24 md:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-[#f8f3f3]">
-            <div class="tittle font-bold tracking-tight text-2xl md:text-4xl mt-2 uppercase">
-              {item.title}
-            </div>
-            <div class="des text-sm md:text-base my-3 md:my-7">{item.text}</div>
-            <div class="buttons grid place-content-center p-4 grid-cols-2 grid-rows-1 gap-4 w-full bg-[#ffffff] mt-7 mx-auto">
-              <button class="border-none text-balance text-xs md:text-base  font-medium px-3 py-2 bg-[#f1683a] transition ease-linear text-white duration-150 hover:bg-[#c94c23]  ">
-                ver detalles
-              </button>
-              <button class="font-medium text-balance text-xs md:text-base px-3 py-2 bg-white border border-black transition ease-linear text-black duration-150 hover:bg-[#c94c23] hover:text-white ">
-               ver mas
-              </button>
+<section>
+  <div class="carousel h-dvh w-screen overflow-hidden relative z-10">
+    <div class="list">
+      {
+        items.map((item) => (
+          <div class="item size-full absolute inset-0">
+            <img
+              src={item.image}
+              class="size-full object-cover "
+              alt="image-carrusel"
+              loading="lazy"
+            />
+            <div class="content absolute top-24 md:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-[#fff9f9]">
+              <div class="tittle font-bold tracking-tight text-2xl md:text-5xl mt-2 uppercase text-[#f1683a]">
+                {item.title}
+              </div>
+              <div class="des text-sm md:text-base my-3 md:my-7">
+                {item.text}
+              </div>
+              <div class="buttons grid place-content-center p-4 grid-cols-2 grid-rows-1 gap-4 w-full mt-7 mx-auto">
+                <button
+                  type="button"
+                  name="btn-see-more"
+                  class="font-medium text-balance text-xs md:text-base px-3 py-2 bg-white border border-black transition ease-linear text-black duration-150 hover:bg-[#c94c23] hover:text-white "
+                >
+                  ver mas productos
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))
-    }
-  </div>
+        ))
+      }
+    </div>
 
-  <div
-    class="thumbnail absolute bottom-12 left-1/3 md:left-2/4 w-max z-10 flex gap-4"
-  >
-    {
-      items.map((item) => (
-        <div class="item w-32 md:w-36 h-44 md:h-48 flex-shrink-0 relative">
-          <img
-            src={item.thumbnail.image}
-            alt="image-carrusel-thumnail"
-            class="size-full object-cover rounded-2xl"
-          />
-        </div>
-      ))
-    }
-  </div>
-
-  <!-- controls -->
-  <div
-    class="arrows absolute top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
-  >
-    <button
-      id="prev"
-      class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-white font-bold transition duration-150 hover:bg-white hover:text-black"
+    <div
+      class="thumbnail absolute bottom-12 left-1/3 md:left-2/4 w-max z-10 flex gap-4"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        width="24"
-        class="size-4 md:size-8"
-        height="24"
-        stroke-width="2"
-      >
-        <path d="M15 6l-6 6l6 6"></path>
-      </svg>
-    </button>
-    <button
-      id="next"
-      class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-white font-bold transition duration-150 hover:bg-white hover:text-black"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        width="24"
-        class="size-4 md:size-8"
-        height="24"
-        stroke-width="2"
-      >
-        <path d="M9 6l6 6l-6 6"></path>
-      </svg></button
-    >
-  </div>
-</div>
+      {
+        items.map((item) => (
+          <div class="item w-32 md:w-36 h-44 md:h-48 flex-shrink-0 relative ">
+            <img
+              src={item.thumbnail.image}
+              alt="image-carrusel-thumnail "
+              class="size-full object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+        ))
+      }
+    </div>
 
+    <!-- controls -->
+
+    <div
+      class="arrows absolute top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
+    >
+      <button
+        id="prev"
+        type="button"
+        class="grid place-content-center size-9 md:size-14 text-black rounded-full border-none bg-[#8f8e8e]  font-bold transition duration-150 hover:bg-white hover:text-black"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          class="size-4 md:size-8"
+          height="24"
+          stroke-width="2"
+        >
+          <path d="M15 6l-6 6l6 6"></path>
+        </svg>
+        prev
+      </button>
+      <button
+        type="button"
+        id="next"
+        class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-black font-bold transition duration-150 hover:bg-white hover:text-black"
+        >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          class="size-4 md:size-8"
+          height="24"
+          stroke-width="2"
+        >
+          <path d="M9 6l6 6l-6 6"></path>
+        </svg>
+        next
+        </button
+      >
+    </div>
+  </div>
+</section>
 <style>
   /* animation */
   .carousel .list .item:nth-child(1) {
@@ -246,7 +257,6 @@ const items = [
       opacity: 0;
     }
   }
-
 </style>
 
 <script>
@@ -296,12 +306,12 @@ const items = [
           );
         }
 
-        carouselDom?.classList.add(type);
-        clearTimeout(runTimeOut);
-        runTimeOut = setTimeout(() => {
-          carouselDom?.classList.remove("next");
-          carouselDom?.classList.remove("prev");
-        }, 1000);
+        // carouselDom?.classList.add(type);
+        // clearTimeout(runTimeOut);
+        // runTimeOut = setTimeout(() => {
+        //   carouselDom?.classList.remove("next");
+        //   carouselDom?.classList.remove("prev");
+        // }, 1000);
 
         clearTimeout(runNextAuto);
         runNextAuto = setTimeout(() => {
