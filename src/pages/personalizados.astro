@@ -75,26 +75,50 @@ const personalizados = [
     class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
   >
     <div
-      class="absolute p-2 md:p-4 bg-white w-[70%] md:max-w-[65%] z-20 mx-auto md:w-full min-h-28 flex items-center justify-center gap-y-0 flex-col border-dashed border-2 -mb-8"
+      class="absolute p-2 md:p-4 bg-[#f8f6f3] w-[70%] md:max-w-[65%] z-20 mx-auto md:w-full min-h-28 flex items-center justify-center gap-y-0 flex-col border-dashed border-4 -mb-8"
+      id="box-tittle"
     >
-      <h1 class="text-base md:text-xl text-primary-txt font-bold text-center">
+      <h1
+        class="text-base md:text-xl text-primary-txt font-bold text-center mb-1"
+        id="tittle"
+      >
         Pastelería Personalizada
       </h1>
-      <h2 class="text-lg md:text-4xl text-[#f1683a] font-bold text-center">
-        Crea momentos únicos
+      <h2
+        class="text-lg md:text-4xl text-[#f1683a] font-bold text-center"
+        id="subtittle"
+      >
+        Creamos momentos únicos
       </h2>
-      <p class="text-xs md:text-base text-center text-balance font-semibold">
+      <p
+        class="text-xs md:text-base text-center text-balance font-semibold"
+        id="text"
+      >
         <strong class="text-primary-txt">¡Tu idea ! ,</strong>
         Nuestro diseño
       </p>
     </div>
   </article>
   <article>
-    <h3 class="text-base md:text-2xl text-balance font-bold pl-4 md:pl-0">
-      Recomendados
+    <h3
+      class="text-base flex items-center ga-x-2 md:text-2xl text-balance font-bold pl-4 md:pl-0"
+      id="tittle"
+    >
+      Recomendad
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+        ></path>
+      </svg>s
     </h3>
     <hr />
-    <p class="text-xs md:text-base text-balance pl-4 md:pl-0 my-4">
+    <p class="text-xs md:text-base text-balance pl-4 md:pl-0 my-4" id="des">
       Te presentamos algunas opciones que hemos seleccionado especialmente para
       inspirarte. Si no encuentras exactamente lo que buscas, más abajo
       encontrarás un formulario donde podrás compartir tus ideas y personalizar
@@ -103,7 +127,8 @@ const personalizados = [
   </article>
   <article>
     <div
-      class="grid grid-cols-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
+      class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
+      id="cards"
     >
       {
         personalizados.map((per) => (
@@ -119,31 +144,38 @@ const personalizados = [
     </div>
   </article>
   <article>
-    <h4 class="text-lg md:text-xl text-balance font-bold mb-2">
+    <h4
+      class="text-base md:text-xl text-balance font-bold mb-2 pl-4 md:pl-0"
+      id="tittle"
+    >
       <strong class="text-primary-txt">¿Tienes una idea en mente? </strong>
       ¡Nosotros la hacemos dulce realidad!
     </h4>
-    <p class="text-xs md:text-base text-balance pl-4 md:pl-0 my-3">
-      Cuéntanos qué tienes en mente. Completa el formulario a continuación y
-      recibirás una respuesta de nuestra parte lo antes posible. ¡Estamos
-      emocionados de hacer tus ideas realidad!
-    </p>
     <hr />
-
-    <div class="w-full p-4 my-10">
+    <p class="text-xs md:text-base text-balance pl-4 md:pl-0 mt-4" id="des">
+      Cuéntanos qué tienes en mente. Completa el formulario a continuación y
+      recibirás una respuesta de nuestra parte lo antes posible.
+    </p>
+    <p
+      class="font-semibold text-xs md:text-base text-balance pl-4 mt-2 md:mt-0 md:pl-0"
+      id="des"
+    >
+      ¡Estamos emocionados de hacer tus ideas realidad!
+    </p>
+    <div class="w-full p-4 my-5 md:my-10">
       <form class="max-w-4xl mx-auto">
         <div class="relative z-0 w-full mb-5 group">
           <input
             type="email"
             name="floating_email"
             id="floating_email"
-            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
             placeholder=" "
             required
           />
           <label
             for="floating_email"
-            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >Correo electronico</label
           >
         </div>
@@ -154,13 +186,13 @@ const personalizados = [
               type="text"
               name="floating_first_name"
               id="floating_first_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
               placeholder=" "
               required
             />
             <label
               for="floating_first_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >Nombres</label
             >
           </div>
@@ -169,13 +201,13 @@ const personalizados = [
               type="text"
               name="floating_last_name"
               id="floating_last_name"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
               placeholder=" "
               required
             />
             <label
               for="floating_last_name"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >Apellidos</label
             >
           </div>
@@ -187,13 +219,13 @@ const personalizados = [
               pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               name="floating_phone"
               id="floating_phone"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
               placeholder=" "
               required
             />
             <label
               for="floating_phone"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >Numero de telefono (123-456-7890)</label
             >
           </div>
@@ -202,13 +234,13 @@ const personalizados = [
               type="text"
               name="floating_company"
               id="floating_company"
-              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
               placeholder=" "
               required
             />
             <label
               for="floating_company"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >Direccion (opcionar)</label
             >
           </div>
@@ -222,15 +254,57 @@ const personalizados = [
           <textarea
             id="message"
             rows="4"
-            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#eb9f48] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48]"
             placeholder="Cuentanos tu idea..."></textarea>
         </div>
         <button
           type="submit"
-          class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >Submit</button
+          class="text-black hover:text-white transition duration-200 bg-secondary-bg hover:bg-[#d66a6e] uppercase focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >Contar mi idea</button
         >
       </form>
     </div>
   </article>
 </LayoutPages>
+
+<style>
+  /* animacion de texto y cards */
+
+  #box-tittle,
+  #cards,
+  #tittle,
+  #des {
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+  }
+
+  #box-tittle,
+  #des {
+    transform: translateY(50px);
+    filter: blur(20px);
+  }
+
+  #cards {
+    transform: translatex(50px);
+    filter: blur(5px);
+  }
+
+  @keyframes showContent {
+    to {
+      transform: translateY(0px);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
+  #tittle {
+    animation-delay: 1.2s;
+  }
+
+  #des {
+    animation-delay: 1.6s;
+  }
+  #cards {
+    animation-delay: 2.5s;
+  }
+</style>
