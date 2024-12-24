@@ -1,0 +1,21 @@
+---
+import { productos } from "@/content";
+const { id } = Astro.params;
+
+export async function getStaticPaths() {
+  return productos.map((producto) => ({
+    params: { id: producto.id },
+    props: { id: producto.id },
+  }));
+}
+const productoPage = productos.find((prod) => prod.id === id);
+---
+
+<article class="grid grid-cols-1 md:grid-cols-2 bg-[#ccc] min-h-[500px]">
+  <div>
+    <img src={productoPage?.imagen} alt="" />
+  </div>
+  <div>
+    <p>producto: {productoPage?.nombre}</p>
+  </div>
+</article>
