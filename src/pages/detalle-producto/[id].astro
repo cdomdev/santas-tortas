@@ -1,0 +1,21 @@
+---
+import LayoutPages from "@/layouts/LayoutPages.astro";
+import { productos } from "@/content";
+import LayoutDetalles from "@/layouts/LayoutDetalles.astro";
+
+const { id } = Astro.params;
+
+export async function getStaticPaths() {
+  return productos.map((producto) => ({
+    params: { id: producto.id },
+    props: { id: producto.id },
+  }));
+}
+
+const productoPage = productos.find((prod) => prod.id === id);
+
+---
+
+<LayoutPages title={`detalle - ${productoPage?.nombre}`}>
+  <LayoutDetalles />
+</LayoutPages>
