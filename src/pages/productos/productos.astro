@@ -1,0 +1,105 @@
+---
+import { productos } from "@/content";
+import LayoutPages from "@/layouts/LayoutPages.astro";
+import CardProducts from "@/components/CardProducts.astro";
+import MasVendidosCat from "@/components/componentesPages/MasVendidosCat.astro";
+---
+
+<LayoutPages title="productos - tortas - postres - cupcakes - galletas">
+  <h1
+    class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
+    id="txt-title"
+  >
+    Productos
+  </h1>
+
+  <p class="text-xs md:text-base my-3 text-balance" id="txt-text">
+    Disfruta de una gran variedad de productos para ti
+  </p>
+  <div
+    class="h-auto w-full flex my-4 items-center justify-end pr-2 md:pr-0"
+    id="filtros"
+  >
+    <form class="justify-end">
+      <label for="underline_select" class="sr-only">Underline select</label>
+      <select
+        id="underline_select"
+        class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+      >
+        <option selected class="text-xs md:text-sm"
+          >Ordenar producto por:</option
+        >
+        <option value="US" class="text-xs md:text-sm"
+          >Menor a mayor precio</option
+        >
+        <option value="CA" class="text-xs md:text-sm"
+          >Mayor a menor pecio
+        </option>
+      </select>
+    </form>
+  </div>
+  <section class="flex gap-y-2">
+    <MasVendidosCat />
+    <article>
+      <div
+        class="grid grid-cols-2 gap-x-2 md:grid-cols-3 lg:grid-cols-4 gap-y-14 p-2 w-full mb-10 md:mb-16"
+        id="cards-categorias"
+      >
+        {
+          productos.map((per) => (
+            <CardProducts
+              id={per.id}
+              descuento={per.descuento}
+              image={per.imagen}
+              nombre={per.nombre}
+              precio={per.precio}
+            />
+          ))
+        }
+      </div>
+    </article>
+  </section>
+</LayoutPages>
+
+<style>
+  #txt-title,
+  #txt-text,
+  #cards-categorias,
+  #filtros {
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+  }
+
+  #txt-title,
+  #filtros,
+  #txt-text {
+    transform: translateY(50px);
+    filter: blur(20px);
+  }
+
+  #cards-categorias {
+    transform: translatex(-50px);
+    filter: blur(5px);
+  }
+
+  @keyframes showContent {
+    to {
+      transform: translateY(0px);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
+  #txt-tittle {
+    animation-delay: 1s;
+  }
+  #filtros {
+    animation-delay: 1.2s;
+  }
+  #txt-text {
+    animation-delay: 1.6s;
+  }
+  #cards-categorias {
+    animation-delay: 2.5s;
+  }
+</style>
