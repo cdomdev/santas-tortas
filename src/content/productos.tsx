@@ -1,0 +1,78 @@
+export const productos = [
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "tortas",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "postres",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "postres",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "postres",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "cupcakes",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "cupcakes",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "galletas",
+  },
+  {
+    id: crypto.randomUUID(),
+    nombre: "producto",
+    imagen: "/torta.png",
+    url: "/",
+    precio: "20000",
+    descuento: 0,
+    categoria: "galletas",
+  },
+];
+
+export const getCategoriasUnicas = () => {
+  return [...new Set(productos.map((producto) => producto.categoria))];
+};
