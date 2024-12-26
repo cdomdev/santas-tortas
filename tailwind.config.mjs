@@ -16,5 +16,9 @@ export default {
       "primary-txt": "#5f3b3c",
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("flyonui"),
+    require("flyonui/plugin"),
+  ],
 };
