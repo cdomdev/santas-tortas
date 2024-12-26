@@ -1,7 +1,6 @@
 ---
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { productos } from "@/content";
-import LayoutDetalles from "@/layouts/LayoutDetalles.astro";
 
 const { id } = Astro.params;
 
@@ -15,8 +14,30 @@ export async function getStaticPaths() {
 const productoPage = productos.find((prod) => prod.id === id);
 ---
 
-<LayoutDetalles
-  image={productoPage?.imagen}
-  nombre={productoPage?.nombre}
-  descripcion={productoPage?.descripcion}
-/>
+<LayoutPages>
+  <section>
+    <article class="grid grid-cols-1 md:grid-cols-2 p-3">
+      <div class="p-5 flex items-center justify-center">
+        <img
+          src={productoPage?.imagen}
+          alt=`imagen-producto-${productoPage?.nombre}`
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="border border-dashed p-4 flex flex-col gap-y-3 sm:max-w-[90%]">
+        <h2 class="font-bold text-base md:text-2xl">{productoPage?.nombre}</h2>
+        <p class="text-sm md:text-base">precio: {productoPage?.precio}</p>
+        <p class="text-sm md:text-base text-balance">
+          {productoPage?.descripcion}
+        </p>
+        <button
+          class="uppercase text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-white py-2 px-3 rounded-md w-full"
+        >
+         Agregar al carrito
+        </button>
+      </div>
+    </article>
+  </section>
+  <h1>aqui destalles</h1>
+  <section></section>
+</LayoutPages>
