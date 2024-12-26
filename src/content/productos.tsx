@@ -7,6 +7,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "tortas",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -16,6 +18,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "postres",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -25,6 +29,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "postres",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -34,6 +40,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "postres",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -43,6 +51,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "cupcakes",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -52,6 +62,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "cupcakes",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -61,6 +73,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "galletas",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
   {
     id: crypto.randomUUID(),
@@ -70,6 +84,8 @@ export const productos = [
     precio: "20000",
     descuento: 0,
     categoria: "galletas",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores aliquam blanditiis voluptate perferendis consequuntur soluta eaque molestias vitae quod omnis beatae fuga sed optio, quam ducimus tempora magnam, quo aut.",
   },
 ];
 
