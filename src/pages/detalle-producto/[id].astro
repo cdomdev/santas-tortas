@@ -13,9 +13,10 @@ export async function getStaticPaths() {
 }
 
 const productoPage = productos.find((prod) => prod.id === id);
-
 ---
 
-<LayoutPages title={`detalle - ${productoPage?.nombre}`}>
-  <LayoutDetalles />
-</LayoutPages>
+<LayoutDetalles
+  image={productoPage?.imagen}
+  nombre={productoPage?.nombre}
+  descripcion={productoPage?.descripcion}
+/>
