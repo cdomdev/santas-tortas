@@ -1,6 +1,7 @@
 ---
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { productos } from "@/content";
+import { BtnAddCar } from "@/components/componentesPages/BtnAddProductToCar";
 
 const { id } = Astro.params;
 
@@ -35,6 +36,7 @@ const productoPage = productos.find((prod) => prod.id === id);
         >
          Agregar al carrito
         </button>
+        <!-- <BtnAddCar producto={productoPage} /> -->
       </div>
     </article>
   </section>

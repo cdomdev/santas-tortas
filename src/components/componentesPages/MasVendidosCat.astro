@@ -4,14 +4,14 @@ import { productos } from "@/content";
 const productosForSeccion = productos.slice(0, 4);
 ---
 
-<aside class="hidden md:flex flex-col min-w-[20%] px-4 py-5 gap-y-3">
+<aside class="hidden md:flex flex-col min-w-[20%] px-4 py-5 gap-y-3" id="cards-categorias">
+  <h4 class="text-semibold text-base md:text-xl">Mas vendidos</h4>
   {
     productosForSeccion.map((prod) => (
-      <article id="cards-categorias">
+      <article >
         <a
           class="flex items-start gap-2 justify-start h-auto border-b"
           href="#"
-          
         >
           <img src={prod.imagen} alt={prod.nombre} class="size-16" />
           <div class="flex flex-col gap-y-3">
@@ -78,28 +78,26 @@ const productosForSeccion = productos.slice(0, 4);
   }
 </aside>
 
-
-
 <style>
-    #cards-categorias{
-      opacity: 0;
-      animation: showContent 0.5s 1s linear 1 forwards;
-    }
-  
-    #cards-categorias {
-      transform: translatex(-50px);
-      filter: blur(5px);
-    }
-  
-    @keyframes showContent {
-      to {
-        transform: translateY(0px);
-        filter: blur(0px);
-        opacity: 1;
-      }
-    }
+  #cards-categorias {
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+  }
 
-    #cards-categorias {
-      animation-delay: 2.5s;
+  #cards-categorias {
+    transform: translatex(-50px);
+    filter: blur(5px);
+  }
+
+  @keyframes showContent {
+    to {
+      transform: translateY(0px);
+      filter: blur(0px);
+      opacity: 1;
     }
-  </style>
+  }
+
+  #cards-categorias {
+    animation-delay: 2.5s;
+  }
+</style>
