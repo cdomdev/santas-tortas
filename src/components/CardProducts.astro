@@ -14,6 +14,16 @@ const { id, image, nombre, descuento, precio } = Astro.props;
   href={`/detalle-producto/${id}`}
   class="card-producto rounded-sm flex justify-between flex-col h-auto md:w-[15em] max-h-[31em] border border-gray-200 transition duration-300 ease-in-out relative shadow-md hover:shadow-none"
 >
+  <div
+    class=`${descuento ? 'block' : 'hidden'} absolute z-2 top-1 right-1`
+  >
+    <img
+      src="/public/background-ofertas.webp"
+      alt="imagen-bacground-ofertas"
+      class="size-9"
+    />
+    <span class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-1">{descuento}</span>
+  </div>
   <picture>
     <img
       src={image}
