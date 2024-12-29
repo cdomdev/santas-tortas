@@ -1,2 +1,2 @@
 export {contenido} from './contenidoPages'
-export {getCategoriasUnicas, productos} from './productos'
+export {getCategoriasUnicas, productos, getProductosConOfertas} from './productos'
