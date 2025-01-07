@@ -16,17 +16,35 @@ const productoPage = productos.find((prod) => prod.id === id);
 ---
 
 <LayoutPages>
-  <section>
     <article class="grid grid-cols-1 md:grid-cols-2 p-3">
-      <div class="p-5 flex items-center justify-center">
+      <div class="p-5 flex items-center justify-center w-[94%] h-[94%]">
         <img
           src={productoPage?.imagen}
           alt=`imagen-producto-${productoPage?.nombre}`
-          class="w-full h-full object-cover"
+          class="size-full object-cover"
         />
       </div>
-      <div class="border border-dashed p-4 flex flex-col gap-y-3 sm:max-w-[90%]">
-        <h2 class="font-bold text-base md:text-2xl">{productoPage?.nombre}</h2>
+      <div
+        class="border border-dashed p-4 flex flex-col gap-y-3 sm:max-w-[90%]"
+      >
+        <div class="flex justify-between pr-2 relative">
+          <h2 class="font-bold text-base md:text-2xl">
+            {productoPage?.nombre}
+          </h2>
+          <div  
+            class=`${productoPage?.descuento ? 'block' : 'hidden'} absolute right-2`
+          >
+            <img
+              src="/public/bg-ofertas.webp"
+              alt="imagen-bacground-ofertas"
+              class="size-9"
+            />
+            <span
+              class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-1"
+              >{productoPage?.descuento}%</span
+            >
+          </div>
+        </div>
         <p class="text-sm md:text-base">precio: {productoPage?.precio}</p>
         <p class="text-sm md:text-base text-balance">
           {productoPage?.descripcion}
@@ -34,12 +52,11 @@ const productoPage = productos.find((prod) => prod.id === id);
         <button
           class="uppercase text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-white py-2 px-3 rounded-md w-full"
         >
-         Agregar al carrito
+          Agregar al carrito
         </button>
         <!-- <BtnAddCar producto={productoPage} /> -->
       </div>
     </article>
-  </section>
   <h1>aqui destalles</h1>
   <section></section>
 </LayoutPages>
