@@ -1,11 +1,10 @@
-let ref = 0
+let ref = 0;
 export const productos = [
   {
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 6,
     categoria: "tortas",
@@ -16,8 +15,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 0,
     categoria: "postres",
@@ -28,8 +26,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 10,
     categoria: "postres",
@@ -40,8 +37,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 0,
     categoria: "postres",
@@ -52,8 +48,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 9,
     categoria: "cupcakes",
@@ -64,8 +59,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 0,
     categoria: "cupcakes",
@@ -76,8 +70,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 10,
     categoria: "galletas",
@@ -88,8 +81,7 @@ export const productos = [
     id: crypto.randomUUID(),
     nombre: "producto",
     imagen: "/torta.png",
-    url: "/",
-    referencia : ref + 1,
+    referencia: ref + 1,
     precio: "20000",
     descuento: 0,
     categoria: "galletas",
@@ -101,7 +93,6 @@ export const productos = [
 export const getCategoriasUnicas = () => {
   return [...new Set(productos.map((producto) => producto.categoria))];
 };
-
 
 export const getProductosConOfertas = () => {
   return productos.filter((producto) => producto.descuento > 0);
