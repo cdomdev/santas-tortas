@@ -1,12 +1,13 @@
+type UUID = `${string}-${string}-${string}-${string}-${string}`
 
 export type Producto = {
-    id: string;
+    id: UUID;
     nombre: string;
     imagen: string;
     precio: string;
     descuento: number | null;
-    description: string;
-    referencia: string;
+    descripcion: string;
+    referencia: string | number;
     categoria: any | null;
     quantity?: number
   }
