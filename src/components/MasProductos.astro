@@ -1,0 +1,27 @@
+---
+import CardProducts from "./CardProducts.astro";
+import {productos} from '@/content'
+
+const products = productos.slice(0, 4)
+
+---
+
+<section class="mx-4 md:mx-0">
+  <h3 class="text-balance text-lg text-gray-700 uppercase pt-4 font-semibold pb-2">
+    Aqui hay algunas opciones que tambien te pueden interesar
+  </h3>
+  <hr />
+  <div class="py-7 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8">
+    {
+      products.map((product) => (
+        <CardProducts
+          id={product.id}
+          image={product.imagen}
+          nombre={product.nombre}
+          precio={product.precio}
+          descuento={product.descuento}
+        />
+      ))
+    }
+  </div>
+</section>
