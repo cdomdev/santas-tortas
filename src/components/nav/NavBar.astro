@@ -5,6 +5,8 @@ const categorias = [
   { nombre: "Postres", ruta: "/productos/postres" },
   { nombre: "Galletas", ruta: "/productos/galletas" },
 ];
+
+import CarCountAndNavigate from "./CarCountAndNaviage";
 ---
 
 <nav class="bg-white dark:bg-gray-900 w-full top-0 z-50 fixed start-0">
@@ -42,34 +44,7 @@ const categorias = [
         <span class="hidden md:block text-xs -mt-1 text-black">Cuenta</span>
       </a>
 
-      <a
-        class="relative mr-2 flex items-center gap-y-1 flex-col"
-        href="/carrito-compras"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="24"
-          height="24"
-          stroke-width="1"
-          class="size-7 md:size-8"
-        >
-          <path
-            d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z"
-          ></path>
-          <path d="M9 11v-5a3 3 0 0 1 6 0v5"></path>
-        </svg>
-        <span class="sr-only">Carrito</span>
-        <span class="hidden md:block text-black text-xs -mt-1">Carrito</span>
-        <span
-          class="size-4 bg-red-600 rounded-full text-white m-auto inline-block text-center absolute -top-1 right-1 text-xs"
-          >1</span
-        >
-      </a>
+      <CarCountAndNavigate client:load />
       <button
         data-collapse-toggle="navbar-sticky"
         type="button"
