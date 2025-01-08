@@ -1,6 +1,7 @@
 ---
 import MasProductos from "@/components/MasProductos.astro";
 import Steps from "@/components/Steps.astro";
+import TablerListToCar from "@/components/TablerListToCar";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 ---
 
@@ -18,105 +19,8 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 
   <section>
     <article class="mb-6">
-      <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
-        <div class="min-w-11/12 w-[95%] mx-auto md:min-w-[65%] h-auto">
-          <table
-            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-t-lg"
-          >
-            <thead
-              class="text-xs text-gray-700 uppercase bg-[#e9e7e5] dark:bg-gray-700 dark:text-gray-400"
-            >
-              <tr>
-                <th scope="col" class="px-2 py-3 rounded-tl-md"> Producto </th>
-                <th scope="col" class="px-2 py-3"> Cantidad </th>
-                <th scope="col" class="px-2 py-3"> Precio </th>
-                <th scope="col" class="px-2 py-3 rounded-tr-md"> </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 hover:bg-gray-50">
-                <td
-                  class="flex flex-col items-start justify-center gap-y-1 p-2"
-                >
-                  <img
-                    src="/torta.png"
-                    class="size-16 md:size-24 rounded-sm"
-                    alt="producto-1"
-                  />
-                  <span
-                    class="font-semibold md:pl-2 text-center text-black text-balance"
-                    >producto 1</span
-                  >
-                </td>
-                <td class="py-4">
-                  <div class="flex items-center">
-                    <button
-                      class="inline-flex items-center justify-center p-1 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                      type="button"
-                    >
-                      <span class="sr-only">Quantity button</span>
-                      <svg
-                        class="w-3 h-3"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 18 2"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M1 1h16"></path>
-                      </svg>
-                    </button>
-                    <div class="ms-3">
-                      <input
-                        type="number"
-                        id="first_product"
-                        class="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="1"
-                        required
-                      />
-                    </div>
-                    <button
-                      class="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                      type="button"
-                    >
-                      <span class="sr-only">Quantity button</span>
-                      <svg
-                        class="w-3 h-3"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 18 18"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 1v16M1 9h16"></path>
-                      </svg>
-                    </button>
-                  </div>
-                </td>
-                <td
-                  class="px-4 py-4 font-semibold text-gray-900 dark:text-white"
-                >
-                  $100000
-                </td>
-                <td class="pr-3 py-4">
-                  <a
-                    href="#"
-                    class="font-medium text-red-600 dark:text-red-500 hover:underline"
-                    >Eliminar</a
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">        
+          <TablerListToCar client:load />
         <div
           class="h-200 border-4 w-[95%] md:w-[35%] max-h-80 px-4 py-5 mx-auto"
         >
@@ -147,7 +51,10 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
               ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
                 d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path
                 d="M12 9v4"></path><path d="M12 16v.01"></path></svg
-            >El costo de envio aun no esta incluido
+            >
+            <p class="text-black opacity-75">
+              El costo de envio aun no esta incluido
+              </p>
           </span>
           <hr />
           <span class="flex justify-between py-3 mb-3">
@@ -155,7 +62,7 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
             <p>valor</p>
           </span>
           <button
-            class="uppercase text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-white py-2 px-3 rounded-md w-full"
+            class="uppercase text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
           >
             Finalizar compra
           </button>
