@@ -4,8 +4,8 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import { productos } from "@/content/productos";
 ---
 
-<LayoutPages title="Personalizados - deja que vuele tu creatividad">
-  <article
+<LayoutPages title="Personalizados - pasteleria personalizada">
+  <section
     class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
   >
     <div
@@ -35,8 +35,8 @@ import { productos } from "@/content/productos";
         creatividad.
       </p>
     </div>
-  </article>
-  <article>
+  </section>
+  <section>
     <h3
       class="text-base flex items-center ga-x-2 md:text-2xl text-balance font-bold pl-4 md:pl-0"
       id="tittle"
@@ -80,8 +80,8 @@ import { productos } from "@/content/productos";
         ))
       }
     </div>
-  </article>
-  <article>
+  </section>
+  <section id="personalizados">
     <h4
       class="text-base md:text-xl text-balance font-bold mb-2 pl-4 md:pl-0"
       id="tittle"
@@ -90,7 +90,7 @@ import { productos } from "@/content/productos";
       ¡Nosotros la hacemos dulce realidad!
     </h4>
     <hr />
-    <p class="text-xs md:text-base text-balance pl-4 md:pl-0 mt-4" id="des">
+    <p class="text-xs md:text-base text-balance pl-4 md:pl-0  pt-6" id="des">
       Cuéntanos tu idea para un pastel personalizado. Llena el formulario y te
       responderemos rápidamente con una propuesta única.
     </p>
@@ -100,7 +100,7 @@ import { productos } from "@/content/productos";
     >
       ¡Estamos emocionados de hacer tus ideas realidad!
     </p>
-    <div class="w-full p-4 my-5 md:my-10">
+    <div class="w-full p-4 my-5 md:my-1">
       <form class="max-w-4xl mx-auto">
         <div class="relative z-0 w-full mb-5 group">
           <input
@@ -179,7 +179,7 @@ import { productos } from "@/content/productos";
             <label
               for="floating_company"
               class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-              >Direccion (opcionar)</label
+              >Direccion (opcional)</label
             >
           </div>
         </div>
@@ -202,7 +202,7 @@ import { productos } from "@/content/productos";
         >
       </form>
     </div>
-  </article>
+  </section>
 </LayoutPages>
 
 <style>
