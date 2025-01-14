@@ -7,6 +7,10 @@ export default {
         "primary-bg": "#f2eae1",
         "secondary-bg": "#fc9fa2",
       },
+      boxShadow: {
+        "focused":"20px 20px 30px -10px rgba(0, 0, 0, 0.3), 20px 20px 30px -10px rgba(0, 0, 0, 0.3)"
+
+      },
       backgroundImage: {
         gradient:
           "linear-gradient(90deg, rgba(255,136,244,1) 20%, rgba(231,55,211,1) 63%, rgba(228,30,206,1) 88%, rgba(221,43,223,1) 100%)",
