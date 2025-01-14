@@ -1,148 +1,121 @@
 ---
-const items = [
-  {
-    image: "/img1.webp",
-    title: "ChocoChip Delicia",
-    text: " Pastel de chocolate intenso y húmedo, salpicado de chispas de chocolate que se derriten en cada bocado. Perfecto para los amantes del chocolate.",
-    urlBtn: "/carrito-compras",
-    thumbnail: {
-      image: "/imgthum4.webp",
-    },
-  },
-  {
-    image: "/img2.webp",
-    title: "Tres Leches Frutal",
-    text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
-    urlBtn: "/carrito-compras",
-    thumbnail: {
-      image: "/imgthum1.webp",
-    },
-  },
-  {
-    image: "/img3.webp",
-    title: "Dulce Encanto de Vainilla",
-    text: " Delicioso pastel de vainilla suave y esponjoso, cubierto con crema batida y decorado con frescas. Un clásico irresistible para cualquier ocasión especial.",
-    urlBtn: "/carrito-compras",
-    thumbnail: {
-      image: "/imgthum2.webp",
-    },
-  },
-  {
-    image: "/img4.webp",
-    title: "Sueño de Chocolate y Crema",
-    text: "Pastel de chocolate rico y esponjoso, con un suave relleno de crema batida, decorado con una mezcla de cacao en polvo y toques de crema para un acabado elegante y delicioso.",
-    urlBtn: "/carrito-compras",
-    thumbnail: {
-      image: "/imgthum3.webp",
-    },
-  },
-];
+import { items } from "@/content";
 ---
 
-<section>
-  <div class="carousel h-dvh w-screen overflow-hidden relative z-10">
-    <div class="list">
+<section class="carousel h-dvh w-screen overflow-hidden relative z-10 rounded-none bg-[#f3ebe2]">
+  <article class="list-wrapper relative h-full overflow-hidden">
+    <div class="list flex transition-transform duration-500 ">
       {
         items.map((item) => (
-          <div class="item size-full absolute inset-0">
-            <img
-              src={item.image}
-              class="size-full object-cover "
-              alt="image-carrusel"
-              loading="lazy"
-            />
-            <div class="content absolute top-24 md:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-[#fff9f9]">
-              <div class="tittle font-bold tracking-tight text-2xl md:text-5xl mt-2 uppercase text-[#f1683a]">
+          <div class="item flex-none w-full h-full absolute inset-0">
+            <div class="w-full md:w-80 flex flex-col h-auto z-20 absolute top-2/4  md:top-80 md:right-12 lg:top-[40%] lg:right-44 lg:w-[400px] ">
+              <img src={item.image} alt="imagen de producto" class="w-full" />
+            </div>
+            <div class="content absolute top-24 md:top-52 lg:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-white">
+              <div class="tittle font-bold tracking-tight text-2xl md:text-3xl lg:text-5xl mt-2 uppercase text-[#f1683a] text-balance">
                 {item.title}
               </div>
-              <div class="des text-sm md:text-base my-3 md:my-7">
+              <div class="des text-sm md:text-base my-3 md:my-4 lg:my-5 text-balance">
                 {item.text}
               </div>
-              <div class="buttons grid place-content-center p-4 grid-cols-2 grid-rows-1 gap-4 w-full mt-7 mx-auto">
-                <button
-                  type="button"
-                  name="btn-see-more"
-                  class="font-medium text-balance text-xs md:text-base px-3 py-2 bg-white border border-black transition ease-linear text-black duration-150 hover:bg-[#c94c23] hover:text-white "
-                >
-                  ver mas productos
-                </button>
-              </div>
+              <a
+                id="buttons"
+                href="/personalizados/#personalizados"
+                class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200"
+              >
+                Hacer mi pedido
+              </a>
             </div>
           </div>
         ))
       }
     </div>
+  </article>
 
-    <div
-      class="thumbnail absolute  bottom-12 left-1/3 md:left-2/4 w-max z-10 flex gap-4"
+  <article
+    class="thumbnail absolute bottom-24 md:bottom-12 left-0 md:left-16 lg:left-2/4 w-max z-10 flex gap-2 md:gap-4"
+  >
+    {
+      items.slice(1, 5).map((item) => (
+        <div class="item w-28 h-36 md:w-40 md:h-48 flex-shrink-0 relative ">
+          <img
+            src={item.thumbnail.image}
+            alt="image-carrusel-thumnail"
+            loading="lazy"
+            class="size-full object-cover rounded-2xl shadow-lg"
+          />
+        </div>
+      ))
+    }
+  </article>
+
+  <!-- controls -->
+
+  <article
+    class="arrows absolute top-[60%] md:top-[62%] lg:top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
+  >
+    <button
+      id="prev"
+      type="button"
+      class="grid place-content-center size-9 md:size-14 text-black rounded-full border-none bg-[#8f8e8e] font-bold transition duration-150 hover:bg-white hover:text-black"
     >
-      {
-        items.map((item) => (
-          <div class="item w-32 md:w-36 h-44 md:h-48 flex-shrink-0 relative ">
-            <img
-              src={item.thumbnail.image}
-              alt="image-carrusel-thumnail"
-              loading="lazy"
-              class="size-full object-cover rounded-2xl shadow-xl"
-            />
-          </div>
-        ))
-      }
-    </div>
-
-    <!-- controls -->
-
-    <div
-      class="arrows absolute top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        class="size-4 md:size-8"
+        height="24"
+        stroke-width="2"
+      >
+        <path d="M15 6l-6 6l6 6"></path>
+      </svg>
+      <span class="sr-only">Previous</span>
+    </button>
+    <button
+      type="button"
+      id="next"
+      class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-black font-bold transition duration-150 hover:bg-white hover:text-black"
     >
-      <button
-        id="prev"
-        type="button"
-        class="grid place-content-center size-9 md:size-14 text-black rounded-full border-none bg-[#8f8e8e]  font-bold transition duration-150 hover:bg-white hover:text-black"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        class="size-4 md:size-8"
+        height="24"
+        stroke-width="2"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="24"
-          class="size-4 md:size-8"
-          height="24"
-          stroke-width="2"
-        >
-          <path d="M15 6l-6 6l6 6"></path>
-        </svg>
-        <span class="sr-only">Previous</span>
-      </button>
-      <button
-        type="button"
-        id="next"
-        class="grid place-content-center size-9 md:size-14 rounded-full border-none bg-[#8f8e8e] text-black font-bold transition duration-150 hover:bg-white hover:text-black"
-        >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          width="24"
-          class="size-4 md:size-8"
-          height="24"
-          stroke-width="2"
-        >
-          <path d="M9 6l6 6l-6 6"></path>
-        </svg>
-        <span class="sr-only">Next</span>
-        </button
-      >
-    </div>
-  </div>
+        <path d="M9 6l6 6l-6 6"></path>
+      </svg>
+      <span class="sr-only">Next</span>
+    </button>
+  </article>
 </section>
 
 <style>
+  .carousel .list {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel .list .item {
+    flex-shrink: 0;
+    width: 100%;
+    position: relative;
+  }
+
   /* animation */
   .carousel .list .item:nth-child(1) {
     z-index: 1;
@@ -153,7 +126,7 @@ const items = [
   .carousel .list .item:nth-child(1) .content .tittle,
   .carousel .list .item:nth-child(1) .content .tittle,
   .carousel .list .item:nth-child(1) .content .des,
-  .carousel .list .item:nth-child(1) .content .buttons {
+  .carousel .list .item:nth-child(1) .content #buttons {
     transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
@@ -166,22 +139,29 @@ const items = [
       opacity: 1;
     }
   }
-
-  .carousel .list .item:nth-child(1) .content .buttons {
-    animation-delay: 1.8s;
-  }
-
-  /* create animation when next click */
-  .carousel.next .list .item:nth-child(1) img {
-    width: 150px;
-    height: 220px;
+  .carousel .list .item img {
     position: absolute;
-    bottom: 50px;
+    top: 50%;
     left: 50%;
-    border-radius: 30px;
-    animation: showImage 0.5s linear 1 forwards;
+    transform: translate(-50%, -50%);
+    transition:
+      filter 0.5s ease,
+      opacity 0.5s ease;
+    filter: blur(20px);
+    opacity: 0;
   }
-  @keyframes showImage {
+
+  .carousel .list .item.active img {
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  .carousel .list .item.exiting img {
+    filter: blur(20px);
+    opacity: 0;
+  }
+
+  /* @keyframes showImage {
     to {
       bottom: 0;
       left: 0;
@@ -189,7 +169,7 @@ const items = [
       height: 100%;
       border-radius: 0;
     }
-  }
+  } */
 
   .carousel.next .thumbnail .item:nth-last-child(1) {
     overflow: hidden;
@@ -255,7 +235,7 @@ const items = [
   @keyframes contentOut {
     to {
       transform: translateY(-150px);
-      filter: blur(10px);
+      filter: blur(20px);
       opacity: 0;
     }
   }
@@ -290,30 +270,49 @@ const items = [
         nextDom.click();
       }, 9000);
 
-      function showSlider(type: any) {
+      function showSlider(type: string) {
         const SliderItemsDom = SliderDom?.querySelectorAll(".item");
         const thumbnailItemsDom = thumbnailBorderDom?.querySelectorAll(".item");
 
         if (!SliderItemsDom?.length || !thumbnailItemsDom?.length) return;
 
+        SliderItemsDom.forEach((item) =>
+          item.classList.remove("active", "exiting")
+        );
+
         if (type === "next") {
-          SliderDom?.appendChild(SliderItemsDom[0]);
+          // Añade clase 'exiting' al primer elemento
+          SliderItemsDom[0]?.classList.add("exiting");
+
           // Mueve el primer item al final
-          thumbnailBorderDom?.appendChild(thumbnailItemsDom[0]);
+          setTimeout(() => {
+            SliderDom?.appendChild(SliderItemsDom[0]);
+            thumbnailBorderDom?.appendChild(thumbnailItemsDom[0]);
+          }, 500); // Tiempo de la animación
+
+          // Añade clase 'active' al nuevo primer elemento
+          SliderItemsDom[1]?.classList.add("active");
         } else {
-          SliderDom?.prepend(SliderItemsDom[SliderItemsDom.length - 2]);
-          // Mueve el último al inicio
-          thumbnailBorderDom?.prepend(
-            thumbnailItemsDom[thumbnailItemsDom.length - 1]
-          );
+          // Añade clase 'exiting' al último elemento
+          SliderItemsDom[SliderItemsDom.length - 1]?.classList.add("exiting");
+
+          // Mueve el último item al inicio
+          setTimeout(() => {
+            SliderDom?.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+            thumbnailBorderDom?.prepend(
+              thumbnailItemsDom[thumbnailItemsDom.length - 1]
+            );
+          }, 500);
+
+          SliderItemsDom[0]?.classList.add("active");
         }
 
-        // carouselDom?.classList.add(type);
-        // clearTimeout(runTimeOut);
-        // runTimeOut = setTimeout(() => {
-        //   carouselDom?.classList.remove("next");
-        //   carouselDom?.classList.remove("prev");
-        // }, 2000);
+        carouselDom?.classList.add(type);
+        clearTimeout(runTimeOut);
+        runTimeOut = setTimeout(() => {
+          carouselDom?.classList.remove("next");
+          carouselDom?.classList.remove("prev");
+        }, 2000);
 
         clearTimeout(runNextAuto);
         runNextAuto = setTimeout(() => {
