@@ -2,14 +2,16 @@
 import { items } from "@/content";
 ---
 
-<section class="carousel h-dvh w-screen overflow-hidden relative z-10 rounded-none bg-[#f3ebe2]">
+<section
+  class="carousel h-dvh w-screen overflow-hidden relative z-10 rounded-none bg-[#f3ebe2]"
+>
   <article class="list-wrapper relative h-full overflow-hidden">
-    <div class="list flex transition-transform duration-500 ">
+    <div class="list flex transition-transform duration-500">
       {
         items.map((item) => (
           <div class="item flex-none w-full h-full absolute inset-0">
-            <div class="w-full md:w-80 flex flex-col h-auto z-20 absolute top-2/4  md:top-80 md:right-12 lg:top-[40%] lg:right-44 lg:w-[400px] ">
-              <img src={item.image} alt="imagen de producto" class="w-full" />
+            <div class="w-full mx-auto md:w-80 flex flex-col h-auto z-20 absolute top-2/4 pt-7 md:pt-0 md:top-80 md:right-12 lg:top-[40%] lg:right-44 lg:w-[400px] ">
+              <img src={item.image} alt="imagen de producto" class="w-full w-52 md:w-80 " />
             </div>
             <div class="content absolute top-24 md:top-52 lg:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-white">
               <div class="tittle font-bold tracking-tight text-2xl md:text-3xl lg:text-5xl mt-2 uppercase text-[#f1683a] text-balance">
@@ -33,7 +35,7 @@ import { items } from "@/content";
   </article>
 
   <article
-    class="thumbnail absolute bottom-24 md:bottom-12 left-0 md:left-16 lg:left-2/4 w-max z-10 flex gap-2 md:gap-4"
+    class="thumbnail absolute bottom-10 md:bottom-12 left-0 md:left-10 lg:left-2/4 w-max z-10 flex gap-2 md:gap-4"
   >
     {
       items.slice(1, 5).map((item) => (
@@ -161,17 +163,7 @@ import { items } from "@/content";
     opacity: 0;
   }
 
-  /* @keyframes showImage {
-    to {
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-    }
-  } */
-
-  .carousel.next .thumbnail .item:nth-last-child(1) {
+     .carousel.next .thumbnail .item:nth-last-child(1) {
     overflow: hidden;
     animation: showThumbnail 0.5s linear 1 forwards;
   }
