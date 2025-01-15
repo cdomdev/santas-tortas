@@ -21,8 +21,6 @@ export default {
     },
   },
   plugins: [
-    require("flowbite/plugin"),
-    require("flyonui"),
-    require("flyonui/plugin"),
+    require("flowbite/plugin")
   ],
 };
