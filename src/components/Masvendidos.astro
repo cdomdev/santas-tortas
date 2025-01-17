@@ -1,0 +1,19 @@
+---
+import { productos } from "@/content";
+const masVendidos = productos.slice(0, 4);
+import CardProducts from "./CardProducts.astro";
+---
+
+<article class="gap-5 py-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+  {
+    masVendidos.map((producto) => (
+      <CardProducts
+        descuento={producto.descuento}
+        id={producto.id}
+        image={producto.imagen}
+        nombre={producto.nombre}
+        precio={producto.precio}
+      />
+    ))
+  }
+</article>
