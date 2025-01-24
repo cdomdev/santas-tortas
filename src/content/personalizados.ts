@@ -12,7 +12,7 @@ export const items = [
     title: "ChocoChip Delicia",
     text: " Pastel de chocolate intenso y húmedo, salpicado de chispas de chocolate que se derriten en cada bocado. Perfecto para los amantes del chocolate.",
     thumbnail: {
-      image: "/imgthum4.webp",
+      image: "/carrusel/imgthum4.webp",
     },
   },
   {
@@ -20,7 +20,7 @@ export const items = [
     title: "Tres Leches Frutal",
     text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
     thumbnail: {
-      image: "/imgthum1.webp",
+      image: "/carrusel/imgthum1.webp",
     },
   },
   {
@@ -28,7 +28,7 @@ export const items = [
     title: "Dulce Encanto de Vainilla",
     text: " Delicioso pastel de vainilla suave y esponjoso, cubierto con crema batida y decorado con frescas. Un clásico irresistible para cualquier ocasión especial.",
     thumbnail: {
-      image: "/imgthum2.webp",
+      image: "/carrusel/imgthum2.webp",
     },
   },
   {
@@ -36,7 +36,7 @@ export const items = [
     title: "Sueño de Chocolate y Crema",
     text: "Pastel de chocolate rico y esponjoso, con un suave relleno de crema batida, decorado con una mezcla de cacao en polvo y toques de crema para un acabado elegante y delicioso.",
     thumbnail: {
-      image: "/imgthum3.webp",
+      image: "/carrusel/imgthum3.webp",
     },
   },
 ];
