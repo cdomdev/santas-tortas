@@ -1,0 +1,101 @@
+---
+import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
+---
+
+<LayoutPersonalizados>
+  <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pb-1">
+    Tu pastel personalizado
+  </h3>
+  <span class="text-sm md:text-lg text-balance font-semibold mb-2 pl-4 md:pl-0">
+    <strong class="text-primary-txt"> ¿Tienes una idea en mente?</strong> ¡Nosotros
+    la hacemos dulce realidad!
+  </span>
+ 
+  <p class="text-xs md:text-base text-balance pl-4 md:mt-0 md:pl-0 mt-2">
+    Si tienes alguna duda en el proceso de personalización, no dudes en
+    comunicarte a nuestro <a href="" class="text-green-500">WhapsApp</a>,
+    estamos para para asesorarte.
+  </p>
+
+  <p class="text-xs md:text-base text-balance pl-4 md:pl-0 pb-1 mb-2">
+    Por favor, completa los diguientes datos con la descripcion de la idea que
+    tienes en mente. Nos pondremos en contacto contigo para confirmar tu pedido.
+  </p>
+
+  <p
+  class="font-semibold text-xs md:text-base text-balance pl-4 mt-2 md:mt-0 md:pl-0 pb-1"
+  id="des"
+>
+  ¡Estamos emocionados de hacer tus ideas realidad!
+</p>
+
+  <div class="p-6 my-4">
+    <form action="" class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="relative z-0 w-full mb-5 group">
+          <label
+            for="floating_tematic"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >¿Cual sera tu tematica?</label
+          >
+          <input
+            type="text"
+            name="floating_text"
+            id="floating_tematic"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
+            placeholder=" "
+            required
+          />
+          <label
+            for="floating_tematic"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-10 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-[#eb9f48] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Cumpleaños</label
+          >
+        </div>
+        <div class="flex flex-col">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            for="use_photo"
+          >
+            ¿Algun diseño en mente?</label
+          >
+          <input
+            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-400 dark:border-gray-600 dark:placeholder-gray-400"
+            aria-describedby="use_photo_help"
+            id="use_photo"
+            type="file"
+          />
+          <div
+            class="mt-1 text-sm text-gray-500 dark:text-gray-300"
+            id="use_photo_help"
+          >
+            Sube una foto de tu idea
+          </div>
+        </div>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400"
+          >Tu idea</label
+        >
+        <textarea
+          id="message"
+          rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-[#eb9f48] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48]"
+          placeholder="Cuentanos tu idea..."></textarea>
+      </div>
+
+      <a href="/personalizados/form"
+        class="text-black hover:text-white transition duration-200 border hover:bg-[#7e7d7d] uppercase focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
+        >Regresar</a
+      >
+      <a href="/personalizados/form-submit/#form-subtmit"
+        class="text-black hover:text-white transition duration-200 bg-secondary-bg hover:bg-[#d66a6e] uppercase focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        >Continuar</a
+      >
+    </form>
+  </div>
+
+ 
+</LayoutPersonalizados>
