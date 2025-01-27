@@ -1,0 +1,22 @@
+---
+import LayoutPages from "./LayoutPages.astro";
+import Steps from "@/components/Steps";
+const { title, text } = Astro.props;
+---
+
+<LayoutPages title={title}>
+  <Steps client:load/>
+  <section>
+    <div
+      class="bg-primary-bg border w-[95%] mx-auto md:w-full p-3 mb-4 rounded-md pl-4"
+    >
+      <h1 class="text-primary-txt text-lg uppercase font-semibold text-center">
+        {text}
+      </h1>
+    </div>
+  </section>
+
+  <section>
+    <slot />
+  </section>
+</LayoutPages>
