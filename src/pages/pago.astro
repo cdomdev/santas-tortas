@@ -1,0 +1,17 @@
+---
+import { Detalles } from "@/components/carrito/Detalles";
+import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
+---
+
+<LayoutCarrito title="Pago" text="Datos de pago">
+  <article class="grid grid-cols-1 md:flex mx-auto py-5 gap-2">
+    <div class="w-full md:w-3/5 ">
+      aqui va el formulario de pago
+    </div>
+    <div class="w-full md:w-2/5 flex flex-col">
+      <Detalles client:load />
+    </div>
+  </article>
+
+  <a href="/carrito-compras">volver al carrito</a>
+</LayoutCarrito>

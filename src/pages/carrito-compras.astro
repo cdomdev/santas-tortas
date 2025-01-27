@@ -1,75 +1,17 @@
 ---
 import MasProductos from "@/components/MasProductos.astro";
-import Steps from "@/components/Steps.astro";
-import TablerListToCar from "@/components/TablerListToCar";
-import LayoutPages from "@/layouts/LayoutPages.astro";
+import TablerListToCar from "@/components/carrito/TablerListToCar";
+import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
 ---
 
-<LayoutPages title="Carrito de compras">
-  <Steps />
-  <section>
-    <div
-      class="bg-primary-bg border w-[95%] mx-auto md:w-full p-3 mb-4 rounded-md pl-4"
-    >
-      <h1 class="text-primary-txt text-lg uppercase font-semibold">
-        Carrito de compras
-      </h1>
+<LayoutCarrito title="Carrito de compras" text="Carrito de compras">
+  <article class="mb-6">
+    <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
+      <TablerListToCar client:load />
     </div>
-  </section>
+  </article>
 
   <section>
-    <article class="mb-6">
-      <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">        
-          <TablerListToCar client:load />
-        <div
-          class="h-200 border-4 w-[95%] md:w-[35%] max-h-80 px-4 py-5 mx-auto"
-        >
-          <h2
-            class="text-center md:text-lg font-semibold text-gray-600 uppercase py-2"
-          >
-            Detalles de tu compra
-          </h2>
-          <span class="flex justify-between py-3">
-            <h3 class="font-semibold text-black text-base">Subtotal</h3>
-            <p>valor</p>
-          </span>
-          <hr />
-          <span
-            class="text-sm font-semibold text-gray-400 py-4 flex items-center gap-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-exclamation-circle stroke-red-500"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path
-                d="M12 9v4"></path><path d="M12 16v.01"></path></svg
-            >
-            <p class="text-black opacity-75">
-              El costo de envio aun no esta incluido
-              </p>
-          </span>
-          <hr />
-          <span class="flex justify-between py-3 mb-3">
-            <h3 class="font-semibold text-black text-base">Total</h3>
-            <p>valor</p>
-          </span>
-          <button
-            class="uppercase text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
-          >
-            Finalizar compra
-          </button>
-        </div>
-      </div>
-    </article>
+    <MasProductos />
   </section>
-
-  <MasProductos />
-</LayoutPages>
+</LayoutCarrito>
