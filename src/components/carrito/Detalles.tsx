@@ -8,12 +8,13 @@ import {
 
 export const Detalles = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
-
   useEffect(() => {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     setProductos(carrito);
   }, []);
 
+
+  const envio = localStorage.getItem("send-value-car") || 0;
   const subTotalText = calcularTotal(productos).toString();
   const SubtotalInt = formateValue(subTotalText);
 
@@ -48,11 +49,22 @@ export const Detalles = () => {
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
                 >
                   <td className="px-6 py-4">{producto.nombre}</td>
-                  <td className="px-6 py-4 text-red-600">{producto.descuento}%</td>
+                  <td className="px-6 py-4 text-red-600">
+                    {producto.descuento}%
+                  </td>
                   <td className="px-6 py-4">{producto.quantity}</td>
                   <td className="px-6 py-4">{calcularSubTotal(producto)}</td>
                 </tr>
               ))}
+
+              {envio  ? (
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                  <td className="px-6 py-4 text-black font-semibold">Envio</td>
+                  <td className="px-6 py-4"></td>
+                  <td className="px-6 py-4"></td>
+                  <td className="px-6 py-4">{formateValue(envio)}</td>
+                </tr>
+              ) : null}
             </tbody>
 
             <tfoot>
@@ -71,7 +83,6 @@ export const Detalles = () => {
               </tr>
             </tfoot>
           </table>
-         
         </div>
       </div>
     </>

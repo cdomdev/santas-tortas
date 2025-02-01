@@ -7,7 +7,7 @@ import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
   <article class="grid grid-cols-1 md:flex mx-auto py-5 gap-2">
     
     <div class="w-full md:w-2/5 flex flex-col">
-      <Detalles client:load  />
+      <Detalles client:only  />
       <span class="flex items-center gap-2 justify-center px-4 mb-3 text-sm text-center mt-3 border py-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

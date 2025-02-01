@@ -2,6 +2,7 @@
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import {getProductosConOfertas } from "@/content";
+import MasVendidosAside from "@/components/MasVendidosAside.astro";
 
 const productosConOfertas = getProductosConOfertas()
 
@@ -18,24 +19,28 @@ const productosConOfertas = getProductosConOfertas()
     Descubre sabor, calidad y diseño al mejor precio. ¡Haz tu pedido ahora y
     disfruta de nuestros descuentos!
   </p>
-  <article>
-    <div
-      class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
-      id="cards-ofertas"
-    >
-      {
-        productosConOfertas.map((per) => (
-          <CardProducts
-            id={per.id}
-            descuento={per.descuento}
-            image={per.imagen}
-            nombre={per.nombre}
-            precio={per.precio}
-          />
-        ))
-      }
-    </div>
-  </article>
+  <section class="flex my-3">
+    <MasVendidosAside />
+    <article>
+      <div
+        class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
+        id="cards-ofertas"
+      >
+        {
+          productosConOfertas.map((per) => (
+            <CardProducts
+              id={per.id}
+              descuento={per.descuento}
+              image={per.imagen}
+              nombre={per.nombre}
+              precio={per.precio}
+            />
+          ))
+        }
+      </div>
+    </article>
+  </section>
+ 
 </LayoutPages>
 
 <style>

@@ -10,9 +10,14 @@ import { items } from "@/content";
       {
         items.map((item) => (
           <div class="item flex-none w-full h-full absolute inset-0">
-            <div class="w-full mx-auto md:w-80 flex flex-col h-auto z-20 absolute top-2/4 pt-10 md:pt-0 md:top-80 md:right-12 lg:top-[40%] lg:right-44 lg:w-[400px] ">
-              <img src={item.image} alt="imagen de producto" class="w-52 lg:w-80 " />
-            </div>
+            <img
+              src={item.image}
+              alt="imagen de producto"
+              class="absolute top-2/4 left-1/2 md:top-1/4 lg:top-[30%] lg:left-[55%] z-20 w-40 md:w-72"
+            />
+
+            <img src="carrusel/plato.webp" alt="/imagen de fonfo" class="absolute top-[48%] left-[45%] md:top-[22%] lg:top-[24%] lg:left-[52%] z-10 w-48 md:w-96"/>
+
             <div class="content absolute top-24 md:top-52 lg:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-white">
               <div class="tittle font-bold tracking-tight text-2xl md:text-3xl lg:text-5xl mt-2 uppercase text-[#f1683a] text-balance">
                 {item.title}
@@ -35,7 +40,7 @@ import { items } from "@/content";
   </article>
 
   <article
-    class="thumbnail absolute bottom-10 md:bottom-12 left-11 md:left-10 lg:left-2/4 w-max z-10 flex gap-2 md:gap-4"
+    class="thumbnail absolute bottom-10 md:bottom-12 left-11 md:left-20 lg:left-2/4 w-max z-10 flex gap-2 md:gap-4"
   >
     {
       items.slice(1, 5).map((item) => (
@@ -54,12 +59,12 @@ import { items } from "@/content";
   <!-- controls -->
 
   <article
-    class="arrows absolute top-[60%] md:top-[62%] lg:top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
+    class="arrows absolute top-[55%] md:top-[62%] lg:top-3/4 right-2/3 z-10 w-80 justify-center flex gap-3 max-w-[30%] p-5 items-center my-7"
   >
     <button
       id="prev"
       type="button"
-      class="grid place-content-center size-9 md:size-14 text-black rounded-full border-none bg-[#8f8e8e] font-bold transition duration-150 hover:bg-white hover:text-black"
+      class="grid place-content-center size-8 md:size-14 text-black rounded-full border-none bg-[#8f8e8e] font-bold transition duration-150 hover:bg-white hover:text-black"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -141,11 +146,8 @@ import { items } from "@/content";
       opacity: 1;
     }
   }
+
   .carousel .list .item img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     transition:
       filter 0.5s ease,
       opacity 0.5s ease;
@@ -163,7 +165,7 @@ import { items } from "@/content";
     opacity: 0;
   }
 
-     .carousel.next .thumbnail .item:nth-last-child(1) {
+  .carousel.next .thumbnail .item:nth-last-child(1) {
     overflow: hidden;
     animation: showThumbnail 0.5s linear 1 forwards;
   }

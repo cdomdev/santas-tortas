@@ -11,21 +11,24 @@ const {subtitle} = Astro.props
 
 <LayoutPages title={title} description={description}>
   <ContainerSecctions class="text-center mb-5">
-    <h1 class="text-xl md:text-2xl text-center text-[#f1683a] font-bold">
+
+    <h1 class="text-lg pt-2 md:text-2xl text-center text-[#f1683a] font-bold">
       Personliza tu torta, hacerlo es muy facil
     </h1>
 
-    <span
-      class="text-xs md:text-sm text-balance font-semibold mb-2 pl-4 md:pl-0 text-center"
-    >
-      <strong class="text-primary-txt"> ¿Tienes una idea en mente?</strong> ¡Nosotros
-      la hacemos dulce realidad!
+    <span class="flex flex-col items-center">
+      <p class="text-sm md:text-base font-semibold -mb-1 text-center md:text-left">
+        <strong class="text-primary-txt">¿Tienes una idea en mente?</strong>
+      </p>
+      <p class="text-sm md:text-base font-semibold mb-3 text-center md:text-left">
+        ¡Nosotros la hacemos dulce realidad!
+      </p>
     </span>
    
   </ContainerSecctions>
 
-  <ContainerSecctions>
-    <h2 class="font-semibold text-lg md:text-xl text-primary-txt mt-3">
+  <ContainerSecctions class="px-2">
+    <h2 class="font-semibold text-lg md:text-xl text-primary-txt mt-3 pl-3 md:pl-0">
      {subtitle}
     </h2>
     <slot />
