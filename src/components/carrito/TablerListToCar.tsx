@@ -7,6 +7,7 @@ import {
   calcularTotal,
   formateValue,
 } from "@/utils/productos";
+import { ButtonNexSteps } from "./ButtonNexSteps";
 
 const TablerListToCar = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -18,14 +19,6 @@ const TablerListToCar = () => {
 
   const subTotalText = calcularTotal(productos).toString();
   const SubtotalInt = formateValue(subTotalText);
-
-  const nextPage = () => {
-    localStorage.setItem("currentStep", "2");
-    if (eventEmitter) {
-      eventEmitter.emit("stepUpdate");
-    }
-    window.location.href = "/datos-envio";
-  };
 
   return (
     <>
@@ -163,12 +156,14 @@ const TablerListToCar = () => {
           <h4 className="font-semibold text-black text-base">Total</h4>
           <p>$: {SubtotalInt}</p>
         </span>
-        <button
-          onClick={nextPage}
-          className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
-        >
-          Finalizar compra
-        </button>
+        <ButtonNexSteps
+          className={
+            "uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
+          }
+          text={"Finalizar compra"}
+          enlace={"/datos-envio"}
+          step="2"
+        />
       </div>
     </>
   );

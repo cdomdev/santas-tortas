@@ -10,6 +10,20 @@ import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
     </div>
     <div class="w-full md:w-2/5 flex flex-col">
       <Detalles client:only />
+      <h4 class="text-center md:text-lg font-semibold text-gray-600 uppercase py-2">
+       Datos de envio
+      </h4>
+      <div class="border mt-3">
+        <p class="text-center text-gray-600 py-2">
+          <span class="font-semibold">Direccion:</span> Calle 123
+        </p>
+        <p class="text-center text-gray-600 py-2">
+          <span class="font-semibold">Ciudad:</span> Bogota
+        </p>
+        <p class="text-center text-gray-600 py-2">
+          <span class="font-semibold">Telefono:</span> 123456789
+        </p>
+      </div>
     </div>
   </article>
 
