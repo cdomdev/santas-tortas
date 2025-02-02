@@ -12,3 +12,18 @@ export type Producto = {
     quantity?: number
   }
   
+  export type Usuario = {
+    id?: UUID;
+    nombre: string;
+    apellidos?: string;
+    email: string;
+    telefono?: string;
+    direccion?: string;
+    ciudad?: string;
+    estado?: string;
+    message?: string;
+    codigoPostal?: string;
+  }
+
+
+  
