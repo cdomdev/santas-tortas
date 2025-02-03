@@ -7,6 +7,7 @@ const categorias = [
 ];
 
 import CarCountAndNavigate from "./CarCountAndNaviage";
+import Search from "./Searh";
 ---
 
 <nav class="bg-white dark:bg-gray-900 w-full top-0 z-50 fixed start-0">
@@ -19,11 +20,14 @@ import CarCountAndNavigate from "./CarCountAndNaviage";
         class="size-14 md:size-16"
         alt="Santas tortas Logo"
       />
+      <span class="sr-only">Logo</span>
     </a>
 
     <div
       class="flex md:order-2 gap-x-2 md:space-x-0 rtl:space-x-reverse items-center"
     >
+      <Search client:load />
+
       <a href="/acount/login" class="flex items-center gap-y-1 flex-col">
         <svg
           xmlns="http://www.w3.org/2000/svg"
