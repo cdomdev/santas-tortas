@@ -5,11 +5,11 @@ import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
 ---
 
 <LayoutCarrito title="Carrito de compras" text="Carrito de compras">
-  <article class="mb-6">
+  <section class="mb-6">
     <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
       <TablerListToCar client:load />
     </div>
-  </article>
+  </section>
 
   <section>
     <MasProductos />
