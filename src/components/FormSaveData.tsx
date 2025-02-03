@@ -4,7 +4,6 @@ import type { Usuario } from "@/types";
 import { Toast } from "./Toast";
 
 const FormSaveData = () => {
-  const [data, setData] = useState();
   const [toastMessage, setToastMessage] = useState<string>("");
   const [showToast, setShowToast] = useState<boolean>(false);
   const [bgToast, setBgToast] = useState<string>("");
@@ -17,9 +16,13 @@ const FormSaveData = () => {
       setShowToast(false);
     }, 5000);
   };
+
   const handleSubmit = (values: Usuario) => {
     console.log(values);
-    handleToast("toast-success", "Datos guardados correctamente");
+    window.localStorage.setItem('data', JSON.stringify(values));
+    window.localStorage.setItem('currentStep', '3')
+    window.localStorage.setItem('value-car-forsend', 'OK')
+    window.location.href = "/pago";
   };
 
   return (
