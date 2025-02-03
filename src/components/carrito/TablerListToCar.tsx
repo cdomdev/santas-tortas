@@ -1,27 +1,55 @@
 import type { Producto } from "@/types";
 import { useEffect, useState } from "react";
 import { DeleteProduct } from "./DeleteProduct";
-import { eventEmitter } from "@/events";
+import { Toast } from "../Toast";
 import {
   calcularSubTotal,
   calcularTotal,
   formateValue,
 } from "@/utils/productos";
-import { ButtonNexSteps } from "./ButtonNexSteps";
 
 const TablerListToCar = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
+  const [toastMessage, setToastMessage] = useState<string>("");
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [bgToast, setBgToast] = useState<string>("");
 
   useEffect(() => {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     setProductos(carrito);
   }, []);
 
+  const handleToast = (bg: string, ms: string) => {
+    setShowToast(true);
+    setBgToast(bg);
+    setToastMessage(ms);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
+  };
+
+  const handleNetxPage = () =>{
+    if(!productos || productos.length === 0){
+      handleToast("toast-error", "No hay productos en el carrito")
+      return
+    }
+    localStorage.setItem("currentStep", `2`);
+    window.location.href = "/datos-envio"    
+  }
+
   const subTotalText = calcularTotal(productos).toString();
   const SubtotalInt = formateValue(subTotalText);
 
   return (
     <>
+      <Toast
+        showToast={showToast}
+        setShowToast={setShowToast}
+        toastMessage={toastMessage}
+        setToastMessage={setToastMessage}
+        bgToast={bgToast}
+        setBgToast={setBgToast}
+      />
       <div className="min-w-11/12 w-[95%] mx-auto md:min-w-[65%] h-80 overflow-y-auto">
         {!productos || productos.length === 0 ? (
           <span className="flex items-center justify-center flex-col ">
@@ -111,6 +139,9 @@ const TablerListToCar = () => {
                       productoId={producto.id}
                       productos={productos}
                       setProductos={setProductos}
+                      setToastMessage={setToastMessage}
+                      setShowToast={setShowToast}
+                      setBgToast={setBgToast}
                     />
                   </td>
                 </tr>
@@ -156,14 +187,9 @@ const TablerListToCar = () => {
           <h4 className="font-semibold text-black text-base">Total</h4>
           <p>$: {SubtotalInt}</p>
         </span>
-        <ButtonNexSteps
-          className={
-            "uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
-          }
-          text={"Finalizar compra"}
-          enlace={"/datos-envio"}
-          step="2"
-        />
+        <button className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full" onClick={handleNetxPage}>
+          Finalizar compra
+        </button>
       </div>
     </>
   );
