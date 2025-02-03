@@ -7,7 +7,7 @@ import FormSaveData from "@/components/FormSaveData";
 <LayoutCarrito title="Datos de envio" text="Datos para envio">
   <article class="grid grid-cols-1 md:flex mx-auto py-5 gap-2">
     <div class="w-full md:w-2/5 flex flex-col">
-      <Detalles client:only />
+      <Detalles client:load />
       <span
         class="flex items-center gap-2 justify-center px-4 mb-3 text-sm text-center mt-3 border py-2"
       >
@@ -40,23 +40,8 @@ import FormSaveData from "@/components/FormSaveData";
         de tu compra
       </p>
       <div class="w-full p-4 my-5 md:my-1">
-        <FormSaveData client:only/>
+        <FormSaveData client:visible/>
       </div>
     </div>
   </article>
-
-  <script>
-    const form = document.querySelector("form");
-    const button = document.querySelector("button");
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (button) {
-        button.innerHTML = "Cargando...";
-        setTimeout(() => {
-          button.innerHTML = "Continuar";
-          window.location.href = "/pago";
-        }, 2000);
-      }
-    });
-  </script>
 </LayoutCarrito>
