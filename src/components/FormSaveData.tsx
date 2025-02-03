@@ -1,22 +1,7 @@
-import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { Usuario } from "@/types";
-import { Toast } from "./Toast";
 
 const FormSaveData = () => {
-  const [toastMessage, setToastMessage] = useState<string>("");
-  const [showToast, setShowToast] = useState<boolean>(false);
-  const [bgToast, setBgToast] = useState<string>("");
-
-  const handleToast = (bg: string, ms: string) => {
-    setShowToast(true);
-    setBgToast(bg);
-    setToastMessage(ms);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
-  };
-
   const handleSubmit = (values: Usuario) => {
     console.log(values);
     window.localStorage.setItem('data', JSON.stringify(values));
@@ -58,15 +43,7 @@ const FormSaveData = () => {
         onSubmit={handleSubmit}
       >
         {(formik) => (
-          <>
-            <Toast
-              showToast={showToast}
-              setShowToast={setShowToast}
-              toastMessage={toastMessage}
-              setToastMessage={setToastMessage}
-              bgToast={bgToast}
-              setBgToast={setBgToast}
-            />
+          <>           
             <Form className="max-w-4xl mx-auto" onSubmit={formik.handleSubmit}>
               <div className="relative z-0 w-full mb-5 group">
                 <Field
