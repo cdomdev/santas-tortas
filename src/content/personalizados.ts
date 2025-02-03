@@ -2,10 +2,7 @@ export const items = [
   {
     image: "/carrusel/img1.webp",
     title: "Pasteleria personalizada",
-    text: "Este es el lugar perfecto para hacer realidad tus antojos, aqui encontraras postres y galletas, ademas de la psibilida de hacer realidad ese diseño que tienes en mente, solicita tu pastel personlizado aqui",
-    thumbnail: {
-      image: "",
-    },
+    text: "Este es el lugar perfecto para hacer realidad tus antojos, aqui encontraras postres y galletas, ademas de la posibilidad de hacer realidad ese diseño que tienes en mente, solicita tu pastel personlizado aqui",
   },
   {
     image: "/carrusel/img1.webp",
