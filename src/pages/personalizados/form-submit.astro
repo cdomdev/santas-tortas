@@ -3,13 +3,11 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
 ---
 
 <LayoutPersonalizados subtitle="Datos personales">
-
   <p class="text-sm md:text-base text-wrap pl-4 md:mt-0 md:pl-0 mt-2">
-    Ya casi acabamos de tomar tu pedido. Para poder contactarte y coordinar la entrega, por favor
-    ingresa los siguientes datos personales.
+    Ya casi acabamos de tomar tu pedido. Para poder contactarte y coordinar la
+    entrega, por favor ingresa los siguientes datos personales.
   </p>
 
-  
   <div class="w-full p-4 my-5 md:my-1">
     <form class="max-w-4xl mx-auto">
       <div class="relative z-0 w-full mb-5 group">
@@ -116,9 +114,22 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
   <div class="flex justify-end pr-5 md:pr-16 gap-3">
     <a
       href="/personalizados/form"
-      class="text-black hover:text-white transition duration-200 border hover:bg-[#7e7d7d] uppercase focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
-      >Regresar</a
+      class="text-black flex items-center hover:text-white transition duration-200 border hover:bg-[#7e7d7d] uppercase focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        height="24"
+        stroke-width="2"
+      >
+        <path d="M5 12l14 0"></path>
+        <path d="M5 12l4 4"></path>
+        <path d="M5 12l4 -4"></path>
+      </svg> Regresar</a
     >
-    
   </div>
 </LayoutPersonalizados>
