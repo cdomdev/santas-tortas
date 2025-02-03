@@ -1,49 +1,73 @@
 import type { Producto } from "@/types";
 import { useState } from "react";
 import { eventEmitter } from "@/events";
+import { Toast } from "../Toast";
+
 
 export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
   const [quantity, setQuantity] = useState<number>(1);
-  
+  const [toastMessage, setToastMessage] = useState<string>("");
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [bgToast, setBgToast] = useState<string>("");
+
+
   const handleIncrement = () => {
-      setQuantity((prevQuantity) => prevQuantity + 1);
-    };
-    
-    const handleDecrement = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity((prevQuantity) => prevQuantity - 1);
     }
   };
 
   const addProductoLocal = (producto: Producto, quantity: number): void => {
-
     let productosLocal: Producto[] = JSON.parse(
       localStorage.getItem("carrito") || "[]"
     );
 
     const productoExistente = productosLocal.find(
-        (prod) => prod.id === producto.id
+      (prod) => prod.id === producto.id
     );
-    
-    if (productoExistente) {
-        productoExistente.quantity = (productoExistente.quantity || 0) + quantity;
-    } else {
-         productosLocal.push({ ...producto, quantity });
-    }
-    
-    localStorage.setItem("carrito", JSON.stringify(productosLocal));
-    
-    if (eventEmitter) {
-        eventEmitter.emit("carritoChanged");
-    }
-};
 
-const handleAddToCart = () => {
+    if (productoExistente) {
+      productoExistente.quantity = (productoExistente.quantity || 0) + quantity;
+    } else {
+      productosLocal.push({ ...producto, quantity });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(productosLocal));
+
+    if (eventEmitter) {
+      eventEmitter.emit("carritoChanged");
+    }
+  };
+
+  const handleToast = (bg: string, ms: string) => {
+    setShowToast(true);
+    setBgToast(bg);
+    setToastMessage(ms);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
+  };
+
+  const handleAddToCart = () => {
     addProductoLocal(producto, quantity);
+    handleToast("toast-success", `${quantity > 1 ? "Se agregaron nuevos productos" : "Se agrego un nuevo producto"} a tu carrito`);
   };
 
   return (
     <>
+      <Toast
+        showToast={showToast}
+        setShowToast={setShowToast}
+        toastMessage={toastMessage}
+        setToastMessage={setToastMessage}
+        bgToast={bgToast}
+        setBgToast={setBgToast}
+      />
+
       <div className="border flex justify-center items-center px-2  ">
         <button className="decrement" onClick={handleDecrement}>
           <svg
