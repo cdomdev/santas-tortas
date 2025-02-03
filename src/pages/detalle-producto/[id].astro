@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const productoPage = productos.find((prod) => prod.id === id);
 ---
 
-<LayoutPages title=`detalles ${productoPage?.nombre}`>
+<LayoutPages title=`${productoPage?.nombre}`>
   <article class="grid grid-cols-1 md:grid-cols-2 sp-3">
     <div class="p-5 flex items-center justify-center w-[94%] h-[94%]">
       <img
