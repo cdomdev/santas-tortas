@@ -1,5 +1,6 @@
 ---
 import Footer from "@/components/Footer.astro";
+import WhatsApp from "@/components/WhatsApp.astro";
 import NavBar from "@/components/header/NavBar.astro";
 
 interface Props {
@@ -25,6 +26,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
   <body>
     <slot />
   </body>
+  <WhatsApp />
   <Footer />
   <script
     is:inline
@@ -33,7 +35,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
 </html>
 
 <style>
-  html{
+  html {
     scroll-behavior: smooth;
   }
   body {
