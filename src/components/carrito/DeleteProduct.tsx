@@ -5,19 +5,38 @@ type DeleteProductProps = {
   productoId: UUID;
   productos: Producto[];
   setProductos: (productos: Producto[]) => void;
+  setToastMessage: (message: string) => void;
+  setShowToast: (show: boolean) => void;
+  setBgToast: (bg: string) => void;
 };
 
 export const DeleteProduct = ({
   productoId,
   productos,
   setProductos,
+  setToastMessage,
+  setShowToast,
+  setBgToast,
 }: DeleteProductProps) => {
+
+  
+  const handleToast = (bg: string, ms: string) => {
+    setShowToast(true);
+    setBgToast(bg);
+    setToastMessage(ms);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
+  };
+
+
   const deleteProduct = () => {
     const updateItemsCar = productos.filter((item) => item.id !== productoId);
     localStorage.setItem("carrito", JSON.stringify(updateItemsCar));
     setProductos(updateItemsCar);
+    handleToast("toast-success", `Se elimino un producto de tu carrito`);
     if (eventEmitter) {
-        eventEmitter.emit('carritoChanged');
+      eventEmitter.emit("carritoChanged");
     }
   };
 
