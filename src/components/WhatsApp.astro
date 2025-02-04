@@ -1,6 +1,10 @@
-<div class="cotainer-btn-whatsapp">
-  <div class="content-num">
-    <span>1</span>
+<div class="cotainer-btn-whatsapp group hover:block">
+  <div
+    class="absolute bg-white p-4 border border-gray-200 rounded-tl-xl rounded-tr-3xl rounded-bl-3xl shadow-lg min-w-80 -translate-y-20 z-10 right-16 opacity-0 group-hover:opacity-100 transition duration-300"
+  >
+    <p class="bg-white text-sm">
+      Cominicate a nuestro whatsapp y recibe una asesoria personlizada
+    </p>
   </div>
   <div class="content">
     <a
@@ -22,7 +26,6 @@
           fill="#FFF"></path></svg
       >
       <span class="sr-only">WhatsApp</span>
-
     </a>
   </div>
 </div>
@@ -35,28 +38,13 @@
     z-index: 1000;
     padding: 25px;
   }
-  .content-num {
-    position: absolute;
-    top: 10px;
-    z-index: 2;
-    right: 25px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 7px;
-    font-size: 0.75rem;
-    font-weight: bold;
-  }
-  .content-num span {
-    display: block;
-    text-align: center;
-  }
+
   .content {
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 15px;
     position: relative;
     border-radius: 50%;
     transition: all ease 0.3s;
