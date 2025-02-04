@@ -2,18 +2,18 @@
 import { productos } from "@/content";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
-import MasVendidosAside from "@/components/MasVendidosAside.astro";
+import AsideProducts from "@/components/AsideProducts.astro";
 ---
 
 <LayoutPages title="productos - tortas - postres - cupcakes - galletas">
   <h1
-    class="text-xl md:text-3xl text-center text-[#f1683a] font-bold mb-4"
+    class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-4"
     id="txt-title"
   >
   Explora Nuestra Selección de Tortas, Galletas y Cupcakes
   </h1>
 
-  <p class="text-sm md:text-base my-3 text-balance px-3 md:p-0" id="txt-text">
+  <p class="text-sm md:text-base my-3 text-balance px-3 " id="txt-text">
     Explora nuestra amplia variedad de productos personalizables y encuentra el diseño perfecto para ti.  
     Desde regalos únicos hasta artículos exclusivos hechos a medida, ofrecemos opciones para cada estilo y ocasión.  
     Personaliza cada detalle y crea algo verdaderamente especial. <strong> ¡Descubre nuestra colección hoy mismo!</strong>
@@ -45,7 +45,7 @@ import MasVendidosAside from "@/components/MasVendidosAside.astro";
     </form>
   </div>
   <section class="flex gap-y-2">
-    <MasVendidosAside />
+    <AsideProducts />
     <article>
       <div
         class="grid grid-cols-2 gap-x-2 md:grid-cols-3 lg:grid-cols-4 gap-y-14 p-2 w-full mb-10 md:mb-16"
