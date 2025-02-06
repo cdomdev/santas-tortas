@@ -1,7 +1,7 @@
 ---
 import { Detalles } from "@/components/carrito/Detalles";
 import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
-import FormSaveData from "@/components/FormSaveData";
+import FormDatosUsuario from "@/components/FormDatosUsuario";
 ---
 
 <LayoutCarrito title="Datos de envio" text="Datos para envio">
@@ -40,7 +40,7 @@ import FormSaveData from "@/components/FormSaveData";
         de tu compra
       </p>
       <div class="w-full p-4 my-5 md:my-1">
-        <FormSaveData client:visible/>
+        <FormDatosUsuario client:load url="/pago"/>
       </div>
     </div>
   </article>
