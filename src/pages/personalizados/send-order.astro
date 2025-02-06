@@ -1,0 +1,51 @@
+---
+import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
+---
+
+<LayoutPersonalizados title="Pedido completado" text="Datos para envío">
+    <h1 class="font-semibold text-xl md:text-2xl mt-5 mb-4">¡Ya casi terminamos!</h1>
+    <p>
+        Hola <strong id="name">usuario</strong>, gracias por brindarnos la oportunidad de crear este pedido tan especial para ti.  
+        Ya casi terminamos con este proceso para que tu solicitud sea registrada con éxito y pasemos a la fase de preparación.  
+    </p>
+    <h2 class="my-3 text-base md:text-lg font-semibold">Este es un resumen de tu pedido personalizados</h2>
+
+    <div class="bg-red-200">
+        <p class="text-white">aqui va el contenido del pedido</p>
+    </div>
+    <h3 class="text-base md:text-lg font-semibold my-5">¿Qué sigue?</h3>
+    <ul class="pl-5">
+        <li>
+            ⏳ <strong>Tiempo estimado de entrega:</strong> Dependerá del diseño, tamaño y nivel de personalización de tu pedido. También influirá el tiempo de envío según tu ubicación.
+        </li>
+        <li>
+            📦 <strong>Proceso de producción:</strong> Nuestros expertos comenzarán a trabajar en tu pedido asegurando que cada detalle sea perfecto.
+        </li>
+        <li>
+            📞 <strong>Contacto:</strong> Uno de nuestros asesores se comunicará contigo lo más pronto posible para confirmar detalles y coordinar la entrega.
+        </li>
+    </ul>
+
+    <p>
+        Te mantendremos informado sobre el progreso de tu pedido.  
+        Si tienes alguna consulta, no dudes en contactarnos.  
+        ¡Gracias por confiar en nosotros! 🎂✨
+    </p>
+</LayoutPersonalizados>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        try {
+            let dataUser = window.localStorage.getItem('data');
+            if (dataUser) {
+                let data = JSON.parse(dataUser);
+                const nameElement = document.getElementById('name');
+                if (nameElement && data.nombre) {
+                    nameElement.textContent = data.nombre;
+                }
+            }
+        } catch (error) {
+            console.error("Error al recuperar los datos del usuario:", error);
+        }
+    });
+</script>
