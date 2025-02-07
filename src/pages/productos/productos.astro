@@ -10,15 +10,18 @@ import AsideProducts from "@/components/AsideProducts.astro";
     class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-4"
     id="txt-title"
   >
-  Explora Nuestra Selección de Tortas, Galletas y Cupcakes
+    Explora Nuestra Selección de Tortas, Galletas y Cupcakes
   </h1>
 
-  <p class="text-sm md:text-base my-3 text-balance px-3 " id="txt-text">
-    Explora nuestra amplia variedad de productos personalizables y encuentra el diseño perfecto para ti.  
-    Desde regalos únicos hasta artículos exclusivos hechos a medida, ofrecemos opciones para cada estilo y ocasión.  
-    Personaliza cada detalle y crea algo verdaderamente especial. <strong> ¡Descubre nuestra colección hoy mismo!</strong>
+  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="txt-text">
+    Explora nuestra amplia variedad de productos personalizables y encuentra el
+    diseño perfecto para ti. Desde regalos únicos hasta artículos exclusivos
+    hechos a medida, ofrecemos opciones para cada estilo y ocasión. Personaliza
+    cada detalle y crea algo verdaderamente especial.
   </p>
-  
+  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="txt-text">
+    <strong> ¡Descubre nuestra colección hoy mismo!</strong>
+  </p>
   <div
     class="h-auto w-full flex my-4 items-center justify-end pr-2 md:pr-0"
     id="filtros"
@@ -38,9 +41,7 @@ import AsideProducts from "@/components/AsideProducts.astro";
         <option value="CA" class="text-xs md:text-sm"
           >Mayor a menor pecio
         </option>
-        <option value="CA" class="text-xs md:text-sm"
-        >Categorias
-      </option>
+        <option value="CA" class="text-xs md:text-sm">Categorias </option>
       </select>
     </form>
   </div>
@@ -76,8 +77,7 @@ import AsideProducts from "@/components/AsideProducts.astro";
     animation: showContent 0.5s 1s linear 1 forwards;
   }
 
-  #filtros,
-  {
+  #filtros {
     transform: translateY(50px);
     filter: blur(20px);
   }
