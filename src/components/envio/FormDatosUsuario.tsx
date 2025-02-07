@@ -3,13 +3,13 @@ import type { Usuario } from "@/types";
 
 type PropForm = {
   url: string;
+  step?: string 
 }
 
-const FormDatosUsuarios = ({url}: PropForm) => {
+const FormDatosUsuarios = ({url, step}: PropForm) => {
   const handleSubmit = (values: Usuario) => {
-    console.log(values);
-    window.localStorage.setItem('data', JSON.stringify(values));
-    window.localStorage.setItem('currentStep', '3')
+    window.sessionStorage.setItem('data', JSON.stringify(values));
+    window.sessionStorage.setItem('currentStep', `${step || null}`)
     window.localStorage.setItem('value-car-forsend', 'OK')
     window.location.href = `${url}`;
   };

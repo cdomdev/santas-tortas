@@ -2,7 +2,7 @@ import type { Producto } from "@/types";
 import { useState } from "react";
 import { eventEmitter } from "@/events";
 import { Toast } from "../Toast";
-
+import { handleToast} from "@/utils";
 
 export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
   const [quantity, setQuantity] = useState<number>(1);
@@ -43,18 +43,17 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
     }
   };
 
-  const handleToast = (bg: string, ms: string) => {
-    setShowToast(true);
-    setBgToast(bg);
-    setToastMessage(ms);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
-  };
+ 
 
   const handleAddToCart = () => {
     addProductoLocal(producto, quantity);
-    handleToast("toast-success", `${quantity > 1 ? "Se agregaron nuevos productos" : "Se agrego un nuevo producto"} a tu carrito`);
+     handleToast({
+            background: 'toast-success',
+            message: `${quantity > 1 ? "Se agregaron nuevos productos" : "Se agrego un nuevo producto"} a tu carrito`,
+            setShowToast,
+            setBgToast,
+            setToastMessage
+          });
   };
 
   return (

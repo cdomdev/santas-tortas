@@ -2,11 +2,8 @@ import type { Producto } from "@/types";
 import { useEffect, useState } from "react";
 import { DeleteProduct } from "./DeleteProduct";
 import { Toast } from "../Toast";
-import {
-  calcularSubTotal,
-  calcularTotal,
-  formateValue,
-} from "@/utils/productos";
+import { calcularSubTotal, calcularTotal, formateValue } from "@/utils";
+import { handleToast } from "@/utils";
 
 const TablerListToCar = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -19,23 +16,20 @@ const TablerListToCar = () => {
     setProductos(carrito);
   }, []);
 
-  const handleToast = (bg: string, ms: string) => {
-    setShowToast(true);
-    setBgToast(bg);
-    setToastMessage(ms);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
-  };
-
-  const handleNetxPage = () =>{
-    if(!productos || productos.length === 0){
-      handleToast("toast-error", "No hay productos en el carrito")
-      return
+  const handleNetxPage = () => {
+    if (!productos || productos.length === 0) {
+      handleToast({
+        background: "toast-error",
+        message: "No hay productos en el carrito",
+        setShowToast,
+        setBgToast,
+        setToastMessage,
+      });
+      return;
     }
     localStorage.setItem("currentStep", `2`);
-    window.location.href = "/datos-envio"    
-  }
+    window.location.href = "/datos-envio";
+  };
 
   const subTotalText = calcularTotal(productos).toString();
   const SubtotalInt = formateValue(subTotalText);
@@ -187,7 +181,10 @@ const TablerListToCar = () => {
           <h4 className="font-semibold text-black text-base">Total</h4>
           <p>$: {SubtotalInt}</p>
         </span>
-        <button className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full" onClick={handleNetxPage}>
+        <button
+          className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
+          onClick={handleNetxPage}
+        >
           Finalizar compra
         </button>
       </div>

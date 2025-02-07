@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import {
   calcularTotal,
   formateValue,
-  calcularSubTotal,
-} from "@/utils/productos";
+  calcularSubTotal
+} from "@/utils";
 
 export const Detalles = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [envio, setEnvio] = useState<string | null>(null);
+  
   let valorEnvio = 15000;
+
   useEffect(() => {
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     setProductos(carrito);
@@ -102,7 +104,6 @@ export const Detalles = () => {
 export const DetallesUsuario = () => {
   const [datos, setDatos] = useState<Usuario>();
 
-  console.log(datos);
   useEffect(() => {
     const datos = JSON.parse(localStorage.getItem("data") || "[]");
     setDatos(datos);
