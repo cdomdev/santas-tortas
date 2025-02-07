@@ -26,4 +26,12 @@ export type Producto = {
   }
 
 
-  
+ export  type Personalizado = {
+    tematica: string;
+    relleno: string;
+    sabor: string;
+    fecha: string;
+    porciones: string;
+    foto?: File | null;
+    mensaje: string;
+  };
