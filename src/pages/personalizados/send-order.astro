@@ -1,51 +1,171 @@
 ---
+import SendPerdonalizados from "@/components/personalizados/SendPersonalizado";
 import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
 ---
 
 <LayoutPersonalizados title="Pedido completado" text="Datos para envío">
-    <h1 class="font-semibold text-xl md:text-2xl mt-5 mb-4">¡Ya casi terminamos!</h1>
-    <p>
-        Hola <strong id="name">usuario</strong>, gracias por brindarnos la oportunidad de crear este pedido tan especial para ti.  
-        Ya casi terminamos con este proceso para que tu solicitud sea registrada con éxito y pasemos a la fase de preparación.  
-    </p>
-    <h2 class="my-3 text-base md:text-lg font-semibold">Este es un resumen de tu pedido personalizados</h2>
+  <h1 class="font-semibold text-base md:text-xl mt-5 mb-2 md:mb-4">
+    ¡Ya casi terminamos!
+  </h1>
+  <p class="text-sm md:text-base/6">
+    Hola <strong id="name">usuario</strong>, gracias por brindarnos la
+    oportunidad de crear este pedido tan especial para ti. Ya casi terminamos
+    con este proceso para que tu solicitud sea registrada con éxito y pasemos a
+    la fase de preparación.
+  </p>
 
-    <div class="bg-red-200">
-        <p class="text-white">aqui va el contenido del pedido</p>
-    </div>
-    <h3 class="text-base md:text-lg font-semibold my-5">¿Qué sigue?</h3>
-    <ul class="pl-5">
-        <li>
-            ⏳ <strong>Tiempo estimado de entrega:</strong> Dependerá del diseño, tamaño y nivel de personalización de tu pedido. También influirá el tiempo de envío según tu ubicación.
-        </li>
-        <li>
-            📦 <strong>Proceso de producción:</strong> Nuestros expertos comenzarán a trabajar en tu pedido asegurando que cada detalle sea perfecto.
-        </li>
-        <li>
-            📞 <strong>Contacto:</strong> Uno de nuestros asesores se comunicará contigo lo más pronto posible para confirmar detalles y coordinar la entrega.
-        </li>
-    </ul>
+  <h2 class="text-sm md:text-base font-semibold my-5">¿Qué sigue?</h2>
 
-    <p>
-        Te mantendremos informado sobre el progreso de tu pedido.  
-        Si tienes alguna consulta, no dudes en contactarnos.  
-        ¡Gracias por confiar en nosotros! 🎂✨
-    </p>
+  <p class="text-sm md:text-base mb-1">
+    El proceso de preparación y envio para tu pedido personalizado esta sujeto a
+    lo siguiente:
+  </p>
+
+  <ul class="pl-5 text-xs md:text-base list-disc">
+    <li class="pb-1">
+      <strong>Costo del pedido:</strong> Dependerá del diseño, tamaño y nivel de
+      personalización de tu pedido. EL precio se te sera informado una vez se haya
+      recibido tu pedido.
+    </li>
+    <li class="pb-1">
+      <strong>Tiempo estimado de entrega:</strong> Dependerá del diseño, tamaño y
+      nivel de personalización de tu pedido. También influirá el tiempo de envío
+      según tu ubicación.
+    </li>
+    <li class="pb-1">
+      <strong>Proceso de producción:</strong> Nuestro aquipo comenzara a trabajar
+      en tu pedido asegurando que cada detalle sea perfecto.
+    </li>
+    <li class="pb-1">
+      <strong>Contacto:</strong> Uno de nuestros asesores se comunicará contigo lo
+      más pronto posible para confirmar detalles y coordinar la entrega.
+    </li>
+  </ul>
+
+  <h3 class="my-3 text-sm md:text-base font-semibold text-balance">
+    Este es un resumen de tu pedido personalizado
+  </h3>
+
+  <h4
+    class="text-base mb-1 font-semibold border text-center bg-gray-300 py-2 uppercase"
+  >
+    Datos de envio
+  </h4>
+  <table
+    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mb-4"
+  >
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-2 md:px-4 py-3"> Nombres </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Apellidos </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Correo </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Telefono </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Direccion </th>
+      </tr>
+    </thead>
+    <tbody id="table-user-body">
+      <!-- content data user -->
+    </tbody>
+  </table>
+
+  <h4
+    class="text-base mb-1 font-semibold border text-center bg-gray-300 py-2 uppercase"
+  >
+    Datos del pedido
+  </h4>
+  <table
+    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+  >
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-2 md:px-4 py-3"> Tematica </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Sabor </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Relleno </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Porciones </th>
+        <th scope="col" class="px-2 md:px-4 py-3"> Fecha </th>
+        <th scope="col" class="text-center py-3"> Mensaje </th>
+      </tr>
+    </thead>
+    <tbody id="table-pedido-body">
+      <!-- content order -->
+    </tbody>
+  </table>
+
+  <SendPerdonalizados client:only="react" />
+
+  <p class="mt-2 text-sm md:text-base/5">
+    Te mantendremos informado sobre el progreso de tu pedido. Si tienes alguna
+    consulta, no dudes en contactarnos.🎂✨
+  </p>
 </LayoutPersonalizados>
 
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        try {
-            let dataUser = window.localStorage.getItem('data');
-            if (dataUser) {
-                let data = JSON.parse(dataUser);
-                const nameElement = document.getElementById('name');
-                if (nameElement && data.nombre) {
-                    nameElement.textContent = data.nombre;
-                }
-            }
-        } catch (error) {
-            console.error("Error al recuperar los datos del usuario:", error);
+  document.addEventListener("DOMContentLoaded", () => {
+    try {
+      let dataUser = window.sessionStorage.getItem("data");
+      let dataOrden = window.sessionStorage.getItem("data-product-custom");
+
+      if (dataUser && dataOrden) {
+        let user = JSON.parse(dataUser); 
+        let pedido = JSON.parse(dataOrden); 
+
+        const nameElement = document.getElementById("name");
+        const tbody = document.getElementById("table-user-body");
+        const tbodyPedido = document.getElementById("table-pedido-body");
+
+        if (nameElement && user.nombre) {
+          nameElement.textContent = user.nombre;
         }
-    });
+
+        if (tbody) {
+          let row = document.createElement("tr");
+          row.classList.add(
+            "bg-white",
+            "border-b",
+            "dark:bg-gray-800",
+            "dark:border-gray-700",
+            "border-gray-200"
+          );
+
+          row.innerHTML = `
+            <td class="px-4 md:px-6 py-4">${user.nombre || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.apellidos || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.email || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.telefono || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.direccion || "N/A"}</td>
+          `;
+          tbody.appendChild(row);
+        }
+
+        // Insertar datos del pedido en la tabla
+        if (tbodyPedido) {
+          let row = document.createElement("tr");
+          row.classList.add(
+            "bg-white",
+            "border-b",
+            "dark:bg-gray-800",
+            "dark:border-gray-700",
+            "border-gray-200"
+          );
+
+          row.innerHTML = `
+            <td class="px-4 md:px-6 py-4">${pedido.tematica || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.sabor || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.relleno || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.porciones || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.fecha || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.mensaje || "N/A"}</td>
+          `;
+          tbodyPedido.appendChild(row);
+        }
+      }
+    } catch (error) {
+      console.error("Error al recuperar los datos del usuario:", error);
+    }
+  });
 </script>
