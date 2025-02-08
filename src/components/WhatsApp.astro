@@ -1,19 +1,19 @@
-<div class="cotainer-btn-whatsapp group hover:block ">
-  <div
-    class="hidden md:block absolute bg-white p-4 border border-gray-200 rounded-tl-xl rounded-tr-3xl rounded-bl-3xl shadow-lg min-w-11 -translate-y-20 z-10 right-16 opacity-0 group-hover:opacity-100   transition duration-300"
-  >
-    <p class="bg-white text-xs/4 pb-1">
-      <strong class=" text-balance ">¿Necesitas ayuda?</strong>
-    </p>
-    <p class="bg-white text-xs">
-      Hablemos 
-    </p>
+<div class="fixed top-[80%] right-4 z-30 group ">
+
+
+  <div class="dialog hidden absolute -top-16 right-10 border rounded-t-2xl bg-white  rounded-bl-2xl min-w-36 border-gray-200 p-3 group-hover:block duration-500 shadow-xl">
+    <p class="text-xs text-balance text-center pb-1"><strong>¿Necesitas ayuda?</strong></p>
+    <p class="text-xs text-wrap text-center">Escribemos 🧑‍💻</p>
   </div>
-  <div class="content">
+
+
+
+  <div class="cursor-pointer flex items-center justify-center p-3 relative rounded-full bg-[#25d366] ">
     <a
       href="https://wa.me/573208132304"
       target="_blank"
       rel="noopener noreferrer"
+      class="btn-what"
     >
       <svg
         viewBox="0 0 256 259"
@@ -32,32 +32,3 @@
     </a>
   </div>
 </div>
-
-<style>
-  .cotainer-btn-whatsapp {
-    position: fixed;
-    right: 20px;
-    top: 80%;
-    z-index: 1000;
-    padding: 15px;
-  }
-
-  .content {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    position: relative;
-    border-radius: 50%;
-    transition: all ease 0.3s;
-    background-color: rgb(37, 211, 102);
-    box-shadow: 0 0 10px 1px rgb(206, 206, 206);
-    &:hover {
-      box-shadow: 0 0 10px rgb(241, 240, 240);
-    }
-  }
-  .content .icon-w {
-    color: white;
-  }
-</style>
