@@ -105,7 +105,7 @@ export const DetallesUsuario = () => {
   const [datos, setDatos] = useState<Usuario>();
 
   useEffect(() => {
-    const datos = JSON.parse(localStorage.getItem("data") || "[]");
+    const datos = JSON.parse(sessionStorage.getItem("data") || "[]");
     setDatos(datos);
   }, []);
 
