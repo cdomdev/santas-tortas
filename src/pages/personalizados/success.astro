@@ -1,0 +1,48 @@
+---
+import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
+---
+
+<LayoutPersonalizados title="¡Pedido enviado con exito! 🎉">
+  <h3 class="font-semibold text-base md:text-xl mt-5 mb-2 md:mb-4 text-center">El pedido fue enviado 🎉</h3>
+  <p class="text-sm md:text-base/6 mb-10">
+    Tu pedido se ha enviado con exito, recibiras un mensaje de parte de nuestra
+    tienda confirmando los detalles restantes de tu producto persolizado.
+  </p>
+  <div class="flex max-w-64 mx-auto">
+    <button
+      id="btn-clear"
+      class="flex items-center gap-x-1 justify-center font-medium text-xs md:text-base px-3 py-2 text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-300 group transition"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        width="24"
+        height="24"
+        class="group-hover:-translate-x-1"
+        stroke-width="2"
+      >
+        <path d="M5 12l14 0"></path>
+        <path d="M5 12l4 4"></path>
+        <path d="M5 12l4 -4"></path>
+      </svg>
+      Volver al inicio
+    </button>
+  </div>
+</LayoutPersonalizados>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let button = document.getElementById("btn-clear");
+    button?.addEventListener("click", () => {
+      sessionStorage.removeItem("data");
+      sessionStorage.removeItem("currentStep");
+      sessionStorage.removeItem("data-product-custom");
+
+      window.location.href = '/'
+    });
+  });
+</script>
