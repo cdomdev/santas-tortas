@@ -9,7 +9,7 @@ type PropForm = {
 const FormDatosUsuarios = ({url, step}: PropForm) => {
   const handleSubmit = (values: Usuario) => {
     window.sessionStorage.setItem('data', JSON.stringify(values));
-    window.sessionStorage.setItem('currentStep', `${step || null}`)
+    window.localStorage.setItem('currentStep', `${step || null}`)
     window.localStorage.setItem('value-car-forsend', 'OK')
     window.location.href = `${url}`;
   };

@@ -27,21 +27,23 @@ const SendPersonalizado = () => {
 
   function senOrder() {
     setLoading(true);
-    setTimeout(() => {
-      handleToast({
-        background: 'toast-success',
-        message: 'Tu pedido personalizado fue enviado con éxito',
-        setShowToast,
-        setBgToast,
-        setToastMessage
-      });
+    handleToast({
+      background: 'toast-success',
+      message: 'Tu pedido personalizado fue enviado con éxito',
+      setShowToast,
+      setBgToast,
+      setToastMessage
+    });
     
-      setLoading(false);
+    setLoading(false);
+    setTimeout(() => {
+      window.location.href = '/personalizados/success'    
     }, 2000);
+
   }
 
   return (
-    <div className="py-3 w-full ">
+    <div className="py-3 w-full my-3">
       <Toast
         showToast={showToast}
         setShowToast={setShowToast}
