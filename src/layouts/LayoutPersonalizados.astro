@@ -1,17 +1,16 @@
 ---
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
-const { title, description} = {
-  title: "Personaliza tu torta",
+const {description} = {
   description: "Personaliza tu torta, hacerlo es muy facil",
 };
 
-const {subtitle} = Astro.props
+const {subtitle, title} = Astro.props
+
 ---
 
 <LayoutPages title={title} description={description}>
   <ContainerSecctions class="text-center mb-5">
-
     <h1 class="text-lg pt-2 md:text-2xl text-center text-[#f1683a] font-bold">
       Personliza tu torta, hacerlo es muy facil
     </h1>
