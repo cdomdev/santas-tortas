@@ -9,104 +9,65 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
   <main>
     <Carrusel />
 
-    <section class="relative -top-6 z-30">
+    <section class="relative -top-14 z-30">
       <article
-        class="bg-white min-h-36 mx-auto border p-4 w-[90%] flex items-center"
+        class="bg-white h-auto mx-auto border p-4 md:max-w-screen-md lg:max-w-screen-lg flex items-center"
       >
         <div
-          class="border-dashed border w-full  flex flex-col md:flex-row gap-y-4 py-6 items-center justify-center"
+          class="border-dashed border w-full flex flex-col md:flex-row gap-y-5 py-3 items-center justify-center"
         >
-          <div class="lg:w-1/4 mx-auto flex gap-x-1 items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              width="24"
-              height="24"
-              class="size-16 md:size-28 text-[#fd499f]"
-              stroke-width="2"
-            >
-              <path d="M3 20h18v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8z"
-              ></path>
-              <path
-                d="M3 14.803c.312 .135 .654 .204 1 .197a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1c.35 .007 .692 -.062 1 -.197"
-              ></path>
-              <path d="M12 4l1.465 1.638a2 2 0 1 1 -3.015 .099l1.55 -1.737z"
-              ></path>
-            </svg>
-            <div>
-              <span
-                class="font-semibold text-base md:text-lg text-black text-balance"
+
+
+        <div class="w-3/4 md:w-1/4  flex gap-x-2 items-center flex-col justify-center">
+           
+            <div class="rounded-full bg-[#5e3c3c] p-3 block">
+              <img src="/box/cake.webp" alt="pastel" class="w-10 d-10">
+            </div>
+
+            <div class="flex flex-col justify-center">
+              <h2
+                class="font-semibold text-sm md:text-base text-center text-black text-balance"
               >
                 Tortas personalizadas
-              </span>
-              <p class="text-xs md:text-sm text-balance">
+              </h2>
+              <p class="text-xs/4 text-center">
                 Tortas personalizadas, endulza tus momentos especiales
               </p>
             </div>
           </div>
-          <div class="lg:w-1/4 mx-auto flex gap-x-2 items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              width="24"
-              height="24"
-              stroke-width="2"
-              class="size-16 md:size-28 text-[#005bc8]"
-            >
-              <path d="M14 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-              <path d="M12 9.765a3 3 0 1 0 0 4.47"></path>
-              <path
-                d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
-              ></path>
-            </svg>
-            <div>
-              <span
-                class="font-semibold text-base md:text-lg text-black text-balance"
+
+
+          <div class="w-3/4 md:w-1/4  flex gap-x-2 items-center flex-col justify-center">
+           
+            <div class="rounded-full bg-[#5e3c3c] p-3">
+              <img src="/box/payment.webp" alt="" class="w-10 h-10">
+            </div>
+
+
+            <h2
+                class="font-semibold text-sm md:text-base text-black text-balance"
               >
                 Pagos seguros
-              </span>
-              <p class="text-xs md:text-sm text-balance">
-                paga de forma segura, con tarejteas de credito o debito
+              </h2>
+              <p class="text-xs/4 text-balance text-center">
+                paga de forma segura con tarejteas de credito o debito
               </p>
-            </div>
           </div>
-          <div class="lg:w-1/4 mx-auto flex gap-x-2 items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              width="24"
-              height="24"
-              class="size-14 md:size-18 text-[#db5049]"
-              stroke-width="2"
-            >
-              <path d="M19.258 10.258l-7.258 -7.258l-9 9h2v7a2 2 0 0 0 2 2h4"
-              ></path>
-              <path d="M9 21v-6a2 2 0 0 1 2 -2h1.5"></path>
-              <path
-                d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z"
-              ></path>
-            </svg>
-            <div>
-              <span
-                class="font-semibold text-base md:text-lg text-black text-balance"
+
+
+          <div class="w-3/4 md:w-1/4  flex gap-x-2 items-center flex-col justify-center px-2">
+            <div class="border rounded-full bg-[#5e3c3c]  p-3">
+              <img src="/box/box.webp" alt="" class="w-10 h-10">
+            </div>
+            <h2
+                class="font-semibold text-sm md:text-base text-black text-balance"
               >
                 Entrega en casa
-              </span>
-              <p class="text-xs md:text-sm text-balance">
+              </h2>
+              <p class="text-xs/4 text-balance text-center">
                 Recibe tus productos en la puerta de tu casa
               </p>
+             
             </div>
           </div>
         </div>
@@ -114,18 +75,18 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
       <img
         src="/icon-box-shadow.webp"
         alt="image shadow"
-        class="w-[90%] mx-auto"
+        class="md:max-w-screen-md lg:max-w-screen-lg mx-auto"
       />
     </section>
 
     <ContainerSecctions
       class="flex justify-center flex-col items-center mb-14 px-2"
     >
-      <h2
+      <h3
         class="text-center font-semibold text-xl md:text-2xl py-4 text-[#1f1919]"
       >
         Algunos de los productos mas vendidos
-      </h2>
+      </h3>
       <Masvendidos />
     </ContainerSecctions>
 
@@ -153,7 +114,7 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
           </p>
           <a
             id="buttons"
-            href="/personalizados/form"
+            href="/personalizados/form-datos-personalizado"
             class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
           >
             Crea tu momento especial
@@ -169,9 +130,9 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
 
     <ContainerSecctions>
       <article class="shadow-md py-5 px-8 rounded-sm">
-        <h3 class="font-semibold text-lg md:text-xl mb-2 text-primary-txt">
+        <h4 class="font-semibold text-lg md:text-xl mb-2 text-primary-txt">
           Obtener informacion de las nuevas ofertas
-        </h3>
+        </h4>
         <p class="text-sm md:text-base text-gray-800 text-wrap">
           ¿Quieres recibir una notificación cuando se añada una nueva oferta a
           Santas tortas? Suscríbete a nuestro boletín y serás uno de los
