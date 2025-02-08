@@ -1,5 +1,5 @@
 ---
-import { Detalles } from "@/components/carrito/Detalles";
+import { Detalles } from "@/components/Detalles";
 import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
 import FormDatosUsuario from "@/components/envio/FormDatosUsuario";
 ---
@@ -40,8 +40,76 @@ import FormDatosUsuario from "@/components/envio/FormDatosUsuario";
         de tu compra
       </p>
       <div class="w-full p-4 my-5 md:my-1">
-        <FormDatosUsuario client:load url="/pago"/>
+        <FormDatosUsuario client:load url="/pago" step="3"/>
       </div>
     </div>
   </article>
 </LayoutCarrito>
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    try {
+      let dataUser = window.sessionStorage.getItem("data");
+      let dataOrden = window.sessionStorage.getItem("data-product-custom");
+
+      if (dataUser && dataOrden) {
+        let user = JSON.parse(dataUser); 
+        let pedido = JSON.parse(dataOrden); 
+
+        const nameElement = document.getElementById("name");
+        const tbody = document.getElementById("table-user-body");
+        const tbodyPedido = document.getElementById("table-pedido-body");
+
+        if (nameElement && user.nombre) {
+          nameElement.textContent = user.nombre;
+        }
+
+        if (tbody) {
+          let row = document.createElement("tr");
+          row.classList.add(
+            "bg-white",
+            "border-b",
+            "dark:bg-gray-800",
+            "dark:border-gray-700",
+            "border-gray-200"
+          );
+
+          row.innerHTML = `
+            <td class="px-4 md:px-6 py-4">${user.nombre || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.apellidos || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.email || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.telefono || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${user.direccion || "N/A"}</td>
+          `;
+          tbody.appendChild(row);
+        }
+
+        // Insertar datos del pedido en la tabla
+        if (tbodyPedido) {
+          let row = document.createElement("tr");
+          row.classList.add(
+            "bg-white",
+            "border-b",
+            "dark:bg-gray-800",
+            "dark:border-gray-700",
+            "border-gray-200"
+          );
+
+          row.innerHTML = `
+            <td class="px-4 md:px-6 py-4">${pedido.tematica || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.sabor || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.relleno || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.porciones || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.fecha || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.mensaje || "N/A"}</td>
+          `;
+          tbodyPedido.appendChild(row);
+        }
+      }
+    } catch (error) {
+      console.error("Error al recuperar los datos del usuario:", error);
+    }
+  });
+</script>
