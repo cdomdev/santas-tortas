@@ -1,0 +1,33 @@
+---
+import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import LayoutPages from "@/layouts/LayoutPages.astro";
+---
+
+<LayoutPages title="La pagina no exite">
+  <ContainerSecctions class="py-5 flex items-center  justify-center flex-col">
+    <img src="/404.webp" alt="imagen del error 404" class="w-[150px] mb-4" />
+      <span class="text-3xl font-extrabold"> ¡Lo sentimos! </span>
+      <h1 class="text-center font-semibold text-1xl mb-4">
+        No se puede encontrar la página que estás buscando.
+      </h1>
+      <a href="/" class="text-base text-center flex items-center gap-1 group px-3 justify-center text-blue-500 font-semibold hover:text-blue-700 transition duration-300">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="24"
+          height="24"
+          class="group-hover:-translate-x-2"
+          stroke-width="2"
+        >
+          <path d="M5 12l14 0"></path>
+          <path d="M5 12l4 4"></path>
+          <path d="M5 12l4 -4"></path>
+        </svg>
+        Volver a la pagina de incio</a
+      >
+  </ContainerSecctions>
+</LayoutPages>
