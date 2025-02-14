@@ -16,7 +16,11 @@ import { items } from "@/content";
               class="absolute top-2/4 left-1/2 md:top-1/4 lg:top-[30%] lg:left-[55%] z-20 w-40 md:w-72"
             />
 
-            <img src="carrusel/plato.webp" alt="/imagen de fonfo" class="absolute top-[48%] left-[45%] md:top-[22%] lg:top-[24%] lg:left-[52%] z-10 w-48 md:w-96"/>
+            <img
+              src="carrusel/plato.webp"
+              alt="/imagen de fonfo"
+              class="absolute top-[48%] left-[45%] md:top-[22%] lg:top-[24%] lg:left-[52%] w-48 md:w-96"
+            />
 
             <div class="content absolute top-24 md:top-52 lg:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-white">
               <div class="tittle font-bold tracking-tight text-2xl md:text-3xl lg:text-5xl mt-2 uppercase text-[#f1683a] text-balance">
@@ -127,6 +131,23 @@ import { items } from "@/content";
   .carousel .list .item:nth-child(1) {
     z-index: 1;
   }
+  /* Asegura que la imagen del producto esté siempre arriba */
+  .carousel .list .item img:first-child {
+    z-index: 30 !important; 
+  }
+
+  .carousel .list .item img:last-child {
+    z-index: 10;
+  }
+
+  .carousel .list .item.moving img:first-child {
+    /* Durante la transición, lo baja temporalmente */
+    z-index: 5 !important;
+  }
+
+  .carousel .list .item.moving img:last-child {
+    z-index: 2;
+  }
 
   /* animation text in first item */
 
@@ -170,7 +191,7 @@ import { items } from "@/content";
     animation: showThumbnail 0.5s linear 1 forwards;
   }
   .carousel.prev .list .item img {
-    z-index: 100;
+    z-index: 10;
   }
   @keyframes showThumbnail {
     from {
@@ -188,6 +209,7 @@ import { items } from "@/content";
     }
   }
 
+  
   /* prev click */
 
   .carousel.prev .list .item:nth-child(2) {
@@ -275,37 +297,42 @@ import { items } from "@/content";
         );
 
         if (type === "next") {
-          // Añade clase 'exiting' al primer elemento
+          // Añadir clase 'exiting' al primer elemento
           SliderItemsDom[0]?.classList.add("exiting");
 
-          // Mueve el primer item al final
+          // Mover el primer elemento al final después de la animación
           setTimeout(() => {
             SliderDom?.appendChild(SliderItemsDom[0]);
             thumbnailBorderDom?.appendChild(thumbnailItemsDom[0]);
-          }, 500); // Tiempo de la animación
 
-          // Añade clase 'active' al nuevo primer elemento
-          SliderItemsDom[1]?.classList.add("active");
+            // Asignar active al nuevo primer elemento
+            SliderDom?.querySelector(".item")?.classList.add("active");
+          }, 500);
         } else {
-          // Añade clase 'exiting' al último elemento
-          SliderItemsDom[SliderItemsDom.length - 1]?.classList.add("exiting");
+          // Añadir clase 'exiting' al último elemento antes de moverlo
+          const lastIndex = SliderItemsDom.length - 1;
+          SliderItemsDom[lastIndex]?.classList.add("exiting",);
 
-          // Mueve el último item al inicio
+          // Mover el último elemento al inicio después de la animación
           setTimeout(() => {
-            SliderDom?.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
+            SliderDom?.prepend(SliderItemsDom[lastIndex]);
             thumbnailBorderDom?.prepend(
               thumbnailItemsDom[thumbnailItemsDom.length - 1]
             );
-          }, 500);
 
-          SliderItemsDom[0]?.classList.add("active");
+            // Asegurar que el nuevo primer elemento es visible y tiene la clase active
+            const firstItem = SliderDom?.querySelector(".item");
+            firstItem?.classList.add("active");
+
+            // Eliminar 'exiting' para evitar que desaparezca
+            SliderItemsDom[lastIndex]?.classList.remove("exiting");
+          }, 500);
         }
 
         carouselDom?.classList.add(type);
         clearTimeout(runTimeOut);
         runTimeOut = setTimeout(() => {
-          carouselDom?.classList.remove("next");
-          carouselDom?.classList.remove("prev");
+          carouselDom?.classList.remove("next", "prev");
         }, 2000);
 
         clearTimeout(runNextAuto);
