@@ -2,6 +2,7 @@
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { productos } from "@/content";
 import { BtnAddCar } from "@/components/carrito/BtnAddProductToCar";
+import { priceFormated } from "@/utils";
 
 const { id } = Astro.params;
 
@@ -11,8 +12,9 @@ export async function getStaticPaths() {
     props: { id: producto.id },
   }));
 }
-
 const productoPage = productos.find((prod) => prod.id === id);
+const price = priceFormated(productoPage?.precio)
+
 ---
 
 <LayoutPages title=`${productoPage?.nombre}`>
@@ -47,7 +49,7 @@ const productoPage = productos.find((prod) => prod.id === id);
         </div>
       </div>
       <p class="text-sm md:text-xl font-semibold my-2">
-        Precio:<strong> {productoPage?.precio}</strong>
+        Precio:<strong> {price ? price : productoPage?.precio}</strong>
       </p>
       <p class="text-sm md:text-base text-balance my-3">
         {productoPage?.descripcion}
