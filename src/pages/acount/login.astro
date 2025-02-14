@@ -1,9 +1,10 @@
 ---
 import LayoutAcounts from "@/layouts/layoutAcounts.astro";
+import LoginFom from "@/components/auth/Login";
 ---
 
-<LayoutAcounts  titlte="Iniciar sesion">
-  <h1 class="py-2 text-2xl font-semibold flex items-center gap-1 mb-2">
+<LayoutAcounts title="Iniciar sesion en santas tortas">
+  <div class="flex gap-1 items-center mb-7 dark:bg-black">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -12,66 +13,17 @@ import LayoutAcounts from "@/layouts/layoutAcounts.astro";
       stroke-linecap="round"
       stroke-linejoin="round"
       width="24"
-      class="size-7"
+      class="w-7 h-8"
       height="24"
-      stroke-width="1.8"
+      stroke-width="2"
     >
       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
       <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
       <path d="M15 19l2 2l4 -4"></path>
-    </svg>Iniciar sesion
-  </h1>
-  <form class="mx-auto">
-    <div class="relative z-0 w-full mb-5 group">
-      <input
-        type="email"
-        name="floating_email"
-        id="floating_email"
-        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
-        placeholder=" "
-        required
-      />
-      <label
-        for="floating_email"
-        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-[#eb9f48]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-        >Direccion de correco electronico</label
-      >
-    </div>
-    <div class="relative z-0 w-full mb-5 group">
-      <input
-        type="password"
-        name="floating_password"
-        id="floating_password"
-        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
-        placeholder=" "
-        required
-      />
-      <label
-        for="floating_password"
-        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-        >Contraseña</label
-      >
-    </div>
-    <div class="relative z-0 w-full mb-5 group">
-      <input
-        type="password"
-        name="repeat_password"
-        id="floating_repeat_password"
-        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
-        placeholder=" "
-        required
-      />
-      <label
-        for="floating_repeat_password"
-        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-[#eb9f48]  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-        >Confirma tu contraseña</label
-      >
-    </div>
-
-    <button
-      type="submit"
-      class="text-black bg-secondary-bg hover:bg-[#d66a6e] uppercase focus:ring-4 hover:text-white transition duration-200 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >Iniciar sesion</button
-    >
-  </form>
+    </svg>
+    <h1 class="text-2xl font-semibold ">
+      Iniciar sesion
+    </h1>
+  </div>
+  <LoginFom client:load />
 </LayoutAcounts>
