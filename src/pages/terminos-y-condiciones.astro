@@ -1,0 +1,69 @@
+---
+import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import LayoutPages from "@/layouts/LayoutPages.astro";
+import { getCollection } from "astro:content";
+
+const termPage = await getCollection("paginas");
+const { title, entrega } = termPage[2].data;
+---
+
+<LayoutPages title="Términos y Condiciones">
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h1 class="font-semibold text-2xl md:text-3xl mb-6 mt-6">{title}</h1>
+    <h2 class="font-bold text-lg md:text-xl mb-1">Entregas</h2>
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{entrega}</p>
+    <p class="text-sm/6 md:text-base/7 mt-2 text-wrap">
+      Los pedidos se envían en la fecha solicitada. Sin embargo <strong
+        >todo pedido realizado después de las 8:00 pm no podrá entregarse al día
+        siguiente
+      </strong> a excepción que tenga la autorización de algún asesor comercial con
+      el cual previamente hayan acordado dicha excepción.
+    </p>
+  </ContainerSecctions>
+
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h2 class="font-bold text-lg md:text-xl mt-4">Medios de pago</h2>
+    <p class="text-sm/6 md:text-base/7 mt-2 text-wrap">
+      Mercado Pago es una plataforma segura y confiable que te permite realizar
+      pagos en línea de manera fácil y rápida. A través de Mercado Pago, puedes
+      pagar con las siguientes opciones:
+    </p>
+    <ul class="text-sm/6 md:text-base/7 mt-2 text-wrap leading-4 pl-6">
+      <li class="list-disc mb-1 text-wrap">
+        <strong>Tarjetas de Crédito:</strong> Visa, MasterCard, American Express,
+        Diners Club, y otras.
+      </li>
+      <li class="list-disc mb-1 text-wrap">
+        <strong>Tarjetas de Débito:</strong> Visa Débito, Maestro, y otras.
+      </li>
+      <li class="list-disc mb-1 text-wrap">
+        <strong>Otros Medios:</strong> Transferencias bancarias, pagos en efectivo
+        a través de puntos de pago autorizados.
+      </li>
+    </ul>
+  </ContainerSecctions>
+
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h3 class="font-bold text-sm md:text-base mt-3">
+      ¿Como realizar un compra con mercado pago?
+    </h3>
+    <p class="text-sm/6 md:text-base/7 mt-2 text-wrap">
+      Para realizar un pago con Mercado Pago, simplemente seleccione esta opción
+      al finalizar su compra y siga los pasos indicados por la plataforma. Una
+      vez completado el pago, recibira una confirmación por correo electrónico,
+      ya sea de nuestra tienda o de mercadopago.
+    </p>
+  </ContainerSecctions>
+
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h3 class="font-bold text-sm md:text-base mt-3">
+      ¿Que intereses me genera la compra con mercadopago?
+    </h3>
+    <p class="text-sm/6 md:text-base/7 mt-2 text-wrap">
+      Santas tortas como tieda virtual y proveedore de los propductos sobre los
+      cuales realices sus compras, no generara interes a su tarjetas o medio de
+      pago seleccionado, los intereses seran aplicados directamente por su
+      entidad bancaria.
+    </p>
+  </ContainerSecctions>
+</LayoutPages>
