@@ -6,15 +6,15 @@ export function formateValue(value: string) {
   return valueParse.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-
-// export const priceFormated = (value: number | string) => {
-//   if (typeof value === "string") {
-//     return formateValue(value);
-//   } else {
-//     let valueText = value.toString();
-//     return formateValue(valueText);
-//   }
-// };
+// funcion para validar el argumento de entrada y retornar valor aunque sea undefined
+export const priceFormated = (value: number | string | undefined) => {
+  if (typeof value === "string") {
+    return formateValue(value);
+  } else {
+    let valueText = value?.toString();
+    valueText ? formateValue(valueText) : 0
+  }
+};
 
 
 

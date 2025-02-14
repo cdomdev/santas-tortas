@@ -5,4 +5,5 @@ export {
   calcularSubTotal,
   calcularTotal,
   formateValue,
+  priceFormated
 } from "./productos";
