@@ -19,7 +19,7 @@ export const Toast: React.FC<ToastProp> = ({
   return (
     <div
       id={bgToast}
-      className={`flex fixed ${bgToast !== "toast-success" ? "bg-red-100  " : "bg-green-100"}  text-white z-50 top-32 right-10 items-center w-full max-w-xs p-4 mb-4  rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 ${bgToast ?? "bg-white"}`}
+      className={`flex fixed ${bgToast !== "toast-success" ? "bg-red-100  " : "bg-green-100"}  text-white z-30 top-32 right-10 items-center w-full max-w-xs p-4 mb-4  rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 ${bgToast ?? "bg-white"}`}
       role="alert"
     >
       {bgToast === "toast-success" ? (
