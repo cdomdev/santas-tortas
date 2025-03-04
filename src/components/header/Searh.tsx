@@ -1,14 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { searchProducts } from "@/services";
+import type { Producto } from "@/types";
+import { formateValue } from "@/utils";
+const { PUBLIC_HOST } = import.meta.env;
 
 const Search = () => {
   const [show, setShow] = useState<boolean>(false);
-
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [results, setResults] = useState<Producto[]>([]);
+  
   const handleShow = () => setShow(true);
   const handleHide = () => setShow(false);
 
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setResults([]);
+      return;
+    }
+
+    const delayDebounce = setTimeout(async () => {
+      setIsLoading(true);
+      try {
+        const response = await searchProducts(searchTerm);
+        setResults(response ?? []);
+      } catch (error) {
+        console.error("Error en la búsqueda de productos:", error);
+        setResults([]);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 500); 
+
+    // Limpia el timeout si el usuario sigue escribiendo
+    return () => clearTimeout(delayDebounce); 
+  }, [searchTerm]);
+
   return (
     <>
-      <div className="hidden md:block cursor-pointer relative group" onClick={handleShow}>
+      <div
+        className="hidden md:block cursor-pointer relative group"
+        onClick={handleShow}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -60,46 +93,76 @@ const Search = () => {
             </div>
 
             <div className="mt-4">
-              <form className="w-full">
-                <label
-                  form="default-search"
-                  className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                >
-                  Search
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg
-                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                      />
-                    </svg>
-                  </div>
-                  <input
-                    type="search"
-                    id="default-search"
-                    className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#eb9f48] focus:border-[#eb9f48] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Buscar tortas, Postres..."
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="text-black font-semibold absolute end-2.5 bottom-2.5 bg-secondary-bg hover:bg-[#d66a6e]  focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-4 py-2"
+              <label
+                htmlFor="default-search"
+                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              >
+                Search
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
                   >
-                   Buscar
-                  </button>
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
                 </div>
-              </form>
+                <input
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  type="search"
+                  value={searchTerm}
+                  id="default-search"
+                  className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-[#eb9f48] focus:border-[#eb9f48] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Buscar tortas, postres..."
+                />
+              </div>
+
+              {/* Mostrar resultados en tiempo real */}
+              {isLoading && <p className="mt-4 text-gray-500">Buscando...</p>}
+              {results.length > 0 && (
+                <div className="mt-4 max-h-60 overflow-y-auto">
+                  <h4 className="text-gray-700 font-medium">Resultados:</h4>
+                  <div className="mt-2 space-y-2 flex flex-col">
+                    {results.map((product) => (
+                      <a
+                        key={product.id}
+                        href={`/detalle-producto/${product.slug}`}
+                        className="border-b border-t flex items-center gap-x-3 p-3 jus"
+                      >
+                        <img
+                          src={`${PUBLIC_HOST}${product.images?.[0]?.url ?? ""}`}
+                          alt="image result"
+                          className="w-10 h-10 rounded-full"
+                        />
+                        <p className="text-xs md:text-base text-balance">
+                          - {product.title} -
+                        </p>
+                        <p className="text-xs md:text-base">
+                          $ {formateValue(product.price)} -
+                        </p>
+                        <p className="text-xs md:text-base text-red-700">
+                          {product.discount}%
+                        </p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Mensaje si no hay resultados */}
+              {!isLoading && searchTerm && results.length === 0 && (
+                <p className="mt-4 text-gray-500">No se encontraron resultados.</p>
+              )}
             </div>
           </div>
         </div>
