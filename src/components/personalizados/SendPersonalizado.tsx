@@ -18,6 +18,7 @@ const SendPersonalizado = () => {
 
   const dataOrder = { ...datos, ...orden };
 
+  console.log(dataOrder)
   const getDataOrder = (clave: string) => {
     const datos = sessionStorage.getItem(clave);
     if (datos) {
