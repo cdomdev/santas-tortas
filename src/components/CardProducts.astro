@@ -1,21 +1,22 @@
 ---
+import {  formateValue } from '@/utils';
+
 type Props = {
-  id: number | string;
+  slug: string;
   image: string;
-  nombre: string;
-  precio: string;
-  descuento: number | null;
+  title: string;
+  price: string | undefined;
+  discount: number | null;
 };
 
-const { id, image, nombre, descuento, precio } = Astro.props;
+const { slug, image, title, discount, price } = Astro.props;
 ---
 
-<article>
   <a
-    href={`/detalle-producto/${id}`}
+    href={`/detalle-producto/${slug}`}
     class="card-producto rounded-sm flex justify-between flex-col h-auto md:w-[15em] max-h-[31em] border border-gray-200 transition duration-300 ease-in-out relative hover:shadow-lg"
   >
-    <div class=`${descuento ? 'block' : 'hidden'} absolute z-2 top-1 right-1`>
+    <div class=`${discount ? 'block' : 'hidden'} absolute z-2 top-1 right-1`>
       <img
         src="/bg-ofertas.webp"
         alt="imagen-bacground-ofertas"
@@ -23,19 +24,20 @@ const { id, image, nombre, descuento, precio } = Astro.props;
       />
       <span
         class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-1"
-        >{descuento}</span
+        >{discount}</span
       >
     </div>
-    <picture>
-      <img
+    <div class="w-full h-40">
+      <picture>
+        <img
         src={image}
-        alt=`imagen-producto-${nombre}`
+        alt=`imagen-producto-${title}`
         class="rounded-sm w-full h-full object-cover duration-150"
-      />
-    </picture>
+        />
+      </picture>
+    </div>
     <div class="flex flex-col items-center justify-center py-3">
-      <p class="text-primary-txt pt-1 font-semibold text-base">{nombre}</p>
-      <p class="text-gray-800 font-bold">{precio}</p>
+      <p class="text-primary-txt pt-1 font-semibold text-base text-balance px-2 text-center">{title}</p>
+      <p class="text-gray-800 font-bold">{price ? formateValue(price) : price}</p>
     </div>
   </a>
-</article>
