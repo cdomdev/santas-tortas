@@ -79,11 +79,3 @@ const Steps = () => {
 };
 
 export default Steps;
-
-// Función para emitir el evento
-const nextPage = () => {
-  console.log("Evento 'stepUpdate' emitido");
-  if (eventEmitter) {
-    eventEmitter.emit("stepUpdate");
-  }
-};
