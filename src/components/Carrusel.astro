@@ -15,13 +15,7 @@ import { items } from "@/content";
               alt="imagen de producto"
               class="absolute top-2/4 left-1/2 md:top-1/4 lg:top-[30%] lg:left-[55%] z-20 w-40 md:w-72"
             />
-
-            <img
-              src="carrusel/plato.webp"
-              alt="/imagen de fonfo"
-              class="absolute top-[48%] left-[45%] md:top-[22%] lg:top-[24%] lg:left-[52%] w-48 md:w-96"
-            />
-
+         
             <div class="content absolute top-24 md:top-52 lg:top-1/4 w-full md:w-2/5 -right-10 md:right-1/2 p-5 ml-1 md:m-0 md:p-7 -translate-x-10 md:-translate-x-12 box-border text-black bg-white">
               <div class="tittle font-bold tracking-tight text-2xl md:text-3xl lg:text-5xl mt-2 uppercase text-[#f1683a] text-balance">
                 {item.title}
@@ -48,14 +42,17 @@ import { items } from "@/content";
   >
     {
       items.slice(1, 5).map((item) => (
-        <div class="item w-28 h-36 md:w-40 md:h-48 flex-shrink-0 relative ">
+        <a
+          href={item.thumbnail?.url}
+          class="item w-28 h-36 md:w-40 md:h-48 flex-shrink-0 relative border rounded-2xl overflow-hidden bg-[url('/carrusel/bg-thumnails.png')] bg-cover bg-center shadow-lg"
+        >
           <img
             src={item.thumbnail?.image}
-            alt="image-carrusel-thumnail"
+            alt="image-carrusel-thumbnail"
             loading="lazy"
-            class="size-full object-cover rounded-2xl shadow-lg"
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover rounded-2xl z-10"
           />
-        </div>
+        </a>
       ))
     }
   </article>
@@ -133,7 +130,7 @@ import { items } from "@/content";
   }
   /* Asegura que la imagen del producto esté siempre arriba */
   .carousel .list .item img:first-child {
-    z-index: 30 !important; 
+    z-index: 30 !important;
   }
 
   .carousel .list .item img:last-child {
@@ -209,7 +206,6 @@ import { items } from "@/content";
     }
   }
 
-  
   /* prev click */
 
   .carousel.prev .list .item:nth-child(2) {
@@ -311,7 +307,7 @@ import { items } from "@/content";
         } else {
           // Añadir clase 'exiting' al último elemento antes de moverlo
           const lastIndex = SliderItemsDom.length - 1;
-          SliderItemsDom[lastIndex]?.classList.add("exiting",);
+          SliderItemsDom[lastIndex]?.classList.add("exiting");
 
           // Mover el último elemento al inicio después de la animación
           setTimeout(() => {
