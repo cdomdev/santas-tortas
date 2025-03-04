@@ -1,39 +1,43 @@
 export const items = [
   {
-    image: "/carrusel/img1.webp",
-    title: "Pasteleria personalizada",
-    text: "Este es el lugar perfecto para hacer realidad tus antojos, aqui encontraras postres y galletas, ademas de la posibilidad de hacer realidad ese diseño que tienes en mente, solicita tu pastel personlizado aqui",
+    image: "/carrusel/relleno.png",
+    title: "Pastelería Personalizada",
+    text: "Explora nuestra pastelería personalizada y diseña el pastel perfecto para cualquier ocasión. Deja volar tu creatividad y haz realidad ese diseño especial.",
   },
   {
     image: "/carrusel/img1.webp",
-    title: "ChocoChip Delicia",
-    text: " Pastel de chocolate intenso y húmedo, salpicado de chispas de chocolate que se derriten en cada bocado. Perfecto para los amantes del chocolate.",
+    title: "Tortas a Tu Estilo",
+    text: "Elige entre una variedad de tortas y personaliza cada detalle a tu gusto. Descubre nuestras opciones y encuentra el pastel ideal para ti.",
     thumbnail: {
-      image: "/carrusel/imgthum4.webp",
+      image: "/carrusel/img1.webp",
+      url: "/productos/tortas",
+    },
+  },
+  {
+    image: "/carrusel/cupcakes.png",
+    title: "Cupcakes Creativos",
+    text: "Sorprende con cupcakes únicos y deliciosos. Personalízalos con tus colores y sabores favoritos y haz que cada bocado sea especial.",
+    thumbnail: {
+      image: "/carrusel/cupcakes.png",
+      url: "/productos/cupcakes",
     },
   },
   {
     image: "/carrusel/img2.webp",
-    title: "Tres Leches Frutal",
-    text: "Tradicional pastel de tres leches, bañado en una mezcla dulce y cremosa, coronado con crema batida y fresas frescas. Una experiencia fresca y decadente.",
+    title: "Postres Irresistibles",
+    text: "Desde tres leches hasta cheesecakes, disfruta de postres artesanales llenos de sabor. Descubre nuestra selección y encuentra tu favorito.",
     thumbnail: {
-      image: "/carrusel/imgthum1.webp",
+      image: "/carrusel/img2.webp",
+      url: "/productos/postres",
     },
   },
   {
-    image: "/carrusel/img3.webp",
-    title: "Dulce Encanto de Vainilla",
-    text: " Delicioso pastel de vainilla suave y esponjoso, cubierto con crema batida y decorado con frescas. Un clásico irresistible para cualquier ocasión especial.",
+    image: "/carrusel/galletas.png",
+    title: "Galletas Decoradas",
+    text: "Personaliza tus galletas con diseños únicos y sabores irresistibles. Perfectas para regalos, eventos o simplemente darte un gusto especial.",
     thumbnail: {
-      image: "/carrusel/imgthum2.webp",
-    },
-  },
-  {
-    image: "/carrusel/img4.webp",
-    title: "Sueño de Chocolate y Crema",
-    text: "Pastel de chocolate rico y esponjoso, con un suave relleno de crema batida, decorado con una mezcla de cacao en polvo y toques de crema para un acabado elegante y delicioso.",
-    thumbnail: {
-      image: "/carrusel/imgthum3.webp",
+      image: "/carrusel/galletas.png",
+      url: "/productos/galletas",
     },
   },
 ];
