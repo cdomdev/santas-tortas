@@ -1,75 +1,112 @@
 ---
-import { getCategoriasUnicas, productos, contenido } from "@/content";
+import { contenido } from "@/content";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
+import type { Producto } from "@/types";
+import { getCategories, getCategorieBy } from "@/services/getCategories";
+const { PUBLIC_HOST } = import.meta.env;
 const { categoria } = Astro.params;
 
 export async function getStaticPaths() {
-  const categorias = getCategoriasUnicas();
-  return categorias.map((categoria) => ({
-    params: { categoria },
-    props: { categoria },
+  // 1️⃣ Obtener TODAS las categorías desde la API
+  const response = await getCategories();
+  const categorias = response.data;
+
+  // 2️⃣ Generar las rutas dinámicas con productos filtrados
+  return categorias.map((cat: any) => ({
+    params: { categoria: cat.name },
+    props: { categoria: cat.name },
   }));
 }
-const productosFiltrados = productos.filter(
-  (producto) => producto.categoria === categoria
-);
+
+// 3️⃣ Obtener los productos de la categoría actual
+let products: Producto[] = [];
+
+try {
+  const response = await getCategorieBy(categoria);
+  const categoriaData = response.data;
+  products = categoriaData[0].products || [];
+} catch (error) {
+  console.error(`⚠️ Error obteniendo productos para ${categoria}:`, error);
+}
 
 const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
 
 <LayoutPages title={categoria}>
-  <h1
-    class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
-    id="txt-title"
-  >
+  <h1 class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1" id="txt-title">
     {contenidoPages?.titulo}
   </h1>
-  <p
-    class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold"
-    id="txt-title"
-  >
+  <p class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold" id="txt-text">
     ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
   </p>
   <p class="text-xs md:text-base my-3 text-balance" id="txt-text">
     {contenidoPages?.texto}
   </p>
-  <div class="h-auto w-full flex my-4 items-center justify-end" id="filtros">
-    <form class="justify-end">
-      <label for="underline_select" class="sr-only">Underline select</label>
+
+  <div class="h-auto w-full flex my-8 items-center justify-end" id="filtros">
+    <form>
+      <label for="ordenar_select" class="sr-only">Ordenar</label>
       <select
-        id="underline_select"
-        class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        id="ordenar_select"
+        class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none"
       >
         <option selected>Ordenar producto por:</option>
-        <option value="US">Menor a mayor precio</option>
-        <option value="CA">Mayor a menor pecio </option>
+        <option value="menor">Menor a mayor precio</option>
+        <option value="mayor">Mayor a menor precio</option>
       </select>
     </form>
   </div>
-  <section class="flex gap-y-2">
+
+  <section class="flex gap-2">
     <AsideProducts />
-    <article>
-      <div
-        class="grid grid-cols-3 gap-x-2 md:grid-cols-3 lg:grid-cols-4 gap-y-14 p-2 w-full mb-10 md:mb-16"
-        id="cards-categorias"
-      >
-        {
-          productosFiltrados.map((per) => (
-            <CardProducts
-              id={per.id}
-              descuento={per.descuento}
-              image={per.imagen}
-              nombre={per.nombre}
-              precio={per.precio}
-            />
-          ))
-        }
-      </div>
+    <article class="w-full">
+      {
+        products.length > 0 ? (
+          <div
+            class="grid grid-cols-3 gap-x-8 md:grid-cols-3 lg:grid-cols-4 gap-y-8 p-2 w-full mb-10 md:mb-16"
+            id="cards-categorias"
+          >
+            {" "}
+            {products.map((per) => (
+              <CardProducts
+                slug={per.slug}
+                discount={per.discount}
+                image={`${PUBLIC_HOST}${per.images[0]?.url}`}
+                title={per.title}
+                price={per.price}
+              />
+            ))}
+          </div>
+        ) : (
+          <div class="flex justify-center  w-full py-3 items-center"   id="cards-categorias">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              width="24"
+              height="24"
+              stroke-width="2"
+              class="stroke-gray-700"
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke="currentColor"
+            >
+              <path d="M3 21l18 0" />
+              <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+              <path d="M5 21l0 -10.15" />
+              <path d="M19 21l0 -10.15" />
+              <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+            </svg>
+            <p class="text-gray-700 pl-1">No hay productos disponibles</p>
+          </div>
+        )
+      }
     </article>
   </section>
 </LayoutPages>
+
 <style>
   #txt-title,
   #txt-text,
@@ -79,9 +116,7 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
     animation: showContent 0.5s 1s linear 1 forwards;
   }
 
-  #txt-title,
-  #filtros,
-  #txt-text {
+  #filtros {
     transform: translateY(50px);
     filter: blur(20px);
   }
@@ -99,16 +134,13 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
     }
   }
 
-  #txt-tittle {
+  #txt-tittle, #txt-text {
     animation-delay: 1s;
   }
   #filtros {
     animation-delay: 1.2s;
   }
-  #txt-text {
-    animation-delay: 1.6s;
-  }
   #cards-categorias {
-    animation-delay: 2.5s;
+    animation-delay: 1.6s;
   }
 </style>

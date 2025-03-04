@@ -1,13 +1,23 @@
 ---
-import { productos } from "@/content";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
+import type{Producto} from '@/types'
+import { getProducts } from "@/services/getProducts";
+const {PUBLIC_HOST} = import.meta.env
+let products: Producto[] = []
+
+try {
+  const response = await getProducts()
+  products = response.data
+} catch (error) {
+console.log('Error en la solicitud de productos', error)  
+}
 ---
 
-<LayoutPages title="productos - tortas - postres - cupcakes - galletas">
+<LayoutPages title="Tortas - postres - cupcakes - galletas">
   <h1
-    class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-4"
+    class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-6"
     id="txt-title"
   >
     Explora Nuestra Selección de Tortas, Galletas y Cupcakes
@@ -23,7 +33,7 @@ import AsideProducts from "@/components/AsideProducts.astro";
     <strong> ¡Descubre nuestra colección hoy mismo!</strong>
   </p>
   <div
-    class="h-auto w-full flex my-4 items-center justify-end pr-2 md:pr-0"
+    class="h-auto w-full flex my-8 items-center justify-end pr-2 md:pr-0"
     id="filtros"
   >
     <form class="justify-end">
@@ -45,21 +55,21 @@ import AsideProducts from "@/components/AsideProducts.astro";
       </select>
     </form>
   </div>
-  <section class="flex gap-y-2">
+  <section class="flex gap-2">
     <AsideProducts />
     <article>
       <div
-        class="grid grid-cols-2 gap-x-2 md:grid-cols-3 lg:grid-cols-4 gap-y-14 p-2 w-full mb-10 md:mb-16"
+        class="grid grid-cols-2 gap-x-10 md:grid-cols-3 lg:grid-cols-4 gap-y-8  p-2 w-full mb-10 md:mb-16"
         id="cards-categorias"
       >
         {
-          productos.map((per) => (
+          products.map((prod) => (
             <CardProducts
-              id={per.id}
-              descuento={per.descuento}
-              image={per.imagen}
-              nombre={per.nombre}
-              precio={per.precio}
+              slug={prod.slug}
+              discount={prod.discount}
+              image={`${PUBLIC_HOST}${prod.images[0]?.url}`}
+              title={prod.title}
+              price={prod.price}
             />
           ))
         }
@@ -68,7 +78,7 @@ import AsideProducts from "@/components/AsideProducts.astro";
   </section>
 </LayoutPages>
 
-<style>
+ <style>
   #txt-title,
   #txt-text,
   #cards-categorias,
@@ -107,4 +117,4 @@ import AsideProducts from "@/components/AsideProducts.astro";
   #cards-categorias {
     animation-delay: 2.5s;
   }
-</style>
+</style> 

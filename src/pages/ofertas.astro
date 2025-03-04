@@ -1,21 +1,28 @@
 ---
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
-import {getProductosConOfertas } from "@/content";
 import AsideProducts from "@/components/AsideProducts.astro";
+import type { Producto } from "@/types";
+import { getOferts } from "@/services/getProducts";
+const { PUBLIC_HOST } = import.meta.env;
+let products: Producto[] = [];
 
-const productosConOfertas = getProductosConOfertas()
-
+try {
+  const response = await getOferts();
+  products = response.data;
+} catch (error) {
+  console.log("Error en la solicitud de productos", error);
+}
 ---
 
 <LayoutPages title="Ofertas - las mejores oferfas para que te des un gusto">
   <h1
-    class="text-2xl md:text-3xl text-balance text-[#f1683a] font-bold mb-2 pl-3 md:pl-0"
+    class="text-2xl md:text-3xl text-balance text-[#f1683a] font-bold mb-2 pl-3 md:pl-0 text-center"
     id="txt-title"
   >
     Ofertas en tortas y postres artesanales
   </h1>
-    <p class="text-sm md:text-base text-wrap px-3 " id="txt">
+  <p class="text-sm md:text-base text-wrap px-3 md:px-0 pb-4" id="txt">
     Descubre sabor, calidad y diseño al mejor precio. ¡Haz tu pedido ahora y
     disfruta de nuestros descuentos!
   </p>
@@ -27,57 +34,55 @@ const productosConOfertas = getProductosConOfertas()
         id="cards-ofertas"
       >
         {
-          productosConOfertas.map((per) => (
+          products.map((prod) => (
             <CardProducts
-              id={per.id}
-              descuento={per.descuento}
-              image={per.imagen}
-              nombre={per.nombre}
-              precio={per.precio}
+              slug={prod.slug}
+              discount={prod.discount}
+              image={`${PUBLIC_HOST}${prod.images[0]?.url}`}
+              title={prod.title}
+              price={prod.price}
             />
           ))
         }
       </div>
     </article>
   </section>
- 
 </LayoutPages>
 
 <style>
-    #txt-title,
-    #txt,
-    #cards-ofertas {
-      opacity: 0;
-      animation: showContent 0.5s 1s linear 1 forwards;
+  #txt-title,
+  #txt,
+  #cards-ofertas {
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+  }
+
+  #filtros,
+  #txt {
+    transform: translateY(50px);
+    filter: blur(20px);
+  }
+
+  #cards-ofertas {
+    transform: translatex(-50px);
+    filter: blur(5px);
+  }
+
+  @keyframes showContent {
+    to {
+      transform: translateY(0px);
+      filter: blur(0px);
+      opacity: 1;
     }
-  
-    #filtros,
-    #txt{
-      transform: translateY(50px);
-      filter: blur(20px);
-    }
-  
-    #cards-ofertas {
-      transform: translatex(-50px);
-      filter: blur(5px);
-    }
-  
-    @keyframes showContent {
-      to {
-        transform: translateY(0px);
-        filter: blur(0px);
-        opacity: 1;
-      }
-    }
-  
-    #txt-tittle {
-      animation-delay: .5s;
-    }
-    #txt {
-      animation-delay: 1.6s;
-    }
-    #cards-ofertas {
-      animation-delay: 2.5s;
-    }
-  </style>
-  
+  }
+
+  #txt-tittle {
+    animation-delay: 0.5s;
+  }
+  #txt {
+    animation-delay: 1.6s;
+  }
+  #cards-ofertas {
+    animation-delay: 2.5s;
+  }
+</style>

@@ -1,8 +1,19 @@
 ---
 import CardProducts from "@/components/CardProducts.astro";
 import LayoutPages from "@/layouts/LayoutPages.astro";
-import { productos } from "@/content/productos";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import { getCategorieBy } from "@/services/getCategories";
+import type { Producto } from "@/types";
+const HOST = import.meta.env.PUBLIC_HOST;
+let products: Producto[] = [];
+
+try {
+  const response = await getCategorieBy("personalized");
+  const categoriaData = response.data;
+  products = categoriaData[0].products || [];
+} catch (error) {
+  console.error(`⚠️ Error obteniendo productos para los personlizados:`, error);
+}
 ---
 
 <LayoutPages title="Personalizados - pasteleria personalizada">
@@ -29,11 +40,10 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
         class="text-lg md:text-2xl text-[#f1683a] font-bold text-center"
         id="subtittle"
       >
-      Sabores Únicos, Diseños Exclusivos: Personaliza tu Pedido
+        Sabores Únicos, Diseños Exclusivos: Personaliza tu Pedido
       </h2>
       <p class="text-xs md:text-sm text-center text-balance">
-        Diseñamos pasteles únicos según tus ideas y
-        creatividad.
+        Diseñamos pasteles únicos según tus ideas y creatividad.
       </p>
     </div>
   </section>
@@ -60,9 +70,12 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
     <hr />
     <p class="text-sm md:text-base text-wrap pl-4 md:pl-0 my-4" id="des">
       Descubre nuestras recomendaciones de pasteles personalizados diseñados
-      para inspirarte. Si no encuentras el diseño que buscas, ver al 
-      formulario de <a href="/personalizados/form-datos-personalizado" class="text-[#f1683a] hover:underline duration-300">personalizados</a> para pedir un pastel único según tu creatividad. ¡Estamos aquí
-      para hacer realidad tus ideas dulces!
+      para inspirarte. Si no encuentras el diseño que buscas, ver al formulario
+      de <a
+        href="/personalizados/form-datos-personalizado"
+        class="text-[#f1683a] hover:underline duration-300">personalizados</a
+      > para pedir un pastel único según tu creatividad. ¡Estamos aquí para hacer
+      realidad tus ideas dulces!
     </p>
   </section>
 
@@ -72,13 +85,13 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
       id="cards-personalizados"
     >
       {
-        productos.map((per) => (
+        products.map((per) => (
           <CardProducts
-            id={per.id}
-            descuento={per.descuento}
-            image={per.imagen}
-            nombre={per.nombre}
-            precio={per.precio}
+            slug={per.slug}
+            discount={per.discount}
+            image={`${HOST}${per.images[0].url}`}
+            title={per.title}
+            price={per?.price}
           />
         ))
       }
@@ -86,7 +99,7 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
   </article>
 
   <ContainerSecctions>
-    <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2 ">
+    <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2">
       Tu pastel personalizado
     </h3>
   </ContainerSecctions>
@@ -94,7 +107,7 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
   <ContainerSecctions class="mt-2">
     <article class="flex items-center px-3">
       <div class="max-w-[70%]">
-        <p class="text-balance text-sm md:text-base mb-6 italic"  id="des">
+        <p class="text-balance text-sm md:text-base mb-6 italic" id="des">
           Descubre el sabor de la tradición con los ingredientes más selectos.
           Cada receta está cuidadosamente elaborada para ofrecerte lo mejor de
           nuestra gastronomía. ¡Haz tu pedido ahora y disfruta la perfección en
@@ -117,9 +130,7 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
   </ContainerSecctions>
 </LayoutPages>
 
-
 <style>
-
   /* animacion de texto y cards */
 
   #box-tittle,
@@ -174,6 +185,4 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
       transform: translateY(0);
     }
   }
-
-
 </style>
