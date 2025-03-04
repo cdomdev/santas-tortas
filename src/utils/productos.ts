@@ -22,8 +22,8 @@ export const priceFormated = (value: number | string | undefined) => {
 
 export const calcularSubTotal = (producto: Producto) => {
   const cantidad = producto.quantity ?? 0;
-  const valor = parseFloat(producto.precio) ?? 0;
-  const descuento = producto.descuento ?? 0;
+  const valor = parseFloat(producto.price) ?? 0;
+  const descuento = producto.discount ?? 0;
 
   let valorTotal;
   if (descuento && descuento > 0) {
@@ -47,14 +47,14 @@ export const calcularTotal = (items: Producto[] | null | undefined): number => {
 
   return items.reduce((total, item) => {
     const cantidad = item.quantity || 0;
-    const valor = parseFloat(item.precio);
+    const valor = parseFloat(item.price);
 
     let valorFinal;
 
-    if (item.descuento && item.descuento > 0) {
+    if (item.discount && item.discount > 0) {
       // Verifica si hay descuento y calcula el valor con descuento
       valorFinal = parseFloat(
-        calcularDescuentoParaTotal(item.precio, item.descuento)
+        calcularDescuentoParaTotal(item.price, item.discount)
       );
     } else {
       valorFinal = valor;
