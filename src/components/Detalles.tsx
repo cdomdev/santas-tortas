@@ -55,9 +55,9 @@ export const Detalles = () => {
                   key={producto.id}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
                 >
-                  <td className="px-4 md:px-6 py-4">{producto.nombre}</td>
+                  <td className="px-4 md:px-6 py-4">{producto.title}</td>
                   <td className="px-4 md:px-6 py-4 text-red-600">
-                    {producto.descuento}%
+                    {producto.discount}%
                   </td>
                   <td className="px-4 md:px-6 py-4">{producto.quantity}</td>
                   <td className="px-4 md:px-6 py-4">{calcularSubTotal(producto)}</td>

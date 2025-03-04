@@ -2,14 +2,13 @@ import type { Producto } from "@/types";
 import { useState } from "react";
 import { eventEmitter } from "@/events";
 import { Toast } from "../Toast";
-import { handleToast} from "@/utils";
+import { handleToast } from "@/utils";
 
 export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [toastMessage, setToastMessage] = useState<string>("");
   const [showToast, setShowToast] = useState<boolean>(false);
   const [bgToast, setBgToast] = useState<string>("");
-
 
   const handleIncrement = () => {
     setQuantity((prevQuantity) => prevQuantity + 1);
@@ -43,17 +42,15 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
     }
   };
 
- 
-
   const handleAddToCart = () => {
     addProductoLocal(producto, quantity);
-     handleToast({
-            background: 'toast-success',
-            message: `${quantity > 1 ? "Se agregaron nuevos productos" : "Se agrego un nuevo producto"} a tu carrito`,
-            setShowToast,
-            setBgToast,
-            setToastMessage
-          });
+    handleToast({
+      background: "toast-success",
+      message: `${quantity > 1 ? "Se agregaron nuevos productos" : "Se agrego un nuevo producto"} a tu carrito`,
+      setShowToast,
+      setBgToast,
+      setToastMessage,
+    });
   };
 
   return (
@@ -71,21 +68,17 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
         <button className="decrement" onClick={handleDecrement}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-shopping-cart-minus size-6 font-semibold hover:scale-125 duration-200"
-            width="44"
-            height="44"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
             fill="none"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
+            width="24"
+            height="24"
+            strokeWidth="2"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-            <path d="M12.5 17h-6.5v-14h-2" />
-            <path d="M6 5l14 1l-1 7h-13" />
-            <path d="M16 19h6" />
+            <path d="M9 12h6"></path>
+            <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
           </svg>
           <span className="sr-only">decrement</span>
         </button>
@@ -103,22 +96,19 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
         <button className="increment" onClick={handleIncrement}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-shopping-cart-plus size-6 font-semibold hover:scale-125 duration-200"
-            width="44"
-            height="44"
             viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="#2c3e50"
             fill="none"
-            strokeLinecap="round"
+            width="24"
+            height="24"
+            strokeWidth="2"
             strokeLinejoin="round"
+            strokeLinecap="round"
+            stroke="currentColor"
+            className="stroke-black fill-white"
           >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-            <path d="M12.5 17h-6.5v-14h-2" />
-            <path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5" />
-            <path d="M16 19h6" />
-            <path d="M19 16v6" />
+            <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
+            <path d="M15 12h-6"></path>
+            <path d="M12 9v6"></path>
           </svg>
           <span className="sr-only">increment</span>
         </button>

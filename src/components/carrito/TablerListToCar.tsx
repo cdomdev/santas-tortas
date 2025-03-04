@@ -4,6 +4,8 @@ import { DeleteProduct } from "./DeleteProduct";
 import { Toast } from "../Toast";
 import { calcularSubTotal, calcularTotal, formateValue } from "@/utils";
 import { handleToast } from "@/utils";
+import { eventEmitter } from "@/events";
+const { PUBLIC_HOST } = import.meta.env;
 
 const TablerListToCar = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -12,8 +14,19 @@ const TablerListToCar = () => {
   const [bgToast, setBgToast] = useState<string>("");
 
   useEffect(() => {
-    const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
-    setProductos(carrito);
+    const handleCarritoChange = () => {
+      const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
+      setProductos(carrito);
+    };
+    if (eventEmitter) {
+      eventEmitter.on("carritoChanged", handleCarritoChange);
+    }
+    handleCarritoChange();
+    return () => {
+      if (eventEmitter) {
+        eventEmitter.off("carritoChanged", handleCarritoChange);
+      }
+    };
   }, []);
 
   const handleNetxPage = () => {
@@ -107,19 +120,19 @@ const TablerListToCar = () => {
                   key={producto.id}
                   className="bg-white border-b dark:bg-gray-800 hover:bg-gray-50 "
                 >
-                  <td className="flex flex-col items-start justify-center gap-y-1 p-2">
+                  <td className="flex flex-col items-center justify-center gap-y-1 p-2">
                     <img
-                      src={producto.imagen}
-                      className="size-16 md:size-24 rounded-sm"
-                      alt={producto.nombre}
+                      src={`${PUBLIC_HOST}${producto.images[0].url}`}
+                      className="size-16 md:size-24 rounded-full hover:rounded-md  duration-100"
+                      alt={producto.title}
                     />
 
-                    <span className="font-semibold md:pl-2 text-center text-black text-balance">
-                      {producto.nombre}
+                    <span className="font-semibold text-center text-black text-balance">
+                      {producto.title.replaceAll("-", " ")}
                     </span>
                   </td>
                   <td className="px-4 py-4 font-semibold text-red-600 ">
-                    {producto.descuento} %
+                    {producto.discount} %
                   </td>
                   <td className="px-4 py-4 font-semibold text-gray-900 dark:text-white">
                     {producto.quantity}

@@ -1,9 +1,9 @@
-import type { UUID, Producto } from "@/types/index";
+import type { Producto } from "@/types/index";
 import { eventEmitter } from "@/events";
 import { handleToast } from "@/utils";
 
 type DeleteProductProps = {
-  productoId: UUID;
+  productoId: string | number;
   productos: Producto[];
   setProductos: (productos: Producto[]) => void;
   setToastMessage: (message: string) => void;
@@ -19,11 +19,11 @@ export const DeleteProduct = ({
   setShowToast,
   setBgToast,
 }: DeleteProductProps) => {
+
   const deleteProduct = () => {
     const updateItemsCar = productos.filter((item) => item.id !== productoId);
     localStorage.setItem("carrito", JSON.stringify(updateItemsCar));
     setProductos(updateItemsCar);
-
     handleToast({
       background: "toast-success",
       message: `Se elimino un producto de tu carrito`,
