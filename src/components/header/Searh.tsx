@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { searchProducts } from "@/services";
+import { searchProducts } from "@/lib";
 import type { Producto } from "@/types";
 import { formateValue } from "@/utils";
 const { PUBLIC_HOST } = import.meta.env;
