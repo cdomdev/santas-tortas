@@ -2,6 +2,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { handleToast } from "@/utils";
 import { Toast } from "../Toast";
 import { useState } from "react";
+import Cookies from "js-cookie";
+import { initSesion } from "@/lib/auth";
 
 type PropLogin = {
   email: string;
@@ -10,30 +12,43 @@ type PropLogin = {
 };
 
 const Login = () => {
-   const [toastMessage, setToastMessage] = useState<string>("");
-    const [showToast, setShowToast] = useState<boolean>(false);
-    const [bgToast, setBgToast] = useState<string>("");
-    const [loading, setLoading] = useState(false);
-  
-  const handleSubmit = (values: PropLogin) => {
+  const [toastMessage, setToastMessage] = useState<string>("");
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [bgToast, setBgToast] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (values: PropLogin) => {
     console.log(values);
     setLoading(true);
-    handleToast({
-      background: 'toast-success',
-      message: 'Inicio de sesion exitoso',
-      setShowToast,
-      setBgToast,
-      setToastMessage
-    });
+    try {
+      const response = await initSesion(values);
+      if (response) {
+        console.log(response);
+        setLoading(false);
+        handleToast({
+          background: "toast-success",
+          message: "Inicio de sesion exitoso",
+          setShowToast,
+          setBgToast,
+          setToastMessage,
+        });
+      }
+      const { jwt, user } = response;
+      Cookies.set("access_token", jwt, {
+        expires: 1,
+        sameSite: "lax",
+        secure: true,
+      });
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
 
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000);
     
   };
   return (
     <>
-     <Toast
+      <Toast
         showToast={showToast}
         setShowToast={setShowToast}
         toastMessage={toastMessage}
@@ -49,26 +64,27 @@ const Login = () => {
         }}
         validate={(values: PropLogin) => {
           const errors: Partial<PropLogin> = {};
-        
+
           if (!values.email) {
             errors.email = "¡El campo para el correo no puede quedar vacío!";
-          } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+          ) {
             errors.email = "¡Debe ingresar un correo válido!";
           }
-        
+
           if (!values.password) {
             errors.password = "¡Este campo no puede quedar vacío!";
           }
-        
+
           if (!values.passwordRepeat) {
             errors.passwordRepeat = "¡Se requiere confirmar la contraseña!";
           } else if (values.password !== values.passwordRepeat) {
             errors.passwordRepeat = "¡Las contraseñas deben coincidir!";
           }
-        
+
           return errors;
         }}
-        
         onSubmit={handleSubmit}
       >
         {(formik) => (
@@ -118,7 +134,6 @@ const Login = () => {
                 className="text-red-600 text-xs"
               />
             </div>
-
 
             <div className="relative z-0 w-full mb-5 group">
               <Field
