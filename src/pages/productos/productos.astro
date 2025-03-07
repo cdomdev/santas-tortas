@@ -3,7 +3,7 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type{Producto} from '@/types'
-import { getProducts } from "@/services/getProducts";
+import { getProducts } from "@/lib/getProducts";
 const {PUBLIC_HOST} = import.meta.env
 let products: Producto[] = []
 
@@ -106,7 +106,7 @@ console.log('Error en la solicitud de productos', error)
   }
 
   #txt-tittle {
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
   }
   #filtros {
     animation-delay: 1.2s;

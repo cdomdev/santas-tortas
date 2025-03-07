@@ -3,8 +3,9 @@ import { contenido } from "@/content";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
+export const prerender = true
 import type { Producto } from "@/types";
-import { getCategories, getCategorieBy } from "@/services/getCategories";
+import { getCategories, getCategorieBy } from "@/lib/getCategories";
 const { PUBLIC_HOST } = import.meta.env;
 const { categoria } = Astro.params;
 

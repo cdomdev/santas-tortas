@@ -3,7 +3,7 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import { BtnAddCar } from "@/components/carrito/BtnAddProductToCar";
 import { formateValue } from "@/utils";
 import type { Producto } from "@/types";
-import { getProducts, getProductsBy } from "@/services/getProducts";
+import { getProducts, getProductsBy } from "@/lib/getProducts";
 import { Gallery } from "@/components/detallesProductos/Gallery";
 
 const { slug } = Astro.params ?? {};

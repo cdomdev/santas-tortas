@@ -3,7 +3,7 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
-import { getOferts } from "@/services/getProducts";
+import { getOferts } from "@/lib/getProducts";
 const { PUBLIC_HOST } = import.meta.env;
 let products: Producto[] = [];
 
@@ -77,7 +77,7 @@ try {
   }
 
   #txt-tittle {
-    animation-delay: 0.5s;
+    animation-delay: 0.2s;
   }
   #txt {
     animation-delay: 1.6s;

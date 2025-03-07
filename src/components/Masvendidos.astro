@@ -1,5 +1,5 @@
 ---
-import { getProducts } from "@/services";
+import { getProducts } from "@/lib";
 import type { Producto } from "@/types";
 import CardProducts from "./CardProducts.astro";
 const { PUBLIC_HOST } = import.meta.env;
@@ -16,7 +16,7 @@ try {
 <article class="grid grid-cols-2 gap-5 py-4 gap-y-4 md:gap-10 lg:grid-cols-4">
   {
     products
-      .slice(0, 4)
+      .slice(4, -12)
       .map((product) => (
         <CardProducts
           slug={product.slug}

@@ -2,7 +2,7 @@
 import CardProducts from "@/components/CardProducts.astro";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
-import { getCategorieBy } from "@/services/getCategories";
+import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
 const HOST = import.meta.env.PUBLIC_HOST;
 let products: Producto[] = [];

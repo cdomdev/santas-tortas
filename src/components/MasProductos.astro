@@ -1,7 +1,7 @@
 ---
 import CardProducts from "./CardProducts.astro";
 import type { Producto } from "@/types";
-import { getProducts } from "@/services";
+import { getProducts } from "@/lib";
 const { PUBLIC_HOST } = import.meta.env;
 let products: Producto[] = [];
 
