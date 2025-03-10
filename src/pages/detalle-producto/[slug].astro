@@ -8,8 +8,6 @@ import { Gallery } from "@/components/detallesProductos/Gallery";
 
 const slug = Astro.params?.slug || "";
 
-console.log("Slug obtenido:", slug);
-
 let producto: Producto | null = null;
 
 if (slug) {

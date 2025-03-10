@@ -7,6 +7,7 @@ let products: Producto[] = [];
 try {
   const response = await getProducts();
   products = response.data;
+  console.log('mas vendido', products)
 } catch (error) {
   console.log("Error en la solicitud de productos", error);
 }
