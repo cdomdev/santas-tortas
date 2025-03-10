@@ -7,6 +7,7 @@ const categorias = [
 ];
 
 import CarCountAndNavigate from "./CarCountAndNaviage";
+import DropDown from "./DropDown";
 import Search from "./Searh";
 
 const cookies = Astro.cookies;
@@ -32,9 +33,14 @@ const isAuthenticated = authToken !== undefined;
     >
       <Search client:load />
 
-      {
+      <DropDown isAuthenticated={isAuthenticated}  client:load  />
+      <!-- {
         isAuthenticated ? (
-          <a href={`/profile/${'carlos'}`} class="flex items-center gap-y-1 flex-col">
+          <a
+            href={`/profile/${"carlos"}`}
+            class="flex items-center gap-y-1 flex-col"
+            id="item-profile"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -74,7 +80,7 @@ const isAuthenticated = authToken !== undefined;
             <span class="hidden md:block text-xs -mt-1 text-black">Cuenta</span>
           </a>
         )
-      }
+      } -->
 
       <CarCountAndNavigate client:load />
       <button
@@ -191,3 +197,14 @@ const isAuthenticated = authToken !== undefined;
     display: block;
   }
 </style>
+
+<script>
+  import { eventEmitter } from "@/events";
+  const items = document.getElementById("item-profile");
+  if (eventEmitter) {
+    eventEmitter.on("carritoChanged", changeState);
+  }
+  function changeState() {
+    console.log("cambio el estado");
+  }
+</script>

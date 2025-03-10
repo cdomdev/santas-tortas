@@ -1,6 +1,13 @@
 ---
 import LayoutAcounts from "@/layouts/layoutAcounts.astro";
 import LoginFom from "@/components/auth/Login";
+const cookies = Astro.cookies;
+const authToken = cookies.get("access_token");
+const isAuthenticated = authToken !== undefined;
+
+if (isAuthenticated) {
+  return Astro.redirect("/");
+}
 ---
 
 <LayoutAcounts title="Iniciar sesion en santas tortas">
@@ -21,9 +28,8 @@ import LoginFom from "@/components/auth/Login";
       <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
       <path d="M15 19l2 2l4 -4"></path>
     </svg>
-    <h1 class="text-2xl font-semibold ">
-      Iniciar sesion
-    </h1>
+    <h1 class="text-2xl font-semibold">Iniciar sesion</h1>
   </div>
   <LoginFom client:load />
+  
 </LayoutAcounts>

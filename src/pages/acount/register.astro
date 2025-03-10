@@ -1,6 +1,13 @@
 ---
 import LayoutAcounts from "@/layouts/layoutAcounts.astro";
 import Registro from "@/components/auth/Registro";
+const cookies = Astro.cookies;
+const authToken = cookies.get("access_token");
+const isAuthenticated = authToken !== undefined;
+
+if(isAuthenticated){
+  return Astro.redirect('/')
+}
 ---
 
 <LayoutAcounts title="Registro - crear cuenta en santas tortas">
