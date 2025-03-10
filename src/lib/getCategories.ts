@@ -2,9 +2,7 @@ import { query } from "./strapi";
 // 1️⃣ obnter todas las categorias
 
 export async function getCategories() {
-  return query(`categories?fields[0]=name`).then((res) => {
-    return res;
-  });
+  return query(`categories?fields[0]=name`, "GET", false)
 }
 
 // 2️⃣ obnter cada categoria con los productos asociados

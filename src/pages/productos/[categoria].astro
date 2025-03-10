@@ -6,29 +6,35 @@ import AsideProducts from "@/components/AsideProducts.astro";
 export const prerender = true;
 import type { Producto } from "@/types";
 import { getCategories, getCategorieBy } from "@/lib/getCategories";
-const { categoria } = Astro.params;
 
 export async function getStaticPaths() {
   // 1️⃣ Obtener TODAS las categorías desde la API
   const response = await getCategories();
   const categorias = response.data;
 
-  // 2️⃣ Generar las rutas dinámicas con productos filtrados
-  return categorias.map((cat: any) => ({
-    params: { categoria: cat.name },
-    props: { categoria: cat.name },
-  }));
+  // 2️⃣ Obtener productos para cada categoría y generar rutas estáticas
+  const paths = await Promise.all(
+    categorias.map(async (cat: any) => {
+      let products: Producto[] = [];
+      try {
+        const res = await getCategorieBy(cat.name);
+        products = res.data;
+      } catch (error) {
+        console.error(`⚠️ Error obteniendo productos para ${cat.name}:`, error);
+      }
+
+      return {
+        params: { categoria: cat.name },
+        props: { categoria: cat.name, products }, 
+      };
+    })
+  );
+
+  return paths;
 }
 
-// 3️⃣ Obtener los productos de la categoría actual
-let products: Producto[] = [];
-
-try {
-  const response = await getCategorieBy(categoria);
-  products = response.data;
-} catch (error) {
-  console.error(`⚠️ Error obteniendo productos para ${categoria}:`, error);
-}
+// 3️⃣ Recibir props generados en getStaticPaths
+const { categoria, products } = Astro.props;
 
 const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
@@ -74,7 +80,7 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
             id="cards-categorias"
           >
             {" "}
-            {products.map((per) => (
+            {products.map((per: Producto) => (
               <CardProducts
                 slug={per.slug}
                 discount={per.discount}
