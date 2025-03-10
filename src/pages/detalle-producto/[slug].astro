@@ -15,7 +15,6 @@ let producto: Producto | null = null;
 if (slug) {
   try {
     const response = await getProductsBy(slug);
-    console.log("Datos del producto:", response);
     producto = response?.data?.[0] || null;
   } catch (error) {
     console.error(`⚠️ Error obteniendo producto con slug ${slug}:`, error);
