@@ -1,0 +1,53 @@
+---
+import LayoutPages from "@/layouts/LayoutPages.astro";
+let user = "carlos";
+---
+
+<LayoutPages title="hola">
+  <div class="flex justify-center items-center flex-col p-10">
+    <div
+      class="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 mb-5"
+    >
+      <svg
+        class="absolute size-24 text-gray-400 -left-[2px] md:-left-2"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          fill-rule="evenodd"
+          d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+          clip-rule="evenodd"></path></svg
+      >
+    </div>
+
+    <h1 class="font-medium mb-6">
+      ¡Hola <strong class="uppercase">{user}!</strong>
+      <hr class="border-2 border-gray-500" />
+    </h1>
+    <button
+      id="btn-logout"
+      class="border py-2 px-3 bg-red-600 text-white rounded-lg"
+      >Cerrar sesion</button
+    >
+  </div>
+
+  <div class="border p-4 bg-gray-100">
+    <div class="bg-white p-3 flex  justify-center">
+        <slot />
+    </div>
+  </div>
+</LayoutPages>
+
+<script>
+  import Cookies from "js-cookie";
+
+  const btnLogout = document.getElementById("btn-logout");
+  btnLogout?.addEventListener("click", () => {
+    clearSesion();
+  });
+  function clearSesion() {
+    console.log("se activo el btno");
+    Cookies.remove("access_token");
+    window.location.href = "/";
+  }
+</script>
