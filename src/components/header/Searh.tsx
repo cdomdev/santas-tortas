@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { searchProducts } from "@/lib";
 import type { Producto } from "@/types";
 import { formateValue } from "@/utils";
-const { PUBLIC_HOST } = import.meta.env;
 
 const Search = () => {
   const [show, setShow] = useState<boolean>(false);

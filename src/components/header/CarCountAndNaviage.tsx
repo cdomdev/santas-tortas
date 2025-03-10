@@ -4,7 +4,6 @@ import type { Producto } from "@/types";
 import {calcularTotal, formateValue } from "@/utils";
 import { DeleteProduct } from "../carrito/DeleteProduct";
 import { Toast } from "../Toast";
-const { PUBLIC_HOST } = import.meta.env;
 
 
 const CarCountAndNavigate = () => {

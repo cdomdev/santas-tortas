@@ -1,55 +1,50 @@
 ---
+export const prerender = true; 
+
 import { contenido } from "@/content";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
-export const prerender = true;
 import type { Producto } from "@/types";
 import { getCategories, getCategorieBy } from "@/lib/getCategories";
 
+// 1️⃣ Obtener TODAS las categorías y sus productos para generar rutas estáticas
 export async function getStaticPaths() {
-  // 1️⃣ Obtener TODAS las categorías desde la API
   const response = await getCategories();
   const categorias = response.data;
 
-  // 2️⃣ Obtener productos para cada categoría y generar rutas estáticas
+  // Obtener productos de todas las categorías en un solo proceso
   const paths = await Promise.all(
     categorias.map(async (cat: any) => {
-      let products: Producto[] = [];
       try {
         const res = await getCategorieBy(cat.name);
-        products = res.data;
+        return {
+          params: { categoria: cat.name },
+          props: { categoria: cat.name, products: res.data },
+        };
       } catch (error) {
         console.error(`⚠️ Error obteniendo productos para ${cat.name}:`, error);
+        return {
+          params: { categoria: cat.name },
+          props: { categoria: cat.name, products: [] },
+        };
       }
-
-      return {
-        params: { categoria: cat.name },
-        props: { categoria: cat.name, products }, 
-      };
     })
   );
 
   return paths;
 }
 
-// 3️⃣ Recibir props generados en getStaticPaths
+// 2️⃣ Recibir los datos desde `props`
 const { categoria, products } = Astro.props;
-
 const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
 
 <LayoutPages title={categoria}>
-  <h1
-    class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
-    id="txt-title"
-  >
+  <h1 class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1" id="txt-title">
     {contenidoPages?.titulo}
   </h1>
-  <p
-    class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold"
-    id="txt-text"
-  >
+  <p class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold" id="txt-text">
     ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
   </p>
   <p class="text-xs md:text-base my-3 text-balance" id="txt-text">
@@ -73,50 +68,30 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
   <section class="flex gap-2">
     <AsideProducts />
     <article class="w-full">
-      {
-        products.length > 0 ? (
-          <div
-            class="grid grid-cols-3 gap-x-8 md:grid-cols-3 lg:grid-cols-4 gap-y-8 p-2 w-full mb-10 md:mb-16"
-            id="cards-categorias"
-          >
-            {" "}
-            {products.map((per: Producto) => (
-              <CardProducts
-                slug={per.slug}
-                discount={per.discount}
-                image={`${per.images[0]?.url}`}
-                title={per.title}
-                price={per.price}
-              />
-            ))}
-          </div>
-        ) : (
-          <div
-            class="flex justify-center  w-full py-3 items-center"
-            id="cards-categorias"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              width="24"
-              height="24"
-              stroke-width="2"
-              class="stroke-gray-700"
-              stroke-linejoin="round"
-              stroke-linecap="round"
-              stroke="currentColor"
-            >
-              <path d="M3 21l18 0" />
-              <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
-              <path d="M5 21l0 -10.15" />
-              <path d="M19 21l0 -10.15" />
-              <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
-            </svg>
-            <p class="text-gray-700 pl-1">No hay productos disponibles</p>
-          </div>
-        )
-      }
+      {products.length > 0 ? (
+        <div class="grid grid-cols-3 gap-x-8 md:grid-cols-3 lg:grid-cols-4 gap-y-8 p-2 w-full mb-10 md:mb-16" id="cards-categorias">
+          {products.map((per: Producto) => (
+            <CardProducts
+              slug={per.slug}
+              discount={per.discount}
+              image={`${per.images[0]?.url}`}
+              title={per.title}
+              price={per.price}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="flex justify-center  w-full py-3 items-center" id="cards-categorias">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="24" height="24" stroke-width="2" class="stroke-gray-700" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor">
+            <path d="M3 21l18 0" />
+            <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+            <path d="M5 21l0 -10.15" />
+            <path d="M19 21l0 -10.15" />
+            <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+          </svg>
+          <p class="text-gray-700 pl-1">No hay productos disponibles</p>
+        </div>
+      )}
     </article>
   </section>
 </LayoutPages>

@@ -4,7 +4,6 @@ import type { ImageGalleryItem } from "react-image-gallery";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 
-const { PUBLIC_HOST } = import.meta.env;
 
 type StrapiImage = {
   id: number;

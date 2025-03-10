@@ -1,4 +1,5 @@
 ---
+export const prerender = true
 import CardProducts from "@/components/CardProducts.astro";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
@@ -8,7 +9,6 @@ let products: Producto[] = [];
 
 try {
   const response = await getCategorieBy("personalized");
-  console.log('datos de personlizados', response)
    products = response.data;
 } catch (error) {
   console.error(`⚠️ Error obteniendo productos para los personlizados:`, error);
