@@ -86,7 +86,7 @@ export const Detalles = () => {
                 </th>
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4"></td>
-                <td className="px-6 py-4 text-black font-semibold">
+                <td className="px-4 py-4 text-black font-semibold">
                   $ {SubtotalInt}
                 </td>
               </tr>
