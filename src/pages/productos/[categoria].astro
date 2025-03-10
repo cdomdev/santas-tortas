@@ -36,7 +36,7 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
   >
     ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
   </p>
-  <p class="text-xs md:text-base my-3 text-balance" id="txt-text">
+  <p class="text-xs md:text-base my-3 text-balance px-3 md:px-o" id="txt-text">
     {contenidoPages?.texto}
   </p>
 
@@ -60,7 +60,7 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
       {
         products.length > 0 ? (
           <div
-            class="grid grid-cols-3 gap-x-8 md:grid-cols-3 lg:grid-cols-4 gap-y-8 p-2 w-full mb-10 md:mb-16"
+            class="grid grid-cols-2 gap-x-8 md:grid-cols-4 lg:grid-cols-4 gap-y-8 p-2 w-full mb-10 md:mb-16"
             id="cards-categorias"
           >
             {products.map((per: Producto) => (
