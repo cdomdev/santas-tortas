@@ -1,7 +1,7 @@
 import { query } from "./strapi";
 // 1️⃣ obnter todas las categorias
 
-export  function getCategories() {
+export async function getCategories() {
   return query(`categories?fields[0]=name`).then((res) => {
     return res;
   });
@@ -10,10 +10,9 @@ export  function getCategories() {
 // 2️⃣ obnter cada categoria con los productos asociados
 
 
-export  function getCategorieBy(name: string) {
+export async function getCategorieBy(name: string) {
+  console.log('datos de la categoria', name)
   return query(
-    `categories?fields[0]=name&filters[name][$eq]=${name}&populate[products][fields][0]=title&populate[products][fields][1]=price&populate[products][fields][2]=discount&populate[products][fields][3]=stock&populate[products][fields][4]=creationDate&populate[products][fields][5]=slug&populate[products][fields][6]=description&populate[products][populate][images][fields][0]=url`
-  ).then((res) => {
-    return res;
-  });
+    `https://apisantastortas-production.up.railway.app/api/products?filters[category][name][$eq]=${name}&fields[0]=title&fields[1]=price&fields[2]=discount&fields[3]=stock&fields[4]=creationDate&fields[5]=description&fields[6]=slug&populate[images][fields][0]=url&populate[category][fields][0]=name`, "GET", false
+  )
 }
