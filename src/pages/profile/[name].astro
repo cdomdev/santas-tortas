@@ -1,23 +1,7 @@
 ---
-import LayoutPages from "@/layouts/LayoutPages.astro";
+import LayoutProfile from "@/layouts/LayoutProfile.astro";
 ---
 
-<LayoutPages title="hola">
-  <div>
-    <span>aqui los datos del perfil</span>
-    <button id="btn-logout" class="border py-2 px-3 bg-red-600 text-white rounded-lg">Cerrar sesion</button>
-  </div>
-</LayoutPages>
-
-<script>
-  import Cookies from "js-cookie";
-  const btnLogout = document.getElementById("btn-logout");
-  btnLogout?.addEventListener("click", () => {
-    clearSesion();
-  });
-  function clearSesion() {
-    console.log('se activo el btno')
-    Cookies.remove("access_token");
-    window.location.href = '/'
-  }
-</script>
+<LayoutProfile>
+  <h2 class="font-semibold text-base ms:text-lg">Listado de pedidos</h2>
+</LayoutProfile>

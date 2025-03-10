@@ -140,7 +140,7 @@ const Search = () => {
                         className="border-b border-t flex items-center gap-x-3 p-3 jus"
                       >
                         <img
-                          src={`${PUBLIC_HOST}${product.images?.[0]?.url ?? ""}`}
+                          src={`${product.images?.[0]?.url ?? ""}`}
                           alt="image result"
                           className="w-10 h-10 rounded-full"
                         />

@@ -23,8 +23,8 @@ type CustomImageGalleryItem = ImageGalleryItem & {
 
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const formattedImages: CustomImageGalleryItem[] = images.map((img) => ({
-    original: `${PUBLIC_HOST}${img.url}`,
-    thumbnail: `${PUBLIC_HOST}${img.url}`,
+    original: `${img.url}`,
+    thumbnail: `${img.url}`,
     renderItem: (item) => (
       <div className="w-full h-[300px] flex justify-center items-center bg-gray-100">
         <img
