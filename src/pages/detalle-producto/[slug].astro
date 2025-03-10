@@ -1,61 +1,100 @@
 ---
-export const prerender = true;
-
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { BtnAddCar } from "@/components/carrito/BtnAddProductToCar";
 import { formateValue } from "@/utils";
 import type { Producto } from "@/types";
-import { getProducts } from "@/lib/getProducts";
+import { getProductsBy } from "@/lib/getProducts";
 import { Gallery } from "@/components/detallesProductos/Gallery";
 
-// Generar rutas estáticas
-export async function getStaticPaths() {
-  const response = await getProducts();
-  const productos = response.data;
+const slug = Astro.params?.slug || "";
 
-  return productos.map((prod: Producto) => ({
-    params: { slug: prod.slug },
-  }));
+console.log("Slug obtenido:", slug);
+
+let producto: Producto | null = null;
+
+if (slug) {
+  try {
+    const response = await getProductsBy(slug);
+    console.log("Datos del producto:", response);
+    producto = response?.data?.[0] || null;
+  } catch (error) {
+    console.error(`⚠️ Error obteniendo producto con slug ${slug}:`, error);
+  }
+} else {
+  console.error("⚠️ No se encontró un slug en la URL");
 }
-
-// Obtener el producto correspondiente al slug
-const { slug } = Astro.params;
-const response = await getProducts();
-const producto = response.data.find((p: Producto) => p.slug === slug) as Producto;
 ---
+
 
 <LayoutPages title={`${producto?.title}`}>
   <article class="grid gap-3 grid-cols-1 md:grid-cols-2 sp-3">
-    <div class="py-5 flex flex-col gap-y-6 items-center justify-start w-full min-h-96 h-fit transition border border-dashed bg-gray-50">
-      <Gallery client:visible images={producto?.images ? producto.images : []} />
+    <div
+      class="py-5 flex flex-col gap-y-6 items-center justify-start w-full min-h-96 h-fit transition border border-dashed bg-gray-50"
+    >
+      <Gallery
+        client:visible
+        images={producto?.images ? producto.images : []}
+      />
     </div>
     <div class="border border-dashed p-4 flex flex-col gap-y-3 sm:max-w-[90%]">
       <div class="flex justify-between pr-2 relative">
-        <h2 class="font-bold text-base md:text-2xl mt-2">{producto?.title}</h2>
-        <div class={`${producto?.discount ? "block" : "hidden"} absolute right-2`}>
-          <img src="/bg-ofertas.webp" alt="imagen-bacground-ofertas" class="size-9" />
-          <span class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-2.5">
+        <h2 class="font-bold text-base md:text-2xl mt-2">
+          {producto?.title}
+        </h2>
+        <div
+          class={`${producto?.discount ? "block" : "hidden"} absolute right-2`}
+        >
+          <img
+            src="/bg-ofertas.webp"
+            alt="imagen-bacground-ofertas"
+            class="size-9"
+          />
+          <span
+            class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-2.5"
+          >
             {producto?.discount}%
           </span>
         </div>
       </div>
 
       <p class="text-sm md:text-xl font-semibold my-2">
-        Precio: <strong>{producto?.price ? formateValue(producto.price) : "No disponible"}</strong>
+        Precio: <strong
+          >{
+            producto?.price ? formateValue(producto.price) : "No disponible"
+          }</strong
+        >
       </p>
-      <p class="text-sm md:text-base text-balance my-3">{producto?.description}</p>
+      <p class="text-sm md:text-base text-balance my-3">
+        {producto?.description}
+      </p>
       {producto && <BtnAddCar producto={producto} client:load />}
 
-      <span class={`bg-red-50 w-full p-5 ${producto?.category.name === "personalized" ? "flex" : "hidden"} items-center justify-center flex-col rounded-md mt-6`}>
+      <!-- ⚠️ Mensaje de Advertencia -->
+
+      <span
+        class={`bg-red-50 w-full p-5 ${producto && producto?.category.name === "personalized" ? "flex" : "hidden"}  items-center justify-center flex-col rounded-md mt-6`}
+      >
         <p class="text-sm mb-3">
-          Este producto pertenece a la categoria de personalizados, si lo agrega al carrito este sera usado como referencia para la creacion de su pedido, si desea un producto mas{" "}
-          <a href="/personalizados/form-datos-personalizado" class="font-semibold underline text-blue-600 hover:text-blue-800 duration-200">personalizado</a>{" "}
-          puede ir a la seccion de personalizados y hacer la solicitud de una torta a su estilo.
+          Este producto pertenece a la categoria de personalizados, si lo agrega
+          al carrito este sera usado como referencia para la creacion de su
+          pedido, si desea un producto mas{" "}
+          <a
+            href="/personalizados/form-datos-personalizado"
+            class="font-semibold underline text-blue-600 hover:text-blue-800 duration-200"
+          >
+            personalizado
+          </a>{" "}
+          puede ir a la seccion de personalizados y hacer la solicitud de una torta
+          a su estilo
         </p>
-        <a id="buttons" href="/personalizados/form-datos-personalizado" class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200">
+        <a
+          id="buttons"
+          href="/personalizados/form-datos-personalizado"
+          class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200"
+        >
           Hacer mi pedido personalizado
         </a>
       </span>
     </div>
-  </article>
-</LayoutPages>
+  </article></LayoutPages
+>
