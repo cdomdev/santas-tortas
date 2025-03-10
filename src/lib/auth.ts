@@ -1,15 +1,36 @@
 import { query } from "./strapi";
 
-type PropLogin = {
+interface PropLogin {
   email: string;
   password: string;
   passwordRepeat: string;
-};
+}
 
-export async function initSesion(data: PropLogin) {
-    return query(`/auth/local`, "POST", {
+interface RegisterProp extends PropLogin {
+  nombre: string;
+}
+
+export async function login(data: PropLogin) {
+  return query(
+    `/auth/local`,
+    "POST",
+    {
       identifier: data.email,
       password: data.password,
-    }, false); 
-  }
-  
+    },
+    false
+  );
+}
+
+export async function register(data: RegisterProp) {
+  return query(
+    `/auth/local/register`,
+    "POST",
+    {
+      username: data.nombre,
+      email: data.email,
+      password: data.password,
+    },
+    false
+  );
+}

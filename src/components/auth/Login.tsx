@@ -1,9 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { handleToast } from "@/utils";
 import { Toast } from "../Toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { initSesion } from "@/lib/auth";
+import { login } from "@/lib/auth";
+import { eventEmitter } from "@/events";
 
 type PropLogin = {
   email: string;
@@ -16,15 +17,28 @@ const Login = () => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [bgToast, setBgToast] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [path, setPath] = useState<string>("");
 
-  const handleSubmit = async (values: PropLogin) => {
-    console.log(values);
+
+  useEffect(() => {
+    const path = window.sessionStorage.getItem("path");
+    if (path) {
+      setPath(path);
+    } else {
+      setPath("/");
+    }
+  }, []);
+
+  const handleSubmit = async (
+    values: PropLogin,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     setLoading(true);
     try {
-      const response = await initSesion(values);
+      const response = await login(values);
       if (response) {
-        console.log(response);
         setLoading(false);
+        resetForm();
         handleToast({
           background: "toast-success",
           message: "Inicio de sesion exitoso",
@@ -32,6 +46,12 @@ const Login = () => {
           setBgToast,
           setToastMessage,
         });
+        if (eventEmitter) {
+          eventEmitter.emit("changeSesion");
+          setTimeout(() => {
+            window.location.href = `${path}`;
+          }, 2000);
+        }
       }
       const { jwt, user } = response;
       Cookies.set("access_token", jwt, {
@@ -42,9 +62,9 @@ const Login = () => {
     } catch (error) {
       console.log(error);
       setLoading(false);
+    } finally {
+      setLoading(false);
     }
-
-    
   };
   return (
     <>
@@ -160,10 +180,12 @@ const Login = () => {
 
             <button
               type="submit"
-              className="text-black bg-secondary-bg hover:bg-[#d66a6e] uppercase  hover:text-white transition duration-200 focus:outline-none font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center"
+              className="text-black bg-secondary-bg hover:bg-[#d66a6e] uppercase  hover:text-white transition duration-200 focus:outline-none font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-4"
             >
               {loading ? "Iniciando sesion..." : "Iniciar sesion"}
             </button>
+
+            <span className="text-center block text-xs md:text-sm">Si no tienes una cuenta puedes crearla en <a href="/acount/register" className="underline text-blue-500 uppercase">crear cuenta</a></span>
           </Form>
         )}
       </Formik>

@@ -3,7 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Toast } from "../Toast";
 import { handleToast } from "@/utils";
 import { useState } from "react";
-
+import { register } from "@/lib/auth";
+import axios from "axios";
 
 interface PropRegister extends Usuario {
   password: string;
@@ -11,28 +12,63 @@ interface PropRegister extends Usuario {
 }
 
 const Registro = () => {
-    const [toastMessage, setToastMessage] = useState<string>("");
-      const [showToast, setShowToast] = useState<boolean>(false);
-      const [bgToast, setBgToast] = useState<string>("");
-      const [loading, setLoading] = useState(false);
-    
-  const handleSubmit = (values: PropRegister) => {
-    console.log(values);
+  const [toastMessage, setToastMessage] = useState<string>("");
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const [bgToast, setBgToast] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (
+    values: PropRegister,
+    { resetForm }: { resetForm: () => void }
+  ) => {
     setLoading(true);
-    handleToast({
-      background: 'toast-success',
-      message: 'Registro exitoso',
-      setShowToast,
-      setBgToast,
-      setToastMessage
-    });
-    setTimeout(() => {
+
+    try {
+      const response = await register(values);
+      if (response) {
+        setLoading(false);
+        resetForm();
+        setTimeout(() =>{
+          window.location.href = '/acount/login'
+        }, 2000)
+        handleToast({
+          background: "toast-success",
+          message:
+            "Registro exitoso, ya puedes iniciar sesion en santas tortas",
+          setShowToast,
+          setBgToast,
+          setToastMessage,
+        });
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        const { status } = error.response;
+        if (status === 400) {
+          handleToast({
+            background: "toast-fail",
+            message: "Ya existe un usuario con los datos ingresados",
+            setShowToast,
+            setBgToast,
+            setToastMessage,
+          });
+        } else {
+          handleToast({
+            background: "toast-fail",
+            message: "Hubo un error en el registro, intentelo de nuevo",
+            setShowToast,
+            setBgToast,
+            setToastMessage,
+          });
+        }
+      }
+      console.log(error);
+    }finally{
       setLoading(false)
-    }, 2000);
+    }
   };
   return (
     <>
-     <Toast
+      <Toast
         showToast={showToast}
         setShowToast={setShowToast}
         toastMessage={toastMessage}
@@ -162,10 +198,14 @@ const Registro = () => {
 
             <button
               type="submit"
-              className="text-black mt-5 bg-secondary-bg hover:bg-[#d66a6e] hover:text-white uppercase focus:outline-none  font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center "
+              className="text-black mt-5 bg-secondary-bg hover:bg-[#d66a6e] hover:text-white uppercase focus:outline-none  font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-4"
             >
-             {loading ? "Creando cuanta..." :"Crear cuenta"}
+              {loading ? "Creando cuanta..." : "Crear cuenta"}
             </button>
+
+
+            <span className="text-center block text-xs md:text-sm">Si ya tienes una cuenta puedes <a href="/acount/login" className="underline text-blue-500 uppercase">Iniciar sesion</a></span>
+
           </Form>
         )}
       </Formik>
