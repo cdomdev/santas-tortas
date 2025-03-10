@@ -87,7 +87,7 @@ const CarCountAndNavigate = () => {
                     className="flex gap-2  items-center justify-between border-b pb-2"
                   >
                     <img
-                      src={`${PUBLIC_HOST}${producto.images[0].url}`}
+                      src={`${producto.images[0].url}`}
                       alt={`imagen de producto ${producto.title}`}
                       className="w-16"
                     />

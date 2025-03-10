@@ -6,8 +6,11 @@ import { calcularSubTotal, calcularTotal, formateValue } from "@/utils";
 import { handleToast } from "@/utils";
 import { eventEmitter } from "@/events";
 const { PUBLIC_HOST } = import.meta.env;
+interface PropTable {
+  isAuthenticated: boolean;
+}
 
-const TablerListToCar = () => {
+const TablerListToCar = ({ isAuthenticated }: PropTable) => {
   const [productos, setProductos] = useState<Producto[]>([]);
   const [toastMessage, setToastMessage] = useState<string>("");
   const [showToast, setShowToast] = useState<boolean>(false);
@@ -194,12 +197,30 @@ const TablerListToCar = () => {
           <h4 className="font-semibold text-black text-base">Total</h4>
           <p>$: {SubtotalInt}</p>
         </span>
-        <button
-          className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
-          onClick={handleNetxPage}
-        >
-          Finalizar compra
-        </button>
+
+        {isAuthenticated ? (
+          <button
+            className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
+            onClick={handleNetxPage}
+          >
+            Finalizar compra
+          </button>
+        ) : (
+          <>
+            <span className="text-xs text-center block text-gray-400 pb-1">
+              ¡Para continuar por favor inicia sesion!
+            </span>
+            <a
+              href="/acount/login"
+              onClick={() =>
+                window.sessionStorage.setItem("path", "/carrito-compras")
+              }
+              className="uppercase block text-center text-base md:text-lg bg-secondary-bg hover:bg-[#d66a6e] duration-150 text-black font-semibold hover:text-gray-100 py-2 px-3 rounded-md w-full"
+            >
+              Necesitas inicar sesion
+            </a>
+          </>
+        )}
       </div>
     </>
   );

@@ -4,13 +4,12 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
-const HOST = import.meta.env.PUBLIC_HOST;
 let products: Producto[] = [];
 
 try {
   const response = await getCategorieBy("personalized");
-  const categoriaData = response.data;
-  products = categoriaData[0].products || [];
+  console.log('datos de personlizados', response)
+   products = response.data;
 } catch (error) {
   console.error(`⚠️ Error obteniendo productos para los personlizados:`, error);
 }
@@ -89,7 +88,7 @@ try {
           <CardProducts
             slug={per.slug}
             discount={per.discount}
-            image={`${HOST}${per.images[0].url}`}
+            image={`${per.images[0].url}`}
             title={per.title}
             price={per?.price}
           />

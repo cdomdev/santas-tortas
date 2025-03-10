@@ -4,7 +4,6 @@ import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
 import { getOferts } from "@/lib/getProducts";
-const { PUBLIC_HOST } = import.meta.env;
 let products: Producto[] = [];
 
 try {
@@ -38,7 +37,7 @@ try {
             <CardProducts
               slug={prod.slug}
               discount={prod.discount}
-              image={`${PUBLIC_HOST}${prod.images[0]?.url}`}
+              image={`${prod.images[0]?.url}`}
               title={prod.title}
               price={prod.price}
             />

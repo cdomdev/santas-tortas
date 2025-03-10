@@ -2,12 +2,17 @@
 import MasProductos from "@/components/MasProductos.astro";
 import TablerListToCar from "@/components/carrito/TablerListToCar";
 import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
+const cookies = Astro.cookies;
+const authToken = cookies.get("access_token");
+const isAuthenticated = authToken !== undefined;
+
+
 ---
 
 <LayoutCarrito title="Carrito de compras" text="Carrito de compras">
   <section class="mb-6">
     <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
-      <TablerListToCar client:load />
+      <TablerListToCar isAuthenticated={isAuthenticated} client:load />
     </div>
   </section>
 
