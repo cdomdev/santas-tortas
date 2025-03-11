@@ -1,0 +1,55 @@
+#box-tittle,
+#cards,
+#title,
+#des {
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+#des {
+    transform: translateY(50px);
+    filter: blur(20px);
+}
+
+#cards {
+    transform: translatex(50px);
+    filter: blur(5px);
+}
+
+@keyframes showContent {
+    to {
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+#title {
+    animation-delay: 0.5s;
+}
+
+#des {
+    animation-delay: 1.6s;
+}
+
+#cards {
+    animation-delay: 2.5s;
+}
+
+.animation-cake {
+    animation: cake 2s infinite;
+}
+
+@keyframes cake {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
