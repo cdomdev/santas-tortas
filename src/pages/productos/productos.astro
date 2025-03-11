@@ -4,6 +4,7 @@ import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type{Producto} from '@/types'
 import { getProducts } from "@/lib/getProducts";
+import '@/styles/globals.css'
 let products: Producto[] = []
 try {
   const response = await getProducts()
@@ -17,23 +18,23 @@ console.log('Error en la solicitud de productos', error)
 <LayoutPages title="Tortas - postres - cupcakes - galletas">
   <h1
     class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-6"
-    id="txt-title"
+    id="box-tittle"
   >
     Explora Nuestra Selección de Tortas, Galletas y Cupcakes
   </h1>
 
-  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="txt-text">
+  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
     Explora nuestra amplia variedad de productos personalizables y encuentra el
     diseño perfecto para ti. Desde regalos únicos hasta artículos exclusivos
     hechos a medida, ofrecemos opciones para cada estilo y ocasión. Personaliza
     cada detalle y crea algo verdaderamente especial.
   </p>
-  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="txt-text">
+  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
     <strong> ¡Descubre nuestra colección hoy mismo!</strong>
   </p>
   <div
     class="h-auto w-full flex my-8 items-center justify-end pr-2 md:pr-0"
-    id="filtros"
+    id="des"
   >
     <form class="justify-end">
       <label for="underline_select" class="sr-only">Underline select</label>
@@ -59,7 +60,7 @@ console.log('Error en la solicitud de productos', error)
     <article>
       <div
         class="grid grid-cols-2 gap-x-10 md:grid-cols-3 lg:grid-cols-4 gap-y-8  p-2 w-full mb-10 md:mb-16"
-        id="cards-categorias"
+        id="cards"
       >
         {
           products.map((prod) => (
@@ -77,43 +78,3 @@ console.log('Error en la solicitud de productos', error)
   </section>
 </LayoutPages>
 
- <style>
-  #txt-title,
-  #txt-text,
-  #cards-categorias,
-  #filtros {
-    opacity: 0;
-    animation: showContent 0.5s 1s linear 1 forwards;
-  }
-
-  #filtros {
-    transform: translateY(50px);
-    filter: blur(20px);
-  }
-
-  #cards-categorias {
-    transform: translatex(-50px);
-    filter: blur(5px);
-  }
-
-  @keyframes showContent {
-    to {
-      transform: translateY(0px);
-      filter: blur(0px);
-      opacity: 1;
-    }
-  }
-
-  #txt-tittle {
-    animation-delay: 0.2s;
-  }
-  #filtros {
-    animation-delay: 1.2s;
-  }
-  #txt-text {
-    animation-delay: 1.6s;
-  }
-  #cards-categorias {
-    animation-delay: 2.5s;
-  }
-</style> 

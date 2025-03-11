@@ -1,22 +1,22 @@
 ---
 import CardProducts from "@/components/CardProducts.astro";
 import LayoutPages from "@/layouts/LayoutPages.astro";
-import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
 let products: Producto[] = [];
+import '@/styles/globals.css'
 
 try {
   const response = await getCategorieBy("personalized");
-   products = response.data;
+  products = response.data;
 } catch (error) {
   console.error(`⚠️ Error obteniendo productos para los personlizados:`, error);
 }
 ---
 
 <LayoutPages title="Personalizados - pasteleria personalizada">
-  <section
-    class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
+  <div
+    class="w-full  min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
   >
     <div
       class="relative p-4 bg-[#f8f6f3] w-full max-w-[90%] md:max-w-[65%] mx-auto min-h-28 flex flex-col items-center justify-center border-dashed border-4 -mb-8"
@@ -30,7 +30,7 @@ try {
       </span>
       <h1
         class="text-2xl md:text-3xl text-primary-txt font-bold text-center mb-2"
-        id="tittle"
+        id="title"
       >
         Pastelería Personalizada
       </h1>
@@ -44,66 +44,58 @@ try {
         Diseñamos pasteles únicos según tus ideas y creatividad.
       </p>
     </div>
-  </section>
+  </div>
 
-  <section>
-    <h3
-      class="text-lg flex items-center ga-x-2 md:text-2xl text-balance font-bold pl-4 md:pl-0"
-      id="tittle"
+  <h3
+    class="text-lg flex items-center ga-x-2 md:text-2xl text-balance font-bold pl-4 md:pl-0"
+    id="tittle"
+  >
+    Recomendad
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      width="24"
+      height="24"
+      class="size-4 md:size-6"
     >
-      Recomendad
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        width="24"
-        height="24"
-        class="size-4 md:size-6"
-      >
-        <path
-          d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
-        ></path>
-      </svg>s
-    </h3>
-    <hr />
-    <p class="text-sm md:text-base text-wrap pl-4 md:pl-0 my-4" id="des">
-      Descubre nuestras recomendaciones de pasteles personalizados diseñados
-      para inspirarte. Si no encuentras el diseño que buscas, ver al formulario
-      de <a
-        href="/personalizados/form-datos-personalizado"
-        class="text-[#f1683a] hover:underline duration-300">personalizados</a
-      > para pedir un pastel único según tu creatividad. ¡Estamos aquí para hacer
-      realidad tus ideas dulces!
-    </p>
-  </section>
+      <path
+        d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+      ></path>
+    </svg>s
+  </h3>
+  <hr />
+  <p class="text-sm md:text-base text-wrap pl-4 md:pl-0 my-4" id="des">
+    Descubre nuestras recomendaciones de pasteles personalizados diseñados para
+    inspirarte. Si no encuentras el diseño que buscas, ver al formulario de <a
+      href="/personalizados/form-datos-personalizado"
+      class="text-[#f1683a] hover:underline duration-300">personalizados</a
+    > para pedir un pastel único según tu creatividad. ¡Estamos aquí para hacer realidad
+    tus ideas dulces!
+  </p>
 
-  <article>
-    <div
-      class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
-      id="cards-personalizados"
-    >
-      {
-        products.map((per) => (
-          <CardProducts
-            slug={per.slug}
-            discount={per.discount}
-            image={`${per.images[0].url}`}
-            title={per.title}
-            price={per?.price}
-          />
-        ))
-      }
-    </div>
-  </article>
+  <div
+    class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
+    id="cards"
+  >
+    {
+      products.map((per) => (
+        <CardProducts
+          slug={per.slug}
+          discount={per.discount}
+          image={`${per.images[0].url}`}
+          title={per.title}
+          price={per?.price}
+        />
+      ))
+    }
+  </div>
+  <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2">
+    Tu pastel personalizado
+  </h3>
 
-  <ContainerSecctions>
-    <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2">
-      Tu pastel personalizado
-    </h3>
-  </ContainerSecctions>
-
-  <ContainerSecctions class="mt-2">
-    <article class="flex items-center px-3">
+  <div class="mt-2">
+    <div class="flex items-center px-3">
       <div class="max-w-[70%]">
         <p class="text-balance text-sm md:text-base mb-6 italic" id="des">
           Descubre el sabor de la tradición con los ingredientes más selectos.
@@ -124,63 +116,6 @@ try {
         alt="imagen icono de torta"
         class="w-32 md:w-40 animation-cake"
       />
-    </article>
-  </ContainerSecctions>
+    </div>
+  </div>
 </LayoutPages>
-
-<style>
-  /* animacion de texto y cards */
-
-  #box-tittle,
-  #cards-personalizados,
-  #tittle,
-  #des {
-    opacity: 0;
-    animation: showContent 0.5s 1s linear 1 forwards;
-  }
-
-  #des {
-    transform: translateY(50px);
-    filter: blur(20px);
-  }
-
-  #cards-personalizados {
-    transform: translatex(50px);
-    filter: blur(5px);
-  }
-
-  @keyframes showContent {
-    to {
-      transform: translateY(0px);
-      filter: blur(0px);
-      opacity: 1;
-    }
-  }
-
-  #tittle {
-    animation-delay: 0.5s;
-  }
-
-  #des {
-    animation-delay: 1.6s;
-  }
-  #cards-personalizados {
-    animation-delay: 2.5s;
-  }
-
-  .animation-cake {
-    animation: cake 2s infinite;
-  }
-
-  @keyframes cake {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-</style>
