@@ -1,10 +1,10 @@
 ---
-import CardProducts from "@/components/CardProducts.astro";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
 let products: Producto[] = [];
-import '@/styles/globals.css'
+import "@/styles/globals.css";
+import ViewProducts from "@/components/ViewProducts.astro";
 
 try {
   const response = await getCategorieBy("personalized");
@@ -16,7 +16,7 @@ try {
 
 <LayoutPages title="Personalizados - pasteleria personalizada">
   <div
-    class="w-full  min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
+    class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
   >
     <div
       class="relative p-4 bg-[#f8f6f3] w-full max-w-[90%] md:max-w-[65%] mx-auto min-h-28 flex flex-col items-center justify-center border-dashed border-4 -mb-8"
@@ -69,28 +69,14 @@ try {
     Descubre nuestras recomendaciones de pasteles personalizados diseñados para
     inspirarte. Si no encuentras el diseño que buscas, ver al formulario de <a
       href="/personalizados/form-datos-personalizado"
-      class="text-[#f1683a] hover:underline duration-300">personalizados</a
+      class="text-[#f1683a] uppercase underline duration-300">personalizados</a
     > para pedir un pastel único según tu creatividad. ¡Estamos aquí para hacer realidad
     tus ideas dulces!
   </p>
 
-  <div
-    class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
-    id="cards"
-  >
-    {
-      products.map((per) => (
-        <CardProducts
-          slug={per.slug}
-          discount={per.discount}
-          image={`${per.images[0].url}`}
-          title={per.title}
-          price={per?.price}
-        />
-      ))
-    }
-  </div>
-  <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2">
+  <ViewProducts products={products} />
+
+  <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2 mt-7" id="des">
     Tu pastel personalizado
   </h3>
 
@@ -115,6 +101,7 @@ try {
         src="/cup-cake.webp"
         alt="imagen icono de torta"
         class="w-32 md:w-40 animation-cake"
+        id="cards"
       />
     </div>
   </div>

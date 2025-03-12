@@ -1,7 +1,9 @@
 ---
-import CardProducts from "./CardProducts.astro";
+import '@/styles/globals.css'
 import type { Producto } from "@/types";
 import { getProducts } from "@/lib";
+import ViewProducts from "./ViewProducts.astro";
+
 let products: Producto[] = [];
 
 try {
@@ -19,19 +21,5 @@ try {
     Aqui hay algunas opciones que tambien te pueden interesar
   </h3>
   <hr />
-  <div class="py-7 grid grid-cols-2 md:grid-cols-4 gap-3">
-    {
-      products
-        .slice(0, 4)
-        .map((product) => (
-          <CardProducts
-            slug={product.slug}
-            image={`${product.images[0].url}`}
-            title={product.title}
-            price={product.price}
-            discount={product.discount}
-          />
-        ))
-    }
-  </div>
+  <ViewProducts products={products}/>
 </section>

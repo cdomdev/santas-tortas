@@ -1,14 +1,15 @@
 ---
+import "@/styles/globals.css";
 import LayoutPages from "@/layouts/LayoutPages.astro";
-import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
 import { getOferts } from "@/lib/getProducts";
+import ViewProducts from "@/components/ViewProducts.astro";
 let products: Producto[] = [];
-import '@/styles/globals.css'
 
 try {
   const response = await getOferts();
+  console.log('datos de la oferta ----> ', response)
   products = response.data;
 } catch (error) {
   console.log("Error en la solicitud de productos", error);
@@ -28,24 +29,6 @@ try {
   </p>
   <section class="flex my-3">
     <AsideProducts />
-    <article>
-      <div
-        class="grid grid-cols-2 gap-x-2 md:grid-cols-4 gap-y-14 p-5 w-full mb-10 md:mb-16"
-        id="cards"
-      >
-        {
-          products.map((prod) => (
-            <CardProducts
-              slug={prod.slug}
-              discount={prod.discount}
-              image={`${prod.images[0]?.url}`}
-              title={prod.title}
-              price={prod.price}
-            />
-          ))
-        }
-      </div>
-    </article>
+    <ViewProducts products={products} />
   </section>
 </LayoutPages>
-

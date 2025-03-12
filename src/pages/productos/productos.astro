@@ -1,17 +1,17 @@
 ---
+import "@/styles/globals.css";
 import LayoutPages from "@/layouts/LayoutPages.astro";
-import CardProducts from "@/components/CardProducts.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
-import type{Producto} from '@/types'
+import type { Producto } from "@/types";
 import { getProducts } from "@/lib/getProducts";
-import '@/styles/globals.css'
-let products: Producto[] = []
+import ViewProducts from "@/components/ViewProducts.astro";
+let products: Producto[] = [];
 try {
-  const response = await getProducts()
-  products = response.data
-  console.log('respueta de los productos', products)
+  const response = await getProducts();
+  products = response.data;
+  console.log("respueta de los productos", products);
 } catch (error) {
-console.log('Error en la solicitud de productos', error)  
+  console.log("Error en la solicitud de productos", error);
 }
 ---
 
@@ -57,24 +57,6 @@ console.log('Error en la solicitud de productos', error)
   </div>
   <section class="flex gap-2">
     <AsideProducts />
-    <article>
-      <div
-        class="grid grid-cols-2 gap-x-10 md:grid-cols-3 lg:grid-cols-4 gap-y-8  p-2 w-full mb-10 md:mb-16"
-        id="cards"
-      >
-        {
-          products.map((prod) => (
-            <CardProducts
-              slug={prod.slug}
-              discount={prod.discount}
-              image={`${prod.images[0]?.url}`}
-              title={prod.title}
-              price={prod.price}
-            />
-          ))
-        }
-      </div>
-    </article>
+    <ViewProducts products={products} />
   </section>
 </LayoutPages>
-

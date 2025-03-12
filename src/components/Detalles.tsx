@@ -30,7 +30,7 @@ export const Detalles = () => {
       <h2 className="text-center md:text-lg font-semibold text-gray-600 uppercase py-2">
         Este es un resumen de tu compra
       </h2>
-      <div className="border">
+      <div className="border px-4">
         <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -111,7 +111,7 @@ export const DetallesUsuario = () => {
 
   return (
     <>
-      <div className="border">
+      <div className="border px-4">
         <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

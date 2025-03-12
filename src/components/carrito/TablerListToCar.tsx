@@ -125,7 +125,7 @@ const TablerListToCar = ({ isAuthenticated }: PropTable) => {
                 >
                   <td className="flex flex-col items-center justify-center gap-y-1 p-2">
                     <img
-                      src={`${PUBLIC_HOST}${producto.images[0].url}`}
+                      src={`${producto.images[0].url}`}
                       className="size-16 md:size-24 rounded-full hover:rounded-md  duration-100"
                       alt={producto.title}
                     />
@@ -162,11 +162,11 @@ const TablerListToCar = ({ isAuthenticated }: PropTable) => {
       </div>
 
       <div className="h-200 border-4 w-[95%] md:w-[35%] max-h-80 px-4 py-5 mx-auto">
-        <h3 className="text-center md:text-lg font-semibold text-gray-600 uppercase py-2">
+        <h2 className="text-center md:text-lg font-semibold text-gray-600 uppercase py-2">
           Detalles de tu compra
-        </h3>
+        </h2>
         <span className="flex justify-between py-3">
-          <h4 className="font-semibold text-black text-base">Subtotal</h4>
+          <h3 className="font-semibold text-black text-base">Subtotal</h3>
           <p>$: {SubtotalInt}</p>
         </span>
         <hr />
@@ -194,7 +194,7 @@ const TablerListToCar = ({ isAuthenticated }: PropTable) => {
         </span>
         <hr />
         <span className="flex justify-between py-3 mb-3">
-          <h4 className="font-semibold text-black text-base">Total</h4>
+          <h3 className="font-semibold text-black text-base">Total</h3>
           <p>$: {SubtotalInt}</p>
         </span>
 

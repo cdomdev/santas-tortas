@@ -40,7 +40,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
       items={formattedImages}
       showBullets={images.length > 1}
       showNav={false}
-      thumbnailPosition="left"
+      thumbnailPosition="bottom"
       autoPlay={images.length > 1}
       showPlayButton={false}
       showFullscreenButton={false}
