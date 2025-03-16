@@ -13,20 +13,18 @@ interface Category {
   documentId: string;
   name: string;
 }
-const { categoria: cat } = Astro.params;
-
-let categoria = cat;
 
 export async function getStaticPaths() {
   const categories = await getCategories();
   return categories.data.map((category: Category) => ({
-    params: { categoria: category.name },
+    params: { categoria: category.name.toLowerCase() },
   }));
 }
 
-const { category } = Astro.params;
-const response = await getCategorieBy(category);
-const products: Producto[] = response.data;
+const { categoria } = Astro.params;
+
+const response = await getCategorieBy(categoria);
+const products: Producto[] = response?.data || [];
 
 const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
