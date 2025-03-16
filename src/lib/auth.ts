@@ -26,7 +26,11 @@ export async function login(data: PropLogin) {
 
 // servicion de registro utiliza una ruta externa para el envio de email ->
 export async function register(data: RegisterProp) {
-  const HOST_EXTERNAL = import.meta.env.HOST_EXTERNAL
+  const HOST_EXTERNAL = import.meta.env.PUBLIC_HOST_EXTERNAL
+  
+  console.log('aqui---as ', HOST_EXTERNAL)
+
+
   return axios.post(`${HOST_EXTERNAL}/user/external/auth/register`, {
     username: data.nombre,
     email: data.email,
