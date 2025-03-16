@@ -1,3 +1,4 @@
+import axios from "axios";
 import { query } from "./strapi";
 import type { GoogleAuthResponse } from "@/types/types";
 
@@ -23,29 +24,21 @@ export async function login(data: PropLogin) {
   );
 }
 
+// servicion de registro utiliza una ruta externa para el envio de email ->
 export async function register(data: RegisterProp) {
-  return query(
-    `/auth/local/register`,
-    "POST",
-    {
-      username: data.nombre,
-      email: data.email,
-      password: data.password,
-    },
-    false
-  );
+  const HOST_EXTERNAL = import.meta.env.HOST_EXTERNAL
+  return axios.post(`${HOST_EXTERNAL}/user/external/auth/register`, {
+    username: data.nombre,
+    email: data.email,
+    password: data.password,
+  });
 }
 
 export async function googleAuth(response: GoogleAuthResponse) {
   try {
-    const responseServer = await query(
-      `/auth/google`,
-      "POST", 
-      {
-        token: response.access_token,
-      },
-     
-    );
+    const responseServer = await query(`/auth/google`, "POST", {
+      token: response.access_token,
+    });
     return responseServer;
   } catch (error) {}
 }
