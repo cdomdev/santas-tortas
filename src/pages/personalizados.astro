@@ -4,7 +4,6 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
 import ViewProducts from "@/components/ViewProducts.astro";
-export const prerender = true
 let products: Producto[] = [];
 
 const response = await getCategorieBy("personalized");

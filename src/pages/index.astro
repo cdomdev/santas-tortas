@@ -6,7 +6,6 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import ViewProducts from "@/components/ViewProducts.astro";
 import { getProducts } from "@/lib";
 import type { Producto } from "@/types";
-export const prerender = true
 let products: Producto[] = [];
 
 const response = await getProducts();

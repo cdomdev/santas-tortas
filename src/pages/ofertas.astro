@@ -5,8 +5,6 @@ import AsideProducts from "@/components/AsideProducts.astro";
 import { getOferts } from "@/lib/getProducts";
 import ViewProducts from "@/components/ViewProducts.astro";
 
-export const prerender = true;
-
 const response = await getOferts();
 const products = response.data;
 ---

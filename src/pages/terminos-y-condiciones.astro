@@ -2,7 +2,6 @@
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { getCollection } from "astro:content";
-export const prerender = true
 
 const termPage = await getCollection("paginas");
 const { title, entrega } = termPage[2].data;
