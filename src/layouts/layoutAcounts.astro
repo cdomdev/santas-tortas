@@ -1,5 +1,5 @@
 ---
-import { GoogleAuth } from "@/components/auth/service/GoogleAuth";
+import { GoogleProvider } from "@/components/auth/service/GoogleAuth";
 import LayoutPages from "./LayoutPages.astro";
 const { title } = Astro.props;
 
@@ -13,7 +13,7 @@ const { title } = Astro.props;
     <aside
       class="flex justify-center flex-col gap-y-4 shadow-md bg-[#f6f0ea] min-h-96 rounded-md text-center"
     >
-      <GoogleAuth client:load/>
+      <GoogleProvider client:load/>
       <div>
         <a
           href="/acount/register"

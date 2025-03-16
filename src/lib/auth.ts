@@ -1,4 +1,5 @@
 import { query } from "./strapi";
+import type { GoogleAuthResponse } from "@/types/types";
 
 interface PropLogin {
   email: string;
@@ -33,4 +34,18 @@ export async function register(data: RegisterProp) {
     },
     false
   );
+}
+
+export async function googleAuth(response: GoogleAuthResponse) {
+  try {
+    const responseServer = await query(
+      `/auth/google`,
+      "POST", 
+      {
+        token: response.access_token,
+      },
+     
+    );
+    return responseServer;
+  } catch (error) {}
 }

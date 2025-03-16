@@ -26,7 +26,8 @@ export async function query(
   url: string,
   method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
   body?: any,
-  useToken: boolean = true
+  useToken: boolean = true,
+  withCredentials:  boolean = true,
 ) {
   try {
     const headers: Record<string, string> = {};
@@ -40,7 +41,9 @@ export async function query(
       method,
       data: body,
       headers,
-    });
+      withCredentials
+    })
+   
 
     return response.data;
   } catch (error) {
