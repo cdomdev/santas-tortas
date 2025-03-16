@@ -2,10 +2,10 @@
 import ViewProducts from "@/components/ViewProducts.astro";
 import TablerListToCar from "@/components/carrito/TablerListToCar";
 import LayoutCarrito from "@/layouts/LayoutCarrito.astro";
+export const prerender = false
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
-
 import { getProducts } from "@/lib";
 import type { Producto } from "@/types";
 let products: Producto[] = [];

@@ -2,6 +2,7 @@
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import { getCollection } from "astro:content";
+export const prerender = true
 
 const about = await getCollection('paginas');
 const { title, introduccion,continueIntro,  mision, objetivos, satisfaccion_cliente } = about[1].data;

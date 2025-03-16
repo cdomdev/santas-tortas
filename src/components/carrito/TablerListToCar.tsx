@@ -5,7 +5,6 @@ import { Toast } from "../Toast";
 import { calcularSubTotal, calcularTotal, formateValue } from "@/utils";
 import { handleToast } from "@/utils";
 import { eventEmitter } from "@/events";
-const { PUBLIC_HOST } = import.meta.env;
 interface PropTable {
   isAuthenticated: boolean;
 }
