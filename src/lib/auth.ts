@@ -28,8 +28,6 @@ export async function login(data: PropLogin) {
 export async function register(data: RegisterProp) {
   const HOST_EXTERNAL = import.meta.env.PUBLIC_HOST_EXTERNAL
   
-  console.log('aqui---as ', HOST_EXTERNAL)
-
 
   return axios.post(`${HOST_EXTERNAL}/user/external/auth/register`, {
     username: data.nombre,
