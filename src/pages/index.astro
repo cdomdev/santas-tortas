@@ -6,14 +6,11 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import ViewProducts from "@/components/ViewProducts.astro";
 import { getProducts } from "@/lib";
 import type { Producto } from "@/types";
+export const prerender = true
 let products: Producto[] = [];
 
-try {
-  const response = await getProducts();
-  products = response.data.slice(4, -12);
-} catch (error) {
-  console.log("Error en la solicitud de productos", error);
-}
+const response = await getProducts();
+products = response.data.slice(4, -12);
 ---
 
 <Layout title="Bienvenido a santas tortas - postres y tortas personalizados">

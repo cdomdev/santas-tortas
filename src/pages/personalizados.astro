@@ -1,17 +1,14 @@
 ---
+import "@/styles/globals.css";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
-let products: Producto[] = [];
-import "@/styles/globals.css";
 import ViewProducts from "@/components/ViewProducts.astro";
+export const prerender = true
+let products: Producto[] = [];
 
-try {
-  const response = await getCategorieBy("personalized");
-  products = response.data;
-} catch (error) {
-  console.error(`⚠️ Error obteniendo productos para los personlizados:`, error);
-}
+const response = await getCategorieBy("personalized");
+products = response.data;
 ---
 
 <LayoutPages title="Personalizados - pasteleria personalizada">

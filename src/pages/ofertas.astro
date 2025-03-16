@@ -2,18 +2,13 @@
 import "@/styles/globals.css";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
-import type { Producto } from "@/types";
 import { getOferts } from "@/lib/getProducts";
 import ViewProducts from "@/components/ViewProducts.astro";
-let products: Producto[] = [];
 
-try {
-  const response = await getOferts();
-  console.log('datos de la oferta ----> ', response)
-  products = response.data;
-} catch (error) {
-  console.log("Error en la solicitud de productos", error);
-}
+export const prerender = true;
+
+const response = await getOferts();
+const products = response.data;
 ---
 
 <LayoutPages title="Ofertas - las mejores oferfas para que te des un gusto">

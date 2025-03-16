@@ -1,25 +1,32 @@
 ---
+import type { GetStaticPaths } from "astro";
 import "@/styles/globals.css";
 import { contenido } from "@/content";
 import LayoutPages from "@/layouts/LayoutPages.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
-import { getCategorieBy } from "@/lib/getCategories";
+import { getCategorieBy, getCategories } from "@/lib/getCategories";
 import ViewProducts from "@/components/ViewProducts.astro";
-
+export const prerender = true;
+interface Category {
+  id: Number;
+  documentId: string;
+  name: string;
+}
 const { categoria: cat } = Astro.params;
 
 let categoria = cat;
-let products: Producto[] = [];
 
-if (cat) {
-  try {
-    const response = await getCategorieBy(cat);
-    products = response?.data || [];
-  } catch (error) {
-    console.error(`⚠️ Error obteniendo productos para ${cat}:`, error);
-  }
+export async function getStaticPaths() {
+  const categories = await getCategories();
+  return categories.data.map((category: Category) => ({
+    params: { categoria: category.name },
+  }));
 }
+
+const { category } = Astro.params;
+const response = await getCategorieBy(category);
+const products: Producto[] = response.data;
 
 const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---

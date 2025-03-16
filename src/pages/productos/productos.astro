@@ -5,14 +5,10 @@ import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
 import { getProducts } from "@/lib/getProducts";
 import ViewProducts from "@/components/ViewProducts.astro";
+export const prerender = true;
 let products: Producto[] = [];
-try {
-  const response = await getProducts();
-  products = response.data;
-  console.log("respueta de los productos", products);
-} catch (error) {
-  console.log("Error en la solicitud de productos", error);
-}
+const response = await getProducts();
+products = response.data;
 ---
 
 <LayoutPages title="Tortas - postres - cupcakes - galletas">

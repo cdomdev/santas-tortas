@@ -3,25 +3,20 @@ import LayoutPages from "@/layouts/LayoutPages.astro";
 import { BtnAddCar } from "@/components/carrito/BtnAddProductToCar";
 import { formateValue } from "@/utils";
 import type { Producto } from "@/types";
-import { getProductsBy } from "@/lib/getProducts";
+import { getProductsBy, getProducts } from "@/lib/getProducts";
 import { Gallery } from "@/components/detallesProductos/Gallery";
+export const prerender = true;
 
-const slug = Astro.params?.slug || "";
-
-let producto: Producto | null = null;
-
-if (slug) {
-  try {
-    const response = await getProductsBy(slug);
-    producto = response?.data?.[0] || null;
-  } catch (error) {
-    console.error(`⚠️ Error obteniendo producto con slug ${slug}:`, error);
-  }
-} else {
-  console.error("⚠️ No se encontró un slug en la URL");
+export async function getStaticPaths() {
+  const response = await getProducts();
+  return response.data.map((producto: Producto) => ({
+    params: { slug: producto.slug },
+  }));
 }
+const { slug } = Astro.params;
+const response = await getProductsBy(slug);
+const producto: Producto = response?.data?.[0] || null;
 ---
-
 
 <LayoutPages title={`${producto?.title}`}>
   <article class="grid gap-3 grid-cols-1 md:grid-cols-2 sp-3">
