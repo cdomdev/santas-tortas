@@ -1,3 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+
 #box-tittle,
 #cards,
 #title,
@@ -53,3 +60,10 @@
         transform: translateY(0);
     }
 }
+
+
+
+  .animation-cake {
+    animation: cake 2s infinite;
+  }
+
