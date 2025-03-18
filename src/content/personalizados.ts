@@ -1,6 +1,6 @@
 export const items = [
   {
-    image: "/carrusel/relleno.png",
+    image: "/carrusel/relleno.webp",
     title: "Pastelería Personalizada",
     text: "Explora nuestra pastelería personalizada y diseña el pastel perfecto para cualquier ocasión. Deja volar tu creatividad y haz realidad ese diseño especial.",
   },
@@ -14,11 +14,11 @@ export const items = [
     },
   },
   {
-    image: "/carrusel/cupcakes.png",
+    image: "/carrusel/cupcakes.webp",
     title: "Cupcakes Creativos",
     text: "Sorprende con cupcakes únicos y deliciosos. Personalízalos con tus colores y sabores favoritos y haz que cada bocado sea especial.",
     thumbnail: {
-      image: "/carrusel/cupcakes.png",
+      image: "/carrusel/cupcakes.webp",
       url: "/productos/cupcakes",
     },
   },
@@ -32,11 +32,11 @@ export const items = [
     },
   },
   {
-    image: "/carrusel/galletas.png",
+    image: "/carrusel/galletas.webp",
     title: "Galletas Decoradas",
     text: "Personaliza tus galletas con diseños únicos y sabores irresistibles. Perfectas para regalos, eventos o simplemente darte un gusto especial.",
     thumbnail: {
-      image: "/carrusel/galletas.png",
+      image: "/carrusel/galletas.webp",
       url: "/productos/galletas",
     },
   },
