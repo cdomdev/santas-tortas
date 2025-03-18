@@ -5,48 +5,48 @@ import FormDatosUsuario from "@/components/envio/FormDatosUsuario";
 ---
 
 <LayoutCarrito title="Datos de envio" text="Datos para envio">
-  <article class="grid grid-cols-1 md:flex mx-auto py-5 gap-2">
-    <div class="w-full md:w-2/5 flex flex-col">
-      <Detalles client:load />
-      <span
-        class="flex items-center gap-2 justify-center px-4 mb-3 text-sm text-center mt-3 border py-2"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="icon icon-tabler icons-tabler-outline icon-tabler-exclamation-circle stroke-red-500"
+  <main>
+    <article class="grid grid-cols-1 md:flex mx-auto py-5 gap-2">
+      <div class="w-full md:w-2/5 flex flex-col">
+        <Detalles client:load />
+        <span
+          class="flex items-center gap-2 justify-center px-4 mb-3 text-sm text-center mt-3 border py-2"
         >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-          <path d="M12 9v4"></path>
-          <path d="M12 16v.01"></path>
-        </svg>
-        <p class="text-gray-600">
-          El valor actual no incluye el costo de envio
-        </p>
-      </span>
-    </div>
-
-    <div class="w-full md:w-3/5 border-l-2">
-      <p class="mb-2 px-3 text-wrap">
-        Por favor diligencia el siguiente formulario con tus datos para el envio
-        de tu compra
-      </p>
-      <div class="w-full p-4 my-5 md:my-1">
-        <FormDatosUsuario client:load url="/pago" step="3"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-exclamation-circle stroke-red-500"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+            <path d="M12 9v4"></path>
+            <path d="M12 16v.01"></path>
+          </svg>
+          <p class="text-gray-600">
+            El valor actual no incluye el costo de envio
+          </p>
+        </span>
       </div>
-    </div>
-  </article>
+
+      <div class="w-full md:w-3/5 border-l-2">
+        <p class="mb-2 px-3 text-wrap">
+          Por favor diligencia el siguiente formulario con tus datos para el
+          envio de tu compra
+        </p>
+        <div class="w-full p-4 my-5 md:my-1">
+          <FormDatosUsuario client:load url="/pago" step="3" />
+        </div>
+      </div>
+    </article>
+  </main>
 </LayoutCarrito>
-
-
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -55,8 +55,8 @@ import FormDatosUsuario from "@/components/envio/FormDatosUsuario";
       let dataOrden = window.sessionStorage.getItem("data-product-custom");
 
       if (dataUser && dataOrden) {
-        let user = JSON.parse(dataUser); 
-        let pedido = JSON.parse(dataOrden); 
+        let user = JSON.parse(dataUser);
+        let pedido = JSON.parse(dataOrden);
 
         const nameElement = document.getElementById("name");
         const tbody = document.getElementById("table-user-body");

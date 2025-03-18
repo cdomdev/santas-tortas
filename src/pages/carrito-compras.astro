@@ -15,18 +15,21 @@ try {
 } catch (error) {
   console.log("Error en la solicitud de productos", error);
 }
-
 ---
 
 <LayoutCarrito title="Carrito de compras" text="Carrito de compras">
-  <section class="mb-6">
-    <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
-      <TablerListToCar isAuthenticated={isAuthenticated} client:load />
-    </div>
-  </section>
-  <hr class="my-6">
-  <section>
-    <h3 class="text-lg md:text-xl font-semibold my-5 text-wrap px-2 ">Algunos productos que te pueden interesar</h3>
-    <ViewProducts products={products}/>
-  </section>
+  <main>
+    <section class="mb-6">
+      <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
+        <TablerListToCar isAuthenticated={isAuthenticated} client:load />
+      </div>
+    </section>
+    <hr class="my-6" />
+    <section>
+      <h3 class="text-lg md:text-xl font-semibold my-5 text-wrap px-2">
+        Algunos productos que te pueden interesar
+      </h3>
+      <ViewProducts products={products} />
+    </section>
+  </main>
 </LayoutCarrito>

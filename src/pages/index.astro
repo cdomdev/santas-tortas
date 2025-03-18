@@ -1,15 +1,17 @@
 ---
-import '@/styles/globals.css'
+import "@/styles/globals.css";
 import Layout from "../layouts/Layout.astro";
 import Carrusel from "@/components/Carrusel.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import ViewProducts from "@/components/ViewProducts.astro";
 import { getProducts } from "@/lib";
 import type { Producto } from "@/types";
+import "@/styles/globals.css";
+import { FormSub } from "@/components/index/FormSub";
 let products: Producto[] = [];
 
 const response = await getProducts();
-products = response.data.slice(4, -12);
+products = response?.data?.slice(4, -12);
 ---
 
 <Layout title="Bienvenido a santas tortas - postres y tortas personalizados">
@@ -79,146 +81,86 @@ products = response.data.slice(4, -12);
     <img
       src="/icon-box-shadow.webp"
       alt="image shadow"
-      class="md:max-w-screen-md lg:max-w-screen-lg mx-auto"
+      class="md:max-w-screen-md lg:max-w-screen-lg mx-auto -mt-14 mb-8"
     />
-  </main>
 
-  <ContainerSecctions
-    class="flex justify-center flex-col items-center mb-14 px-2"
-  >
-    <h3
-      class="text-center font-semibold text-xl md:text-2xl py-4 text-[#1f1919]"
+    <ContainerSecctions
+      class="flex justify-center flex-col items-center px-2"
     >
-      Algunos de los productos mas vendidos
-    </h3>
-
-    <ViewProducts products={products} />
-  </ContainerSecctions>
-
-  <ContainerSecctions
-    class="flex my-14 flex-col mb-16 px-6 md:px-0 justify-center"
-  >
-    <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold text-center">
-      Diseña tu torta personalizada
-    </h3>
-    <span class="flex flex-col items-center">
-      <p
-        class="text-sm md:text-base font-semibold -mb-1 text-center md:text-left"
+      <h3
+        class="text-center font-semibold text-xl md:text-2xl py-4 text-[#1f1919]"
       >
-        <strong class="text-primary-txt">¿Tienes una idea en mente?</strong>
-      </p>
-      <p
-        class="text-sm md:text-base font-semibold mb-3 text-center md:text-left"
-      >
-        ¡Nosotros la hacemos dulce realidad!
-      </p>
-    </span>
-    <article class="flex items-center justify-center">
-      <div class="md:max-w-[50%] lg:max-w-[70%]">
-        <p class="text-sm md:text-base mb-6 italic text-balance">
-          Descubre el sabor de la tradición con los ingredientes más selectos.
-          Cada receta está cuidadosamente elaborada para ofrecerte lo mejor de
-          nuestra gastronomía. ¡Haz tu pedido ahora y disfruta la perfección en
-          cada bocado!
+        Algunos de los productos mas vendidos
+      </h3>
+
+      <ViewProducts products={products} />
+    </ContainerSecctions>
+
+    <ContainerSecctions
+      class="flex my-14 flex-col mb-12 px-6 md:px-0 justify-center"
+    >
+      <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold text-center">
+        Diseña tu torta personalizada
+      </h3>
+      <span class="flex flex-col items-center">
+        <p
+          class="text-sm md:text-base font-semibold -mb-1 text-center md:text-left"
+        >
+          <strong class="text-primary-txt">¿Tienes una idea en mente?</strong>
         </p>
-        <a
-          id="buttons"
-          href="/personalizados/form-datos-personalizado"
-          class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
+        <p
+          class="text-sm md:text-base font-semibold mb-3 text-center md:text-left"
         >
-          Crea tu momento especial
-        </a>
-      </div>
-      <img
-        src="/cup-cake.webp"
-        alt="icono de torta"
-        class="w-28 md:w-36 lg:w-40 animation-cake"
-      />
-    </article>
-  </ContainerSecctions>
-
-  <ContainerSecctions>
-    <article class="shadow-md py-5 px-8 rounded-sm">
-      <h4 class="font-semibold text-lg md:text-xl mb-2 text-primary-txt">
-        Obtener informacion de las nuevas ofertas
-      </h4>
-      <p class="text-sm md:text-base text-gray-800 text-wrap">
-        ¿Quieres recibir una notificación cuando se añada una nueva oferta a
-        Santas tortas? Suscríbete a nuestro boletín y serás uno de los primeros
-        en enterarte de las nuevas ofertas.
-      </p>
-      <form class="flex items-center max-w-lg py-5">
-        <label for="voice-search" class="sr-only">Search</label>
-        <div class="relative w-full">
-          <div
-            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              width="24"
-              height="24"
-              class="w-4 h-4 text-gray-500 dark:text-gray-400"
-            >
-              <path
-                d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z"
-              ></path>
-              <path
-                d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z"
-              ></path>
-            </svg>
-          </div>
-          <input
-            type="text"
-            id="voice-search"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-0 focus:border-[#eb9f48]"
-            placeholder="Su direccion de correo electronico"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium rounded-lg border text-black hover:text-white transition duration-200 bg-secondary-bg hover:bg-[#d66a6e] uppercase focus:ring-4 focus:outline-none focus:ring-blue-300 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Suscríbrirme
-        </button>
-      </form>
-      <span class="text-xs md:text-sm"
-        >Al suscibirse, aceptas los <a
-          href="/terminos-y-condiciones"
-          class="text-blue-600 hover:underline duration-100"
-          >terminos de servicios
-        </a> y la <a
-          href="/politica-tratamiento-datos"
-          class="text-blue-600 hover:underline duration-100"
-          >politica de privacidad
-        </a>de santas tortas
+          ¡Nosotros la hacemos dulce realidad!
+        </p>
       </span>
-    </article>
-  </ContainerSecctions>
+      <article class="flex items-center justify-center">
+        <div class="md:max-w-[50%] lg:max-w-[70%]">
+          <p class="text-sm md:text-base mb-6 italic text-balance">
+            Descubre el sabor de la tradición con los ingredientes más selectos.
+            Cada receta está cuidadosamente elaborada para ofrecerte lo mejor de
+            nuestra gastronomía. ¡Haz tu pedido ahora y disfruta la perfección
+            en cada bocado!
+          </p>
+          <a
+            id="buttons"
+            href="/personalizados/form-datos-personalizado"
+            class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
+          >
+            Crea tu momento especial
+          </a>
+        </div>
+        <img
+          src="/cup-cake.webp"
+          alt="icono de torta"
+          class="w-28 md:w-36 lg:w-40 animation-cake"
+        />
+      </article>
+    </ContainerSecctions>
+
+    <ContainerSecctions>
+      <article class="shadow-md py-5 px-8 rounded-sm">
+        <h4 class="font-semibold text-lg md:text-xl mb-2 text-black">
+          Obtener informacion de las nuevas ofertas
+        </h4>
+        <p class="text-sm md:text-base text-gray-800 text-wrap">
+          ¿Quieres recibir una notificación cuando se añada una nueva oferta a
+          Santas tortas? Suscríbete a nuestro boletín y serás uno de los
+          primeros en enterarte de las nuevas ofertas.
+        </p>
+       <FormSub client:load/>
+        <span class="text-xs md:text-sm"
+          >Al suscibirse, aceptas los <a
+            href="/terminos-y-condiciones"
+            class="text-blue-600 hover:underline duration-100"
+            >terminos de servicios
+          </a> y la <a
+            href="/politica-tratamiento-datos"
+            class="text-blue-600 hover:underline duration-100"
+            >politica de privacidad
+          </a>de santas tortas
+        </span>
+      </article>
+    </ContainerSecctions>
+  </main>
 </Layout>
-
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-
-  .animation-cake {
-    animation: cake 2s infinite;
-  }
-
-  @keyframes cake {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-</style>

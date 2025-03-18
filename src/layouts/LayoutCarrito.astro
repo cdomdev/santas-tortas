@@ -1,12 +1,12 @@
 ---
-import LayoutPages from "./LayoutPages.astro";
+import Layout from "./Layout.astro";
 import Steps from "@/components/Steps";
 const { title, text } = Astro.props;
 ---
 
-<LayoutPages title={title}>
+<Layout title={title}>
   <Steps client:load/>
-  <section>
+  <section class="max-w-screen-xl mx-auto">
     <div
       class="bg-primary-bg border w-[95%] mx-auto md:w-full p-3 mb-4 rounded-md pl-4"
     >
@@ -16,7 +16,7 @@ const { title, text } = Astro.props;
     </div>
   </section>
 
-  <section>
+  <section class="max-w-screen-xl mx-auto">
     <slot />
   </section>
-</LayoutPages>
+</Layout>

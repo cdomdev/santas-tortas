@@ -1,80 +1,80 @@
 ---
 import { GoogleProvider } from "@/components/auth/service/GoogleAuth";
-import LayoutPages from "./LayoutPages.astro";
+import Layout from "./Layout.astro";
 const { title } = Astro.props;
-
 ---
 
-<LayoutPages title={title}>
-
-  <section
-    class="grid grid-cols-1 md:grid-cols-2 justify-center items-start pt-16 gap-y-6 gap-x-7 w-full md:max-w-screen-xl mx-auto min-h-dvh px-10"
-  >
-    <aside
-      class="flex justify-center flex-col gap-y-4 shadow-md bg-[#f6f0ea] min-h-96 rounded-md text-center"
+<Layout title={title}>
+  <main>
+    <section
+      class="grid grid-cols-1 md:grid-cols-2 justify-center items-start gap-y-6 gap-x-7 w-full md:max-w-screen-xl mx-auto min-h-dvh px-10 pt-32"
     >
-      <GoogleProvider client:load/>
-      <div>
-        <a
-          href="/acount/register"
-          class="bg-[#ffb158] hover:bg-[#fda33c] mb-1 hover:text-white duration-150 gap-x-1 flex justify-center text-xs md:text-base shadow-md items-center text-black py-1.5 text-center w-9/12 mx-auto rounded-lg"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            class="size-6"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            width="24"
-            height="24"
-            stroke-width="1.5"
+      <aside
+        class="flex justify-center flex-col gap-y-4 shadow-md bg-[#f6f0ea] min-h-96 rounded-md text-center"
+      >
+        <GoogleProvider client:load />
+        <div>
+          <a
+            href="/acount/register"
+            class="bg-[#ffb158] hover:bg-[#fda33c] mb-1 hover:text-white duration-150 gap-x-1 flex justify-center text-xs md:text-base shadow-md items-center text-black py-1.5 text-center w-9/12 mx-auto rounded-lg"
           >
-            <path
-              d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"
-            ></path>
-            <path d="M10 16h6"></path>
-            <path d="M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-            <path d="M4 8h3"></path>
-            <path d="M4 12h3"></path>
-            <path d="M4 16h3"></path>
-          </svg>Crear cuenta
-        </a>
-        <span
-          class="text-xs md:text-sm text-gray-600 text-balance block mx-auto max-w-[60%] md:w-full"
-          >Crea tu cuenta en santas tortas</span
-        >
-      </div>
-      <div>
-        <a
-          href="/acount/login"
-          class="bg-[#f9ce88] hover:bg-[#f3bd65] mb-1 shadow-md hover:text-white duration-150 gap-x-1 text-xs md:text-base flex justify-center items-center rounded-lg text-black py-1.5 text-center w-9/12 mx-auto"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            width="24"
-            height="24"
-            stroke-width="1.8"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="size-6"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="24"
+              height="24"
+              stroke-width="1.5"
+            >
+              <path
+                d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"
+              ></path>
+              <path d="M10 16h6"></path>
+              <path d="M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+              <path d="M4 8h3"></path>
+              <path d="M4 12h3"></path>
+              <path d="M4 16h3"></path>
+            </svg>Crear cuenta
+          </a>
+          <span
+            class="text-xs md:text-sm text-gray-600 text-balance block mx-auto max-w-[60%] md:w-full"
+            >Crea tu cuenta en santas tortas</span
           >
-            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-            <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
-            <path d="M15 19l2 2l4 -4"></path>
-          </svg>Iniciar sesion</a
-        >
-        <span
-          class="text-xs md:text-sm text-gray-600 text-balance block mx-auto max-w-[80%] md:w-full"
-          >Inicia sesion con tu usuario y contraseña</span
-        >
-      </div>
-    </aside>
-    <article>
-      <slot />
-    </article>
-  </section>
-</LayoutPages>
+        </div>
+        <div>
+          <a
+            href="/acount/login"
+            class="bg-[#f9ce88] hover:bg-[#f3bd65] mb-1 shadow-md hover:text-white duration-150 gap-x-1 text-xs md:text-base flex justify-center items-center rounded-lg text-black py-1.5 text-center w-9/12 mx-auto"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="24"
+              height="24"
+              stroke-width="1.8"
+            >
+              <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+              <path d="M15 19l2 2l4 -4"></path>
+            </svg>Iniciar sesion</a
+          >
+          <span
+            class="text-xs md:text-sm text-gray-600 text-balance block mx-auto max-w-[80%] md:w-full"
+            >Inicia sesion con tu usuario y contraseña</span
+          >
+        </div>
+      </aside>
+      <article class="mt-10">
+        <slot />
+      </article>
+    </section>
+  </main>
+</Layout>

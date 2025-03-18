@@ -1,7 +1,7 @@
 ---
 import "@/styles/globals.css";
 import { contenido } from "@/content";
-import LayoutPages from "@/layouts/LayoutPages.astro";
+import Layout from "@/layouts/Layout.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
 import { getCategorieBy, getCategories } from "@/lib/getCategories";
@@ -14,53 +14,66 @@ interface Category {
 }
 
 export async function getStaticPaths() {
-  const categories = await getCategories();
-  return categories.data.map((category: Category) => ({
-    params: { categoria: category.name.toLowerCase() },
-  }));
+  try {
+    const categories = await getCategories();
+
+    if (!categories || !Array.isArray(categories.data)) {
+      return [];
+    }
+
+    return categories.data.map((category: Category) => ({
+      params: { categoria: category.name.toLowerCase() },
+    }));
+  } catch (error) {
+    console.error("Error en getStaticPaths:", error);
+    return [];
+  }
 }
 
 const { categoria } = Astro.params;
 
 const response = await getCategorieBy(categoria);
-const products: Producto[] = response?.data || [];
+const products: Producto[] = response?.data ?? [];
 
 const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
 
-<LayoutPages title={categoria}>
-  <h1
-    class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
-    id="title"
-  >
-    {contenidoPages?.titulo}
-  </h1>
-  <p
-    class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold"
-    id="des"
-  >
-    ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
-  </p>
-  <p class="text-xs md:text-base my-3 text-balance px-3 md:px-o" id="des">
-    {contenidoPages?.texto}
-  </p>
-
-  <div class="h-auto w-full flex my-8 items-center justify-end" id="des">
-    <form>
-      <label for="ordenar_select" class="sr-only">Ordenar</label>
-      <select
-        id="ordenar_select"
-        class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none"
+<Layout title={categoria}>
+  <main>
+    <section class="max-w-screen-xl mx-auto pt-28">
+      <h1
+        class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
+        id="title"
       >
-        <option selected>Ordenar producto por:</option>
-        <option value="menor">Menor a mayor precio</option>
-        <option value="mayor">Mayor a menor precio</option>
-      </select>
-    </form>
-  </div>
+        {contenidoPages?.titulo}
+      </h1>
+      <p
+        class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold"
+        id="des"
+      >
+        ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
+      </p>
+      <p class="text-xs md:text-base my-3 text-balance px-3 md:px-o" id="des">
+        {contenidoPages?.texto}
+      </p>
 
-  <section class="flex gap-2">
-    <AsideProducts />
-    <ViewProducts products={products} />
-  </section>
-</LayoutPages>
+      <div class="h-auto w-full flex my-8 items-center justify-end" id="des">
+        <form>
+          <label for="ordenar_select" class="sr-only">Ordenar</label>
+          <select
+            id="ordenar_select"
+            class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none"
+          >
+            <option selected>Ordenar producto por:</option>
+            <option value="menor">Menor a mayor precio</option>
+            <option value="mayor">Mayor a menor precio</option>
+          </select>
+        </form>
+      </div>
+    </section>
+    <section class="flex gap-2 max-w-screen-xl mx-auto">
+      <AsideProducts />
+      <ViewProducts products={products} />
+    </section>
+  </main>
+</Layout>

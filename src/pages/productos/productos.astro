@@ -1,6 +1,6 @@
 ---
 import "@/styles/globals.css";
-import LayoutPages from "@/layouts/LayoutPages.astro";
+import Layout from "@/layouts/Layout.astro";
 import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
 import { getProducts } from "@/lib/getProducts";
@@ -8,51 +8,55 @@ import ViewProducts from "@/components/ViewProducts.astro";
 export const prerender = true;
 let products: Producto[] = [];
 const response = await getProducts();
-products = response.data;
+products = response?.data;
 ---
 
-<LayoutPages title="Tortas - postres - cupcakes - galletas">
-  <h1
-    class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-6"
-    id="box-tittle"
-  >
-    Explora Nuestra Selección de Tortas, Galletas y Cupcakes
-  </h1>
-
-  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
-    Explora nuestra amplia variedad de productos personalizables y encuentra el
-    diseño perfecto para ti. Desde regalos únicos hasta artículos exclusivos
-    hechos a medida, ofrecemos opciones para cada estilo y ocasión. Personaliza
-    cada detalle y crea algo verdaderamente especial.
-  </p>
-  <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
-    <strong> ¡Descubre nuestra colección hoy mismo!</strong>
-  </p>
-  <div
-    class="h-auto w-full flex my-8 items-center justify-end pr-2 md:pr-0"
-    id="des"
-  >
-    <form class="justify-end">
-      <label for="underline_select" class="sr-only">Underline select</label>
-      <select
-        id="underline_select"
-        class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+<Layout title="Tortas - postres - cupcakes - galletas">
+  <main>
+    <section class="pt-28 max-w-screen-xl mx-auto">
+      <h1
+        class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-6"
+        id="box-tittle"
       >
-        <option selected class="text-xs md:text-sm"
-          >Ordenar producto por:</option
-        >
-        <option value="US" class="text-xs md:text-sm"
-          >Menor a mayor precio</option
-        >
-        <option value="CA" class="text-xs md:text-sm"
-          >Mayor a menor pecio
-        </option>
-        <option value="CA" class="text-xs md:text-sm">Categorias </option>
-      </select>
-    </form>
-  </div>
-  <section class="flex gap-2">
-    <AsideProducts />
-    <ViewProducts products={products} />
-  </section>
-</LayoutPages>
+        Explora Nuestra Selección de Tortas, Galletas y Cupcakes
+      </h1>
+
+      <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
+        Explora nuestra amplia variedad de productos personalizables y encuentra
+        el diseño perfecto para ti. Desde regalos únicos hasta artículos
+        exclusivos hechos a medida, ofrecemos opciones para cada estilo y
+        ocasión. Personaliza cada detalle y crea algo verdaderamente especial.
+      </p>
+      <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
+        <strong> ¡Descubre nuestra colección hoy mismo!</strong>
+      </p>
+      <div
+        class="h-auto w-full flex my-8 items-center justify-end pr-2 md:pr-0"
+        id="des"
+      >
+        <form class="justify-end">
+          <label for="underline_select" class="sr-only">Underline select</label>
+          <select
+            id="underline_select"
+            class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+          >
+            <option selected class="text-xs md:text-sm"
+              >Ordenar producto por:</option
+            >
+            <option value="US" class="text-xs md:text-sm"
+              >Menor a mayor precio</option
+            >
+            <option value="CA" class="text-xs md:text-sm"
+              >Mayor a menor pecio
+            </option>
+            <option value="CA" class="text-xs md:text-sm">Categorias </option>
+          </select>
+        </form>
+      </div>
+    </section>
+    <section class="flex gap-2 max-w-screen-xl mx-auto">
+      <AsideProducts />
+      <ViewProducts products={products} />
+    </section>
+  </main>
+</Layout>
