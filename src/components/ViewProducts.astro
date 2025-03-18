@@ -1,31 +1,60 @@
 ---
-import CardProducts from "./CardProducts.astro";
-const { products } = Astro.props;
 import type { Producto } from "@/types";
+import { formateValue } from "@/utils";
+
+type Props = {
+  products: Producto[];
+};
+
+const { products } = Astro.props;
 ---
 
 <div class="w-full">
   {
-    products.length > 0 ? (
+    products?.length > 0 ? (
       <div
-        class="grid grid-cols-2 gap-x-8 md:grid-cols-3 lg:grid-cols-4 gap-y-8 p-2 w-full mb-10 md:mb-16"
+        class="grid grid-cols-2 gap-x-8 md:grid-cols-3 lg:grid-cols-4 gap-y-8 p-2 w-full mb-7 md:mb-12"
         id="cards"
       >
-        {products.map((per: Producto) => (
-          <CardProducts
-            slug={per.slug}
-            discount={per.discount}
-            image={`${per.images[0]?.url}`}
-            title={per.title}
-            price={per.price}
-          />
+        {products.map((prod: Producto) => (
+          <a
+            href={`/detalle-producto/${prod.slug}`}
+            class="card-producto rounded-sm flex justify-between flex-col h-auto md:w-[15em] max-h-[31em] border border-gray-200 transition duration-300 ease-in-out relative hover:shadow-lg"
+          >
+            <div
+              class={`${prod.discount ? "block" : "hidden"} absolute z-2 top-1 right-1`}
+            >
+              <img
+                src="/bg-ofertas.webp"
+                alt="imagen-bacground-ofertas"
+                class="size-9"
+              />
+              <span class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-1">
+                {prod.discount}
+              </span>
+            </div>
+            <div class="w-full h-40">
+              <picture>
+                <img
+                  src={prod.images[0].url}
+                  alt={`imagen-producto-${prod.title}`}
+                  class="rounded-sm w-full h-full object-cover duration-150"
+                />
+              </picture>
+            </div>
+            <div class="flex flex-col items-center justify-center py-3">
+              <p class="text-primary-txt pt-1 font-semibold text-base text-balance px-2 text-center">
+                {prod.title}
+              </p>
+              <p class="text-gray-800 font-bold">
+                {prod.price ? formateValue(prod.price) : prod.price}
+              </p>
+            </div>
+          </a>
         ))}
       </div>
     ) : (
-      <div
-        class="flex justify-center w-full py-3 items-center "
-        id="cards"
-      >
+      <div class="flex justify-center w-full py-3 items-center " id="cards">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
