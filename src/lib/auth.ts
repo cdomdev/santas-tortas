@@ -26,14 +26,18 @@ export async function login(data: PropLogin) {
 
 // servicion de registro utiliza una ruta externa para el envio de email ->
 export async function register(data: RegisterProp) {
-  const HOST_EXTERNAL = import.meta.env.PUBLIC_HOST_EXTERNAL
-  
+  const HOST_EXTERNAL = import.meta.env.PUBLIC_HOST_EXTERNAL;
 
-  return axios.post(`${HOST_EXTERNAL}/user/external/auth/register`, {
-    username: data.nombre,
-    email: data.email,
-    password: data.password,
-  });
+  try {
+    return axios.post(`${HOST_EXTERNAL}/user/external/auth/register`, {
+      username: data.nombre,
+      email: data.email,
+      password: data.password,
+    });
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
 
 export async function googleAuth(response: GoogleAuthResponse) {
@@ -42,5 +46,8 @@ export async function googleAuth(response: GoogleAuthResponse) {
       token: response.access_token,
     });
     return responseServer;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
