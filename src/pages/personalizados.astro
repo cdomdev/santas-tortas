@@ -10,11 +10,9 @@ let products: Producto[] = [];
 
 const response = await getCategorieBy("personalized");
 products = response.data;
-
-
 ---
 
-<Layout title={metaData.home.title} url={metaData.home.url}>
+<Layout title={metaData.home.title}>
   <section class="pt-28 max-w-screen-xl mx-auto">
     <div
       class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
