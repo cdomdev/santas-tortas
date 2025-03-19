@@ -15,152 +15,148 @@ products = response?.data?.slice(4, -12);
 ---
 
 <Layout title="Bienvenido a santas tortas - postres y tortas personalizados">
-  <main>
-    <Carrusel />
-    <section class="relative -top-14 z-30">
+  <Carrusel />
+  <section class="relative -top-14 z-30">
+    <div
+      class="bg-white h-auto mx-auto border p-4 md:max-w-screen-md lg:max-w-screen-lg flex items-center"
+    >
       <div
-        class="bg-white h-auto mx-auto border p-4 md:max-w-screen-md lg:max-w-screen-lg flex items-center"
+        class="border-dashed border w-full flex flex-col md:flex-row gap-y-5 py-3 items-center justify-center"
       >
         <div
-          class="border-dashed border w-full flex flex-col md:flex-row gap-y-5 py-3 items-center justify-center"
+          class="w-3/4 md:w-1/4 flex gap-x-2 items-center flex-col justify-center"
         >
-          <div
-            class="w-3/4 md:w-1/4 flex gap-x-2 items-center flex-col justify-center"
-          >
-            <div class="rounded-full bg-[#5e3c3c] p-3 block">
-              <img src="/box/cake.webp" alt="pastel" class="w-10 d-10" />
-            </div>
-
-            <div class="flex flex-col justify-center">
-              <h2
-                class="font-semibold text-sm md:text-base text-center text-black text-balance"
-              >
-                Tortas personalizadas
-              </h2>
-              <p class="text-xs/4 text-center">
-                Tortas personalizadas, endulza tus momentos especiales
-              </p>
-            </div>
+          <div class="rounded-full bg-[#5e3c3c] p-3 block">
+            <img src="/box/cake.webp" alt="pastel" class="w-10 d-10" />
           </div>
 
-          <div
-            class="w-3/4 md:w-1/4 flex gap-x-2 items-center flex-col justify-center"
-          >
-            <div class="rounded-full bg-[#5e3c3c] p-3">
-              <img src="/box/payment.webp" alt="" class="w-10 h-10" />
-            </div>
-
+          <div class="flex flex-col justify-center">
             <h2
-              class="font-semibold text-sm md:text-base text-black text-balance"
+              class="font-semibold text-sm md:text-base text-center text-black text-balance"
             >
-              Pagos seguros
+              Tortas personalizadas
             </h2>
-            <p class="text-xs/4 text-balance text-center">
-              paga de forma segura con tarejteas de credito o debito
+            <p class="text-xs/4 text-center">
+              Tortas personalizadas, endulza tus momentos especiales
             </p>
           </div>
+        </div>
 
-          <div
-            class="w-3/4 md:w-1/4 flex gap-x-2 items-center flex-col justify-center px-2"
-          >
-            <div class="border rounded-full bg-[#5e3c3c] p-3">
-              <img src="/box/box.webp" alt="" class="w-10 h-10" />
-            </div>
-            <h2
-              class="font-semibold text-sm md:text-base text-black text-balance"
-            >
-              Entrega en casa
-            </h2>
-            <p class="text-xs/4 text-balance text-center">
-              Recibe tus productos en la puerta de tu casa
-            </p>
+        <div
+          class="w-3/4 md:w-1/4 flex gap-x-2 items-center flex-col justify-center"
+        >
+          <div class="rounded-full bg-[#5e3c3c] p-3">
+            <img src="/box/payment.webp" alt="" class="w-10 h-10" />
           </div>
+
+          <h2
+            class="font-semibold text-sm md:text-base text-black text-balance"
+          >
+            Pagos seguros
+          </h2>
+          <p class="text-xs/4 text-balance text-center">
+            paga de forma segura con tarejteas de credito o debito
+          </p>
+        </div>
+
+        <div
+          class="w-3/4 md:w-1/4 flex gap-x-2 items-center flex-col justify-center px-2"
+        >
+          <div class="border rounded-full bg-[#5e3c3c] p-3">
+            <img src="/box/box.webp" alt="" class="w-10 h-10" />
+          </div>
+          <h2
+            class="font-semibold text-sm md:text-base text-black text-balance"
+          >
+            Entrega en casa
+          </h2>
+          <p class="text-xs/4 text-balance text-center">
+            Recibe tus productos en la puerta de tu casa
+          </p>
         </div>
       </div>
-    </section>
-    <img
-      src="/icon-box-shadow.webp"
-      alt="image shadow"
-      class="md:max-w-screen-md lg:max-w-screen-lg mx-auto -mt-14 mb-8"
-    />
+    </div>
+  </section>
+  <img
+    src="/icon-box-shadow.webp"
+    alt="image shadow"
+    class="md:max-w-screen-md lg:max-w-screen-lg mx-auto -mt-14 mb-8"
+  />
 
-    <ContainerSecctions
-      class="flex justify-center flex-col items-center px-2"
+  <ContainerSecctions class="flex justify-center flex-col items-center px-2">
+    <h3
+      class="text-center font-semibold text-xl md:text-2xl py-4 text-[#1f1919]"
     >
-      <h3
-        class="text-center font-semibold text-xl md:text-2xl py-4 text-[#1f1919]"
+      Algunos de los productos mas vendidos
+    </h3>
+
+    <ViewProducts products={products} />
+  </ContainerSecctions>
+
+  <ContainerSecctions
+    class="flex my-14 flex-col mb-12 px-6 md:px-0 justify-center"
+  >
+    <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold text-center">
+      Diseña tu torta personalizada
+    </h3>
+    <span class="flex flex-col items-center">
+      <p
+        class="text-sm md:text-base font-semibold -mb-1 text-center md:text-left"
       >
-        Algunos de los productos mas vendidos
-      </h3>
-
-      <ViewProducts products={products} />
-    </ContainerSecctions>
-
-    <ContainerSecctions
-      class="flex my-14 flex-col mb-12 px-6 md:px-0 justify-center"
-    >
-      <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold text-center">
-        Diseña tu torta personalizada
-      </h3>
-      <span class="flex flex-col items-center">
-        <p
-          class="text-sm md:text-base font-semibold -mb-1 text-center md:text-left"
-        >
-          <strong class="text-primary-txt">¿Tienes una idea en mente?</strong>
+        <strong class="text-primary-txt">¿Tienes una idea en mente?</strong>
+      </p>
+      <p
+        class="text-sm md:text-base font-semibold mb-3 text-center md:text-left"
+      >
+        ¡Nosotros la hacemos dulce realidad!
+      </p>
+    </span>
+    <article class="flex items-center justify-center">
+      <div class="md:max-w-[50%] lg:max-w-[70%]">
+        <p class="text-sm md:text-base mb-6 italic text-balance">
+          Descubre el sabor de la tradición con los ingredientes más selectos.
+          Cada receta está cuidadosamente elaborada para ofrecerte lo mejor de
+          nuestra gastronomía. ¡Haz tu pedido ahora y disfruta la perfección en
+          cada bocado!
         </p>
-        <p
-          class="text-sm md:text-base font-semibold mb-3 text-center md:text-left"
+        <a
+          id="buttons"
+          href="/personalizados/form-datos-personalizado"
+          class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
         >
-          ¡Nosotros la hacemos dulce realidad!
-        </p>
+          Crea tu momento especial
+        </a>
+      </div>
+      <img
+        src="/cup-cake.webp"
+        alt="icono de torta"
+        class="w-28 md:w-36 lg:w-40 animation-cake"
+      />
+    </article>
+  </ContainerSecctions>
+
+  <ContainerSecctions>
+    <article class="shadow-md py-5 px-8 rounded-sm">
+      <h4 class="font-semibold text-lg md:text-xl mb-2 text-black">
+        Obtener informacion de las nuevas ofertas
+      </h4>
+      <p class="text-sm md:text-base text-gray-800 text-wrap">
+        ¿Quieres recibir una notificación cuando se añada una nueva oferta a
+        Santas tortas? Suscríbete a nuestro boletín y serás uno de los primeros
+        en enterarte de las nuevas ofertas.
+      </p>
+      <FormSub client:load />
+      <span class="text-xs md:text-sm"
+        >Al suscibirse, aceptas los <a
+          href="/terminos-y-condiciones"
+          class="text-blue-600 hover:underline duration-100"
+          >terminos de servicios
+        </a> y la <a
+          href="/politica-tratamiento-datos"
+          class="text-blue-600 hover:underline duration-100"
+          >politica de privacidad
+        </a>de santas tortas
       </span>
-      <article class="flex items-center justify-center">
-        <div class="md:max-w-[50%] lg:max-w-[70%]">
-          <p class="text-sm md:text-base mb-6 italic text-balance">
-            Descubre el sabor de la tradición con los ingredientes más selectos.
-            Cada receta está cuidadosamente elaborada para ofrecerte lo mejor de
-            nuestra gastronomía. ¡Haz tu pedido ahora y disfruta la perfección
-            en cada bocado!
-          </p>
-          <a
-            id="buttons"
-            href="/personalizados/form-datos-personalizado"
-            class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
-          >
-            Crea tu momento especial
-          </a>
-        </div>
-        <img
-          src="/cup-cake.webp"
-          alt="icono de torta"
-          class="w-28 md:w-36 lg:w-40 animation-cake"
-        />
-      </article>
-    </ContainerSecctions>
-
-    <ContainerSecctions>
-      <article class="shadow-md py-5 px-8 rounded-sm">
-        <h4 class="font-semibold text-lg md:text-xl mb-2 text-black">
-          Obtener informacion de las nuevas ofertas
-        </h4>
-        <p class="text-sm md:text-base text-gray-800 text-wrap">
-          ¿Quieres recibir una notificación cuando se añada una nueva oferta a
-          Santas tortas? Suscríbete a nuestro boletín y serás uno de los
-          primeros en enterarte de las nuevas ofertas.
-        </p>
-       <FormSub client:load/>
-        <span class="text-xs md:text-sm"
-          >Al suscibirse, aceptas los <a
-            href="/terminos-y-condiciones"
-            class="text-blue-600 hover:underline duration-100"
-            >terminos de servicios
-          </a> y la <a
-            href="/politica-tratamiento-datos"
-            class="text-blue-600 hover:underline duration-100"
-            >politica de privacidad
-          </a>de santas tortas
-        </span>
-      </article>
-    </ContainerSecctions>
-  </main>
+    </article>
+  </ContainerSecctions>
 </Layout>

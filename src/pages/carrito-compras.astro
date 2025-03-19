@@ -18,7 +18,6 @@ try {
 ---
 
 <LayoutCarrito title="Carrito de compras" text="Carrito de compras">
-  <main>
     <section class="mb-6">
       <div class="flex w-full gap-y-4 gap-x-2 flex-col md:flex-row">
         <TablerListToCar isAuthenticated={isAuthenticated} client:load />
@@ -31,5 +30,4 @@ try {
       </h3>
       <ViewProducts products={products} />
     </section>
-  </main>
 </LayoutCarrito>

@@ -39,7 +39,6 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
 
 <Layout title={categoria}>
-  <main>
     <section class="max-w-screen-xl mx-auto pt-28">
       <h1
         class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
@@ -75,5 +74,4 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
       <AsideProducts />
       <ViewProducts products={products} />
     </section>
-  </main>
 </Layout>

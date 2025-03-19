@@ -5,113 +5,111 @@ import { getCategorieBy } from "@/lib/getCategories";
 import type { Producto } from "@/types";
 import ViewProducts from "@/components/ViewProducts.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import { metaData } from "@/content";
 let products: Producto[] = [];
 
 const response = await getCategorieBy("personalized");
 products = response.data;
+
+
 ---
 
-<Layout title="Personalizados - pasteleria personalizada">
-  <main>
-    <section class="pt-28 max-w-screen-xl mx-auto">
+<Layout title={metaData.home.title} url={metaData.home.url}>
+  <section class="pt-28 max-w-screen-xl mx-auto">
+    <div
+      class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
+    >
       <div
-        class="w-full min-h-24 mx-auto rounded-md p-2 relative flex items-center justify-center shadow-md mb-20 md:mb-28"
+        class="relative p-4 bg-[#f8f6f3] w-full max-w-[90%] md:max-w-[65%] mx-auto min-h-28 flex flex-col items-center justify-center border-dashed border-4 -mb-8"
+        id="box-tittle"
       >
-        <div
-          class="relative p-4 bg-[#f8f6f3] w-full max-w-[90%] md:max-w-[65%] mx-auto min-h-28 flex flex-col items-center justify-center border-dashed border-4 -mb-8"
-          id="box-tittle"
+        <span
+          class="text-xs md:text-base text-center font-semibold flex items-center gap-x-1"
+          id="text"
         >
-          <span
-            class="text-xs md:text-base text-center font-semibold flex items-center gap-x-1"
-            id="text"
-          >
-            <strong class="text-primary-txt">¡Tu idea!</strong> Nuestro diseño
-          </span>
-          <h1
-            class="text-2xl md:text-3xl text-primary-txt font-bold text-center mb-2"
-            id="title"
-          >
-            Pastelería Personalizada
-          </h1>
-          <h2
-            class="text-lg md:text-2xl text-[#f1683a] font-bold text-center"
-            id="subtittle"
-          >
-            Sabores Únicos, Diseños Exclusivos: Personaliza tu Pedido
-          </h2>
-          <p class="text-xs md:text-sm text-center text-balance">
-            Diseñamos pasteles únicos según tus ideas y creatividad.
+          <strong class="text-primary-txt">¡Tu idea!</strong> Nuestro diseño
+        </span>
+        <h1
+          class="text-2xl md:text-3xl text-primary-txt font-bold text-center mb-2"
+          id="title"
+        >
+          Pastelería Personalizada
+        </h1>
+        <h2
+          class="text-lg md:text-2xl text-[#f1683a] font-bold text-center"
+          id="subtittle"
+        >
+          Sabores Únicos, Diseños Exclusivos: Personaliza tu Pedido
+        </h2>
+        <p class="text-xs md:text-sm text-center text-balance">
+          Diseñamos pasteles únicos según tus ideas y creatividad.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-screen-xl mx-auto">
+    <h3
+      class="text-lg flex items-center ga-x-2 md:text-2xl text-balance font-bold pl-4 md:pl-0"
+      id="tittle"
+    >
+      Recomendad
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        width="24"
+        height="24"
+        class="size-4 md:size-6"
+      >
+        <path
+          d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
+        ></path>
+      </svg>s
+    </h3>
+    <hr />
+    <p class="text-sm md:text-base text-wrap pl-4 md:pl-0 my-4" id="des">
+      Descubre nuestras recomendaciones de pasteles personalizados diseñados
+      para inspirarte. Si no encuentras el diseño que buscas, ver al formulario
+      de <a
+        href="/personalizados/form-datos-personalizado"
+        class="text-[#f1683a] uppercase underline duration-300"
+        >personalizados</a
+      > para pedir un pastel único según tu creatividad. ¡Estamos aquí para hacer
+      realidad tus ideas dulces!
+    </p>
+
+    <ViewProducts products={products} />
+  </section>
+
+  <ContainerSecctions>
+    <h3 class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2 mt-7" id="des">
+      Tu pastel personalizado
+    </h3>
+    <div class="mt-2">
+      <div class="flex items-center px-3">
+        <div class="max-w-[70%]">
+          <p class="text-balance text-sm md:text-base mb-6 italic" id="des">
+            Descubre el sabor de la tradición con los ingredientes más selectos.
+            Cada receta está cuidadosamente elaborada para ofrecerte lo mejor de
+            nuestra gastronomía. ¡Haz tu pedido ahora y disfruta la perfección
+            en cada bocado!
           </p>
+          <a
+            id="des"
+            href="/personalizados/form-datos-personalizado"
+            class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
+          >
+            Solictar mi pastel personalizado
+          </a>
         </div>
+        <img
+          src="/cup-cake.webp"
+          alt="imagen icono de torta"
+          class="w-32 md:w-40 animation-cake"
+          id="cards"
+        />
       </div>
-    </section>
-
-    <section class="max-w-screen-xl mx-auto">
-      <h3
-        class="text-lg flex items-center ga-x-2 md:text-2xl text-balance font-bold pl-4 md:pl-0"
-        id="tittle"
-      >
-        Recomendad
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          width="24"
-          height="24"
-          class="size-4 md:size-6"
-        >
-          <path
-            d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z"
-          ></path>
-        </svg>s
-      </h3>
-      <hr />
-      <p class="text-sm md:text-base text-wrap pl-4 md:pl-0 my-4" id="des">
-        Descubre nuestras recomendaciones de pasteles personalizados diseñados
-        para inspirarte. Si no encuentras el diseño que buscas, ver al
-        formulario de <a
-          href="/personalizados/form-datos-personalizado"
-          class="text-[#f1683a] uppercase underline duration-300"
-          >personalizados</a
-        > para pedir un pastel único según tu creatividad. ¡Estamos aquí para hacer
-        realidad tus ideas dulces!
-      </p>
-
-      <ViewProducts products={products} />
-    </section>
-
-    <ContainerSecctions>
-      <h3
-        class="text-xl md:text-2xl text-[#f1683a] font-bold pl-2 mt-7"
-        id="des"
-      >
-        Tu pastel personalizado
-      </h3>
-      <div class="mt-2">
-        <div class="flex items-center px-3">
-          <div class="max-w-[70%]">
-            <p class="text-balance text-sm md:text-base mb-6 italic" id="des">
-              Descubre el sabor de la tradición con los ingredientes más
-              selectos. Cada receta está cuidadosamente elaborada para ofrecerte
-              lo mejor de nuestra gastronomía. ¡Haz tu pedido ahora y disfruta
-              la perfección en cada bocado!
-            </p>
-            <a
-              id="des"
-              href="/personalizados/form-datos-personalizado"
-              class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200 max-w-96 mx-auto"
-            >
-              Solictar mi pastel personalizado
-            </a>
-          </div>
-          <img
-            src="/cup-cake.webp"
-            alt="imagen icono de torta"
-            class="w-32 md:w-40 animation-cake"
-            id="cards"
-          />
-        </div>
-      </div>
-    </ContainerSecctions>
-  </main>
+    </div>
+  </ContainerSecctions>
 </Layout>
