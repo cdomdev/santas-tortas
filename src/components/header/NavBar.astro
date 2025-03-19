@@ -150,21 +150,25 @@ const isAuthenticated = authToken !== undefined;
   }
 </style>
 
-
 <script>
   function initNavbar() {
-    const btnSticky = document.querySelector('[data-collapse-toggle="navbar-sticky"]');
-    const navbar = document.querySelector("#navbar-menu");
+    const btnSticky = document.querySelector(
+      '[data-collapse-toggle="navbar-sticky"]'
+    );
+    const navbar = document.querySelector("#navbar-sticky");
 
     if (!btnSticky || !navbar) return;
 
     btnSticky.addEventListener("click", () => {
-      const isExpanded = navbar.classList.toggle("hidden");
-      btnSticky.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+      navbar.classList.toggle("hidden");
+      btnSticky.setAttribute(
+        "aria-expanded",
+        navbar.classList.contains("hidden") ? "false" : "true"
+      );
     });
   }
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("load", initNavbar);
-  }
+  // Ejecutar el script al cargar la página y después de cada cambio de vista en Astro
+  document.addEventListener("astro:page-load", initNavbar);
 </script>
+
