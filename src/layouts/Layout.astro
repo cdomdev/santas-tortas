@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer.astro";
 import WhatsApp from "@/components/WhatsApp.astro";
 import NavBar from "@/components/header/NavBar.astro";
+import "@/styles/globals.css";
 
 interface Props {
   title: string;
@@ -15,33 +16,59 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
-  </head>
-  <NavBar />
-  <body>
-    <slot />
-  </body>
-  <WhatsApp />
-  <Footer />
-  <script
-    is:inline
-    src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
-  ></script>
-</html>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Santas Tortas" />
 
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    font-family: "Grandstander Variable", system-ui;
-  }
-</style>
-<script>
-  import "@fontsource-variable/grandstander";
-</script>
+    <meta
+      name="description"
+      content="Diseña tu pastel personalizado con sabores únicos y decoraciones especiales. Convierte tu idea en un dulce inolvidable. ¡Haz tu pedido ahora!"
+    />
+
+    <meta property="og:url" content="https://santas-tortas.vercel.app" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Santas tortas - Pasteleria persoanlizada"
+    />
+    <meta
+      property="og:description"
+      content="Tiennda web con variedad en tortas, postres, galletas y pasteles personalizada"
+    />
+    <meta
+      property="og:image"
+      content="https://santas-tortas.vercel.app/og.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Santas tortas" />
+    <meta property="og:locale" content="es_Es" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Santas tortas - Pasteleria personalizada"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.ico" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
+      as="script"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <ViewTransitions />
+    <NavBar />
+    <main>
+      <slot />
+    </main>
+    <WhatsApp />
+    <Footer />
+
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
+    ></script>
+  </body>
+</html>

@@ -5,7 +5,6 @@ const { title } = Astro.props;
 ---
 
 <Layout title={title}>
-  <main>
     <section
       class="grid grid-cols-1 md:grid-cols-2 justify-center items-start gap-y-6 gap-x-7 w-full md:max-w-screen-xl mx-auto min-h-dvh px-10 pt-32"
     >
@@ -76,5 +75,4 @@ const { title } = Astro.props;
         <slot />
       </article>
     </section>
-  </main>
 </Layout>
