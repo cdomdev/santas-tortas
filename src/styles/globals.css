@@ -9,6 +9,11 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    box-sizing: border-box;
+    min-height: 100dvh;
+}
+main{
+    overflow-x: hidden;
 }
 
 html {
