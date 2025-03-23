@@ -1,4 +1,4 @@
-import axios from "axios";
+import { query } from "./strapi";
 
 interface PropSub {
   email: string;
@@ -6,10 +6,7 @@ interface PropSub {
 
 export async function susbcribre(email: PropSub) {
   try {
-    const { PUBLIC_HOST_EXTERNA } = import.meta.env;
-    return await axios.post(`${PUBLIC_HOST_EXTERNA}/user/susbcribe`, {
-      email,
-    });
+    return query(`/subscribers`, "POST", email, false);
   } catch (error) {
     console.log(error);
     return null;

@@ -26,10 +26,8 @@ export async function login(data: PropLogin) {
 
 // servicion de registro utiliza una ruta externa para el envio de email ->
 export async function register(data: RegisterProp) {
-  const HOST_EXTERNAL = import.meta.env.PUBLIC_HOST_EXTERNAL;
-
   try {
-    return axios.post(`${HOST_EXTERNAL}/user/external/auth/register`, {
+    return axios.post(`/custom-auth/register`, {
       username: data.nombre,
       email: data.email,
       password: data.password,
@@ -50,4 +48,8 @@ export async function googleAuth(response: GoogleAuthResponse) {
     console.log(error);
     return null;
   }
+}
+
+export async function sendRequestResettPassword(data: { email: string }) {
+  return query(`/auth/forgot-password`, "POST", { email: data.email });
 }
