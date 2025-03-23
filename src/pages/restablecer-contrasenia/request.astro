@@ -1,0 +1,14 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ForgotPassword from "@/components/auth/Forgot";
+---
+
+<Layout title="Recuperar contraseña">
+  <section class="pt-32 bg-[#f4f4f4] min-h-dvh">
+    <div
+      class="bg-white md:w-[70%] mx-auto flex flex-col justify-center items-center p-4"
+    >
+      <ForgotPassword client:visible />
+    </div>
+  </section>
+</Layout>
