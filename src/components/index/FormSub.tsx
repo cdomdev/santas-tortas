@@ -1,6 +1,8 @@
 import { Field, Formik, ErrorMessage, Form } from "formik";
 import { susbcribre } from "@/lib";
 import { Toast } from "../Toast";
+import { handleToast } from "@/utils";
+
 
 import { useState } from "react";
 
@@ -21,12 +23,35 @@ export const FormSub = () => {
     setLoading(true);
     try {
       const response = await susbcribre(values);
-      if (response) {
+      if (response.ok) {
         resetForm();
         setLoading(false);
+        handleToast({
+          background: "toast-success",
+          message: "Gracias por sunscribirte al boletín de noticias, te mantendremos informado de todas las novedades",
+          setShowToast,
+          setBgToast,
+          setToastMessage,
+        });
+      }else{
+        handleToast({
+          background: "toast-fail",  
+          message: "¡Parece que ya estas suscrito!",
+          setShowToast,
+          setBgToast,
+          setToastMessage,
+        });
+        resetForm();
       }
     } catch (error) {
       console.log(error);
+      handleToast({
+        background: "toast-fail",
+        message: "Algo salio mal, intentalo mas tarde",
+        setShowToast,
+        setBgToast,
+        setToastMessage,
+      });
     } finally {
       setLoading(false);
     }
@@ -84,7 +109,7 @@ export const FormSub = () => {
             </div>
             <button
               type="submit"
-              className="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium rounded-lg border text-black hover:text-white transition duration-200 bg-secondary-bg hover:bg-[#d66a6e] uppercase focus:ring-4 focus:outline-none focus:ring-blue-300 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium rounded-lg border text-black hover:text-white transition duration-200 bg-secondary-bg hover:bg-[#d66a6e] uppercase  focus:outline-none  text-center"
             >
               {loading ? "Enviando..." : " Suscríbrirme"}
             </button>
