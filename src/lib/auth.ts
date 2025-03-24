@@ -53,3 +53,14 @@ export async function googleAuth(response: GoogleAuthResponse) {
 export async function sendRequestResettPassword(data: { email: string }) {
   return query(`/auth/forgot-password`, "POST", { email: data.email });
 }
+
+export async function resetPassword(
+  data: { password: string; password2: string },
+  token: string
+) {
+  return query(`/auth/reset-password`, "POST", {
+    password: data.password,
+    password2: data.password2,
+    token,
+  });
+}
