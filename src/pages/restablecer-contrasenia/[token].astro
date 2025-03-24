@@ -1,0 +1,14 @@
+---
+import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import Layout from "@/layouts/Layout.astro";
+import ForgotPassword from "@/components/auth/ForgotPassword";
+const { token } = Astro.params;
+
+console.log("TOKEN DE CAMBIO DE CONTRASEÑA", token);
+---
+
+<Layout title="Restablecer contraseña">
+  <ContainerSecctions class="pt-28">
+    <ForgotPassword token={token ? token : ""} client:visible />
+  </ContainerSecctions>
+</Layout>
