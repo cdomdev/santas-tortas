@@ -185,7 +185,8 @@ const Login = () => {
               {loading ? "Iniciando sesion..." : "Iniciar sesion"}
             </button>
 
-            <span className="text-center block text-xs md:text-sm">Si no tienes una cuenta puedes crearla en <a href="/acount/register" className="underline text-blue-500 uppercase">crear cuenta</a></span>
+            <span className="text-center block text-xs md:text-sm mb-3"><a href="/restablecer-contrasenia/request" className="underline text-blue-500 uppercase">¿Olvidaste tu contraeña?</a></span>
+            <span className="text-center block text-xs md:text-sm mb-5">Si no tienes una cuenta puedes crearla en <a href="/acount/register" className="underline text-blue-500 uppercase">crear cuenta</a></span>
           </Form>
         )}
       </Formik>
