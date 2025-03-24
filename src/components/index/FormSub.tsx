@@ -28,7 +28,7 @@ export const FormSub = () => {
         setLoading(false);
         handleToast({
           background: "toast-success",
-          message: "Gracias por sunscribirte al boletín de noticias, te mantendremos informado de todas las novedades",
+          message: "Gracias por subscribirte al boletín de noticias, te mantendremos informado de todas las novedades",
           setShowToast,
           setBgToast,
           setToastMessage,
@@ -36,7 +36,7 @@ export const FormSub = () => {
       }else{
         handleToast({
           background: "toast-fail",  
-          message: "¡Parece que ya estas suscrito!",
+          message: "¡Parece que ya estas subscrito!",
           setShowToast,
           setBgToast,
           setToastMessage,
