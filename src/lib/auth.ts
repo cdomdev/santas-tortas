@@ -1,4 +1,3 @@
-import axios from "axios";
 import { query } from "./strapi";
 import type { GoogleAuthResponse } from "@/types/types";
 

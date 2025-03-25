@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { handleToast } from "@/utils";
 import { Toast } from "../Toast";
@@ -57,10 +58,10 @@ const Login = () => {
           sameSite: "lax",
           secure: true,
         });
-      } else {
+      } else if(response.status === 400) {
         handleToast({
           background: "toast-fail",
-          message: "Algo salio mal con el inicio de sesion, intente de nuevo",
+          message: "Credenciales invalidas, intentelo de nuevo",
           setShowToast,
           setBgToast,
           setToastMessage,
@@ -69,13 +70,31 @@ const Login = () => {
     } catch (error) {
       console.log("Error en el inicio de sesion");
       setLoading(false);
-      handleToast({
-        background: "toast-fail",
-        message: "Hubo un error al iniciar sesion, intente mas tarde",
-        setShowToast,
-        setBgToast,
-        setToastMessage,
-      });
+      if (axios.isAxiosError(error) && error.response) {
+        const { status } = error.response;
+        if (
+          status === 404 ||
+          status === 403 ||
+          status === 401 ||
+          status === 400
+        ) {
+          handleToast({
+            background: "toast-fail",
+            message: `Algo salio mal con el inicio de sesion, intente de nuevo`,
+            setShowToast,
+            setBgToast,
+            setToastMessage,
+          });
+        } else {
+          handleToast({
+            background: "toast-fail",
+            message: `Ocurrio un error interno, por favor intente mas tarde`,
+            setShowToast,
+            setBgToast,
+            setToastMessage,
+          });
+        }
+      }
     } finally {
       setLoading(false);
     }

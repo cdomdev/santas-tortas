@@ -52,10 +52,10 @@ const Registro = () => {
       console.log(error);
       if (axios.isAxiosError(error) && error.response) {
         const { status } = error.response;
-        if (status === 400 || status === 500) {
+        if (status === 500) {
           handleToast({
             background: "toast-fail",
-            message: "Hubo un error en el registro, intentelo de nuevo",
+            message: "Hubo interno al precesar su registro, intentelo mas tarde",
             setShowToast,
             setBgToast,
             setToastMessage,

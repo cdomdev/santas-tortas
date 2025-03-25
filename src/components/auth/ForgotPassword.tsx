@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Formik, ErrorMessage, Field, Form } from "formik";
 import { useEffect, useState } from "react";
 import { Toast } from "../Toast";
@@ -20,37 +21,51 @@ const FormResetPassword = ({ token }: FormResetPasswordProps) => {
   const [bgToast, setBgToast] = useState<string>("");
 
   useEffect(() => {
-    const send = localStorage.getItem("processSucces") || null;
+    const send = sessionStorage.getItem("processSucces") || null;
     if (send) {
       const dataPerse = JSON.parse(send);
       setSuccess(dataPerse);
     }
+    
   }, []);
 
   const handleSubmit = async (values: ValuesPassWords) => {
     setIsLoading(true);
     try {
       const response = await resetPassword(values, token);
-      if (response) {
-        console.log(response);
+      if (response?.status === 200) {
+        setSuccess(true);
+        sessionStorage.setItem("processSucces", JSON.stringify(true));
+      } else if (response?.status === 401 || response?.status === 403) {
         handleToast({
           background: "toast-fail",
-          message: "Algo salio mal, intente de nuevo",
+          message:
+            "¡El token expiro!,  por favor realice una nueva peticion para el cambio de su contraseña",
           setShowToast,
           setBgToast,
           setToastMessage,
         });
-        setSuccess(true);
-        localStorage.setItem("processSucces", JSON.stringify(true));
       }
     } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        const { status } = error.response;
+        if (status === 500) {
+          handleToast({
+            background: "toast-fail",
+            message: `Algo salio mal con el inicio de sesion, intentelo mas tarde`,
+            setShowToast,
+            setBgToast,
+            setToastMessage,
+          });
+        }
+      }
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="  ">
+    <>
       <Toast
         showToast={showToast}
         setShowToast={setShowToast}
@@ -79,29 +94,28 @@ const FormResetPassword = ({ token }: FormResetPasswordProps) => {
               <path d="M9 12l2 2l4 -4" />
             </svg>
           </span>
-          <h1 className="text-base font-normal">
+          <h1 className="text-sm md:text-base font-normal">
             Tu contraseña se actuilizo con exito, ya puedes iniciar sesion en
-            Suministros
+            santas tortas
           </h1>
           <a
             href="/"
-            className="mt-4  text-center px-10 py-2  rounded-md hover:underline"
+            className="mt-4  text-center px-10 py-2  rounded-md hover:underline font-semibold hover:text-gray-700 transition duration-200"
           >
-            Regresar al inicio
+            Volver a la tienda
           </a>
         </div>
       ) : (
-        <div className="container-recovery pt-20">
+        <div className="container-recovery">
           <h1 className="text-center mb-10 text-base md:text-xl font-semibold">
             Solicitud para restablecer contraseña
           </h1>
           <h2 className="font-normal text-sm md:text-base mb-5">
             A continuación encontrará un formulario para restablecer su
-            contraseña, para mejorar la segurida de su nueva contraseña, tenemos
-            algunos puntos que queremos que tenga en cuenta para mejorar la
-            seguridad de su nueva contraseña:
+            contraseña, para mejorar la seguridad de su nueva contraseña,
+            tenemos algunos puntos que queremos que tenga en cuenta:
           </h2>
-          <ol className="text-sm md:text-base pl-5 mb-7 list-disc">
+          <ol className="text-sm md:text-base pl-5 mb-10 list-disc">
             <li className="text-balance">Ingrese una nueva contraseña</li>
             <li className="text-balance">Confirme la contraseña</li>
             <li className="text-balance">
@@ -198,7 +212,7 @@ const FormResetPassword = ({ token }: FormResetPasswordProps) => {
           </Formik>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

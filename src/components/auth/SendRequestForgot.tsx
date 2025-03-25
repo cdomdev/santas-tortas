@@ -24,7 +24,7 @@ const ForgotPassword = () => {
   const [bgToast, setBgToast] = useState<string>("");
 
   useEffect(() => {
-    const dataSuccess = localStorage.getItem("isSuccessSend");
+    const dataSuccess =sessionStorage.getItem("isSuccessSend");
     if (dataSuccess) {
       let dataPase = JSON.parse(dataSuccess);
       setValue(dataPase);
@@ -38,8 +38,8 @@ const ForgotPassword = () => {
       if (response?.status === 200) {
         setValue(true);
         setData(response.data);
-        localStorage.setItem("isSuccessSend", JSON.stringify(true));
-        localStorage.setItem("data", JSON.stringify(response));
+       sessionStorage.setItem("isSuccessSend", JSON.stringify(true));
+       sessionStorage.setItem("data", JSON.stringify(response));
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
