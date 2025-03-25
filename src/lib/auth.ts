@@ -24,18 +24,14 @@ export async function login(data: PropLogin) {
   );
 }
 
-// servicion de registro utiliza una ruta externa para el envio de email ->
+// servicion de registro
+
 export async function register(data: RegisterProp) {
-  try {
-    return axios.post(`/custom-auth/register`, {
-      username: data.nombre,
-      email: data.email,
-      password: data.password,
-    });
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
+  return query(`/auth/register`, "POST", {
+    username: data.nombre,
+    email: data.email,
+    password: data.password,
+  });
 }
 
 export async function googleAuth(response: GoogleAuthResponse) {
@@ -51,16 +47,27 @@ export async function googleAuth(response: GoogleAuthResponse) {
 }
 
 export async function sendRequestResettPassword(data: { email: string }) {
-  return query(`/auth/forgot-password`, "POST", { email: data.email });
+  try {
+    return query(`/auth/forgot-password`, "POST", { email: data.email });
+  } catch (error) {
+    console.log(
+      "Error en el envio de la peticion de restablecer contraseña ",
+      error
+    );
+  }
 }
 
 export async function resetPassword(
   data: { password: string; password2: string },
-  token: string
+ code: string
 ) {
-  return query(`/auth/reset-password`, "POST", {
-    password: data.password,
-    password2: data.password2,
-    token,
-  });
+  try {
+    return query(`/auth/reset-password-custom`, "POST", {
+      code,
+      password: data.password,
+      passwordConfirmation: data.password2,
+    });
+  } catch (error) {
+    console.log("Error en el restablecimiento de la contraseña", error);
+  }
 }

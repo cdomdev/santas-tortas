@@ -32,18 +32,31 @@ export async function query(
       withCredentials,
     });
 
-    if (!response) return [];
-
-    return response.data;
+    return {
+      success: true,
+      status: response.status,
+      data: response.data,
+    };
   } catch (error: any) {
-    console.error("Error en la solicitud:", error.message);
-    if (error.code === "ECONNREFUSED") {
-      return { error: true, message: "El servidor no está disponible" };
+    console.error("Error en la solicitud:", error);
+
+    // Si el error viene de una respuesta de Strapi (con su estructura de error)
+    if (error.response && error.response.data?.error) {
+      const { status, name, message, details } = error.response.data.error;
+      return {
+        success: false,
+        status,
+        name,
+        message,
+        details,
+      };
     }
 
+    // Si el error es de conexión o no tiene la estructura esperada
     return {
-      error: true,
-      message: error.response?.data?.message || "Error desconocido",
+      success: false,
+      status: error.response?.status || 500,
+      message: error.message || "Error desconocido en la solicitud",
     };
   }
 }
