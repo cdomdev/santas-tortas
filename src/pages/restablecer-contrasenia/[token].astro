@@ -9,6 +9,6 @@ console.log("TOKEN DE CAMBIO DE CONTRASEÑA", token);
 
 <Layout title="Restablecer contraseña">
   <ContainerSecctions class="pt-28">
-    <ForgotPassword token={token ? token : ""} client:visible />
+    <ForgotPassword token={token ? token : ""} client:load />
   </ContainerSecctions>
 </Layout>
