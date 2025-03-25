@@ -19,7 +19,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [path, setPath] = useState<string>("");
 
-
   useEffect(() => {
     const path = window.sessionStorage.getItem("path");
     if (path) {
@@ -36,7 +35,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await login(values);
-      if (response) {
+      if (response.status === 200) {
         setLoading(false);
         resetForm();
         handleToast({
@@ -52,16 +51,31 @@ const Login = () => {
             window.location.href = `${path}`;
           }, 2000);
         }
+        const { jwt, user } = response.data;
+        Cookies.set("access_token", jwt, {
+          expires: 1,
+          sameSite: "lax",
+          secure: true,
+        });
+      } else {
+        handleToast({
+          background: "toast-fail",
+          message: "Algo salio mal con el inicio de sesion, intente de nuevo",
+          setShowToast,
+          setBgToast,
+          setToastMessage,
+        });
       }
-      const { jwt, user } = response;
-      Cookies.set("access_token", jwt, {
-        expires: 1,
-        sameSite: "lax",
-        secure: true,
-      });
     } catch (error) {
-      console.log(error);
+      console.log("Error en el inicio de sesion");
       setLoading(false);
+      handleToast({
+        background: "toast-fail",
+        message: "Hubo un error al iniciar sesion, intente mas tarde",
+        setShowToast,
+        setBgToast,
+        setToastMessage,
+      });
     } finally {
       setLoading(false);
     }
@@ -185,8 +199,23 @@ const Login = () => {
               {loading ? "Iniciando sesion..." : "Iniciar sesion"}
             </button>
 
-            <span className="text-center block text-xs md:text-sm mb-3"><a href="/restablecer-contrasenia/request" className="underline text-blue-500 uppercase">¿Olvidaste tu contraeña?</a></span>
-            <span className="text-center block text-xs md:text-sm mb-5">Si no tienes una cuenta puedes crearla en <a href="/acount/register" className="underline text-blue-500 uppercase">crear cuenta</a></span>
+            <span className="text-center block text-xs md:text-sm mb-3">
+              <a
+                href="/restablecer-contrasenia/request"
+                className="underline text-blue-500 uppercase"
+              >
+                ¿Olvidaste tu contraeña?
+              </a>
+            </span>
+            <span className="text-center block text-xs md:text-sm mb-5">
+              Si no tienes una cuenta puedes crearla en{" "}
+              <a
+                href="/acount/register"
+                className="underline text-blue-500 uppercase"
+              >
+                crear cuenta
+              </a>
+            </span>
           </Form>
         )}
       </Formik>

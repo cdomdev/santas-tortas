@@ -25,12 +25,12 @@ const Registro = () => {
 
     try {
       const response = await register(values);
-      if (response) {
+      if (response.status === 200) {
         setLoading(false);
         resetForm();
-        setTimeout(() =>{
-          window.location.href = '/acount/login'
-        }, 2000)
+        setTimeout(() => {
+          window.location.href = "/acount/login";
+        }, 2000);
         handleToast({
           background: "toast-success",
           message:
@@ -39,19 +39,20 @@ const Registro = () => {
           setBgToast,
           setToastMessage,
         });
+      } else if (response.status === 409) {
+        handleToast({
+          background: "toast-fail",
+          message: "Ya existe un usuario con los datos ingresados",
+          setShowToast,
+          setBgToast,
+          setToastMessage,
+        });
       }
     } catch (error) {
+      console.log(error);
       if (axios.isAxiosError(error) && error.response) {
         const { status } = error.response;
-        if (status === 400) {
-          handleToast({
-            background: "toast-fail",
-            message: "Ya existe un usuario con los datos ingresados",
-            setShowToast,
-            setBgToast,
-            setToastMessage,
-          });
-        } else {
+        if (status === 400 || status === 500) {
           handleToast({
             background: "toast-fail",
             message: "Hubo un error en el registro, intentelo de nuevo",
@@ -61,9 +62,8 @@ const Registro = () => {
           });
         }
       }
-      console.log(error);
-    }finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -203,9 +203,15 @@ const Registro = () => {
               {loading ? "Creando cuanta..." : "Crear cuenta"}
             </button>
 
-
-            <span className="text-center block text-xs md:text-sm">Si ya tienes una cuenta puedes <a href="/acount/login" className="underline text-blue-500 uppercase">Iniciar sesion</a></span>
-
+            <span className="text-center block text-xs md:text-sm">
+              Si ya tienes una cuenta puedes{" "}
+              <a
+                href="/acount/login"
+                className="underline text-blue-500 uppercase"
+              >
+                Iniciar sesion
+              </a>
+            </span>
           </Form>
         )}
       </Formik>
