@@ -9,7 +9,7 @@ import { metaData } from "@/content";
 let products: Producto[] = [];
 
 const response = await getCategorieBy("personalized");
-products = response.data;
+products = response?.data || [];
 ---
 
 <Layout title={metaData.home.title}>

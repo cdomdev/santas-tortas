@@ -2,7 +2,6 @@
 import "@/styles/globals.css";
 import { contenido } from "@/content";
 import Layout from "@/layouts/Layout.astro";
-import AsideProducts from "@/components/AsideProducts.astro";
 import type { Producto } from "@/types";
 import { getCategorieBy, getCategories } from "@/lib/getCategories";
 import ViewProducts from "@/components/ViewProducts.astro";
@@ -39,39 +38,72 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
 
 <Layout title={categoria}>
-    <section class="max-w-screen-xl mx-auto pt-28">
-      <h1
-        class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
-        id="title"
-      >
-        {contenidoPages?.titulo}
-      </h1>
-      <p
-        class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold"
-        id="des"
-      >
-        ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
-      </p>
-      <p class="text-xs md:text-base my-3 text-balance px-3 md:px-o" id="des">
-        {contenidoPages?.texto}
-      </p>
+  <section class="max-w-screen-xl mx-auto pt-28">
+    <h1
+      class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
+      id="title"
+    >
+      {contenidoPages?.titulo}
+    </h1>
+    <p
+      class="mb-3 text-center text-xs md:text-sm text-[#5f3b3c] font-extrabold"
+      id="des"
+    >
+      ¡Perfect{contenidoPages?.l}s para compartir o disfrutar solo!
+    </p>
+    <p class="text-xs md:text-base my-3 text-balance px-3 md:px-o" id="des">
+      {contenidoPages?.texto}
+    </p>
 
-      <div class="h-auto w-full flex my-8 items-center justify-end" id="des">
-        <form>
-          <label for="ordenar_select" class="sr-only">Ordenar</label>
-          <select
-            id="ordenar_select"
-            class="block py-2.5 px-0 w-full text-sm text-gray-700 bg-transparent border-0 border-b-2 border-gray-200 appearance-none"
-          >
-            <option selected>Ordenar producto por:</option>
-            <option value="menor">Menor a mayor precio</option>
-            <option value="mayor">Mayor a menor precio</option>
-          </select>
-        </form>
-      </div>
-    </section>
-    <section class="flex gap-2 max-w-screen-xl mx-auto">
-      <AsideProducts />
+    <div class="h-auto w-full flex my-8 items-center justify-end" id="des">
+    </div>
+  </section>
+  <section class="flex gap-2 max-w-screen-xl mx-auto">
+    <aside
+      id="cards-categorias"
+      class="w-full max-w-[20%] hidden md:flex flex-col px-4 py-5 gap-y-3"
+    >
+      <h2 class="font-bold text-base md:text-xl border-b pl-2">Precios</h2>
+      <ol class="font-normal text-sm/10 border h-auto py-4 px-2">
+        <li>
+          <input type="checkbox" class="mr-2 rounded-full" />Todos los productos
+        </li>
+        <li>
+          <input type="checkbox" class="mr-2 rounded-full" />Mayor a menor
+        </li>
+        <li>
+          <input type="checkbox" class="mr-2 rounded-full" />Menor a mayor
+        </li>
+      </ol>
+    </aside>
+    <article class="w-full">
       <ViewProducts products={products} />
-    </section>
+    </article>
+  </section>
 </Layout>
+
+
+
+<style>
+  #cards-categorias {
+    opacity: 0;
+    animation: showContent 0.5s 1s linear 1 forwards;
+  }
+
+  #cards-categorias {
+    transform: translatex(-50px);
+    filter: blur(5px);
+  }
+
+  @keyframes showContent {
+    to {
+      transform: translateY(0px);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+
+  #cards-categorias {
+    animation-delay: 2.5s;
+  }
+</style>
