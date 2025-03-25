@@ -23,7 +23,7 @@ export const FormSub = () => {
     setLoading(true);
     try {
       const response = await susbcribre(values);
-      if (response.ok) {
+      if (response?.status === 200) {
         resetForm();
         setLoading(false);
         handleToast({

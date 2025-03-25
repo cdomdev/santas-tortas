@@ -35,9 +35,9 @@ const ForgotPassword = () => {
     setIsLoading(true);
     try {
       const response = await sendRequestResettPassword(values);
-      if (response) {
+      if (response?.status === 200) {
         setValue(true);
-        setData(response);
+        setData(response.data);
         localStorage.setItem("isSuccessSend", JSON.stringify(true));
         localStorage.setItem("data", JSON.stringify(response));
       }

@@ -39,7 +39,7 @@ const GoogleAuth = () => {
       try {
         const data = await googleAuth(response);
         if (data) {
-          const { user, jwt } = data;
+          const { user, jwt } = data.data;
           Cookies.set("access_token", jwt, {
             expires: 1,
             sameSite: "lax",
