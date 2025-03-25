@@ -1,0 +1,24 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ForgotPassword from "@/components/auth/ForgotPassword";
+import ContainerSecctions from "@/components/ContainerSecctions.astro";
+const token = Astro.url.searchParams.get("code");
+
+---
+
+<Layout title="Restablecer contraseña">
+  <section class="pt-32 bg-[#f4f4f4] min-h-dvh">
+    <ContainerSecctions class="bg-white p-10">
+      <ForgotPassword token={token ? token : ""} client:only />
+    </ContainerSecctions>
+  </section>
+</Layout>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("code");
+
+  if (!token) {
+    window.location.href = "/";
+  }
+</script>

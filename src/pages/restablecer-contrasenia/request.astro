@@ -4,11 +4,11 @@ import ForgotPassword from "@/components/auth/SendRequestForgot";
 ---
 
 <Layout title="Recuperar contraseña">
-  <section class="pt-32 bg-[#f4f4f4] min-h-dvh">
+  <section class="pt-48 bg-[#f4f4f4] min-h-dvh">
     <div
       class="bg-white md:w-[70%] mx-auto flex flex-col justify-center items-center p-4"
     >
-      <ForgotPassword client:visible />
+      <ForgotPassword client:only />
     </div>
   </section>
 </Layout>
