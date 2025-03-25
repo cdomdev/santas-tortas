@@ -6,7 +6,7 @@ interface PropSub {
 
 export async function susbcribre(email: PropSub) {
   try {
-    return query(`/subscribers`, "POST", email, false);
+    return query(`/subscribers`, "POST", email, true);
   } catch (error) {
     console.log(error);
     return null;
