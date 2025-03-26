@@ -5,6 +5,8 @@ import Layout from "@/layouts/Layout.astro";
 import type { Producto } from "@/types";
 import { getCategorieBy, getCategories } from "@/lib/getCategories";
 import ViewProducts from "@/components/ViewProducts.astro";
+import Crumbs from "@/components/Crumbs.astro";
+
 export const prerender = true;
 interface Category {
   id: Number;
@@ -38,7 +40,8 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
 ---
 
 <Layout title={categoria}>
-  <section class="max-w-screen-xl mx-auto pt-28">
+  <Crumbs pagina={["productos", categoria]} />
+  <section class="max-w-screen-xl mx-auto pt-5">
     <h1
       class="text-xl md:text-3xl text-center text-[#f1683a] font-bold -mb-1"
       id="title"
@@ -81,8 +84,6 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
     </article>
   </section>
 </Layout>
-
-
 
 <style>
   #cards-categorias {
