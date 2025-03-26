@@ -2,6 +2,7 @@
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import Crumbs from "@/components/Crumbs.astro";
 
 const about = await getCollection("paginas");
 const {
@@ -16,44 +17,43 @@ const {
 ---
 
 <Layout title="Politica de tratamiento de datos">
-    <ContainerSecctions class="mb-5 px-4 md:pl-0 pt-28">
-      <h1 class="font-semibold text-2xl md:text-3xl mb-6 mt-6">{title}</h1>
-      <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{introduccion}</p>
-    </ContainerSecctions>
+  <Crumbs pagina={[title]} />
+  <ContainerSecctions class="mb-5 px-4 md:pl-0 pt-5">
+    <h1 class="font-semibold text-2xl md:text-3xl mb-6 mt-6">{title}</h1>
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{introduccion}</p>
+  </ContainerSecctions>
 
-    <ContainerSecctions class="mb-5 px-4 md:pl-0">
-      <h2 class="font-semibold text-lg md:text-xl mb-2">
-        Informacion recopilada
-      </h2>
-      <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">
-        {informacion_requerida}
-      </p>
-    </ContainerSecctions>
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h2 class="font-semibold text-lg md:text-xl mb-2">
+      Informacion recopilada
+    </h2>
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">
+      {informacion_requerida}
+    </p>
+  </ContainerSecctions>
 
-    <ContainerSecctions class="mb-5 px-4 md:pl-0">
-      <h2 class="font-semibold text-lg md:text-xl mb-2">
-        Use de la informacion
-      </h2>
-      <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">
-        {uso_de_la_informacion}
-      </p>
-    </ContainerSecctions>
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h2 class="font-semibold text-lg md:text-xl mb-2">Use de la informacion</h2>
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">
+      {uso_de_la_informacion}
+    </p>
+  </ContainerSecctions>
 
-    <ContainerSecctions class="mb-5 px-4 md:pl-0">
-      <h3 class="font-semibold text-lg md:text-xl mb-2">Use de cookies</h3>
-      <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{uso_de_cookies}</p>
-    </ContainerSecctions>
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h3 class="font-semibold text-lg md:text-xl mb-2">Use de cookies</h3>
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{uso_de_cookies}</p>
+  </ContainerSecctions>
 
-    <ContainerSecctions class="mb-5 px-4 md:pl-0">
-      <h3 class="font-semibold text-lg md:text-xl mb-2">
-        Control de la informacion
-      </h3>
-      <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">
-        {control_de_informacion}
-      </p>
-    </ContainerSecctions>
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <h3 class="font-semibold text-lg md:text-xl mb-2">
+      Control de la informacion
+    </h3>
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">
+      {control_de_informacion}
+    </p>
+  </ContainerSecctions>
 
-    <ContainerSecctions class="mb-5 px-4 md:pl-0">
-      <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{footer_text}</p>
-    </ContainerSecctions>
+  <ContainerSecctions class="mb-5 px-4 md:pl-0">
+    <p class="text-sm/6 md:text-base/7 md:px-0 text-wrap">{footer_text}</p>
+  </ContainerSecctions>
 </Layout>

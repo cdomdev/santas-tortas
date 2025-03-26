@@ -4,12 +4,14 @@ import Layout from "@/layouts/Layout.astro";
 import { getOferts } from "@/lib/getProducts";
 import ViewProducts from "@/components/ViewProducts.astro";
 import { metaData } from "@/content";
+import Crumbs from "@/components/Crumbs.astro";
 const response = await getOferts();
 const products = response?.data || [];
 ---
 
 <Layout title={metaData.ofertas.title}>
-  <section class="max-w-screen-xl mx-auto pt-28">
+  <Crumbs pagina={["ofertas"]}/>
+  <section class="max-w-screen-xl mx-auto pt-5">
     <h1
       class="text-2xl md:text-3xl text-balance text-[#f1683a] font-bold mb-4 pl-3 md:pl-0 text-center"
       id="title"

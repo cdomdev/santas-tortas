@@ -1,0 +1,58 @@
+---
+import "@/styles/globals.css";
+import Layout from "@/layouts/Layout.astro";
+import type { Producto } from "@/types";
+import { getProducts } from "@/lib/getProducts";
+import ViewProducts from "@/components/ViewProducts.astro";
+import Crumbs from "@/components/Crumbs.astro";
+export const prerender = true;
+let products: Producto[] = [];
+const response = await getProducts();
+products = response?.data || [];
+
+---
+
+<Layout title="Tortas - postres - cupcakes - galletas">
+  <Crumbs pagina={["productos"]}/>
+  <section class="pt-5 max-w-screen-xl mx-auto">
+    <h1
+      class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-6"
+      id="box-tittle"
+    >
+      Explora Nuestra Selección de Tortas, Galletas y Cupcakes
+    </h1>
+
+    <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
+      Explora nuestra amplia variedad de productos personalizables y encuentra
+      el diseño perfecto para ti. Desde regalos únicos hasta artículos
+      exclusivos hechos a medida, ofrecemos opciones para cada estilo y ocasión.
+      Personaliza cada detalle y crea algo verdaderamente especial.
+    </p>
+    <p class="text-sm md:text-base/5 my-3 text-wrap px-3" id="des">
+      <strong> ¡Descubre nuestra colección hoy mismo!</strong>
+    </p>
+    <div
+      class="h-auto w-full flex my-8 items-center justify-end pr-2 md:pr-0"
+      id="des"
+    >
+    </div>
+  </section>
+  <section class="flex gap-2 max-w-screen-xl mx-auto">
+    <aside
+      id="cards-categorias"
+      class="w-full max-w-[20%] hidden md:flex flex-col px-4 py-5 gap-y-3"
+    >
+      <h2 class="font-bold text-base md:text-xl border-b pl-2">Categorias</h2>
+      <ol class="font-normal text-sm/10 border h-auto py-4 px-2">
+        <li ><input type="checkbox" class="mr-2 rounded-full">Todos los productos</li>
+        <li ><input type="checkbox" class="mr-2 rounded-full">Tortas</li>
+        <li ><input type="checkbox" class="mr-2 rounded-full">Postres</li>
+        <li ><input type="checkbox" class="mr-2 rounded-full">Cupcakes</li>
+        <li ><input type="checkbox" class="mr-2 rounded-full">Galletas</li>
+      </ol>
+    </aside>
+    <article class="w-full">
+      <ViewProducts products={products} />
+    </article>
+  </section>
+</Layout>
