@@ -4,10 +4,11 @@ import { contenido } from "@/content";
 import Layout from "@/layouts/Layout.astro";
 import type { Producto } from "@/types";
 import { getCategorieBy, getCategories } from "@/lib/getCategories";
-import ViewProducts from "@/components/ViewProducts.astro";
 import Crumbs from "@/components/Crumbs.astro";
+import ViewProducts from "@/components/ViewProductsPages";
 
 export const prerender = true;
+
 interface Category {
   id: Number;
   documentId: string;
@@ -62,49 +63,6 @@ const contenidoPages = contenido.find((c) => c.categoria === categoria);
     </div>
   </section>
   <section class="flex gap-2 max-w-screen-xl mx-auto">
-    <aside
-      id="cards-categorias"
-      class="w-full max-w-[20%] hidden md:flex flex-col px-4 py-5 gap-y-3"
-    >
-      <h2 class="font-bold text-base md:text-xl border-b pl-2">Precios</h2>
-      <ol class="font-normal text-sm/10 border h-auto py-4 px-2">
-        <li>
-          <input type="checkbox" class="mr-2 rounded-full" />Todos los productos
-        </li>
-        <li>
-          <input type="checkbox" class="mr-2 rounded-full" />Mayor a menor
-        </li>
-        <li>
-          <input type="checkbox" class="mr-2 rounded-full" />Menor a mayor
-        </li>
-      </ol>
-    </aside>
-    <article class="w-full">
-      <ViewProducts products={products} />
-    </article>
+    <ViewProducts  client:only products={products}  />
   </section>
 </Layout>
-
-<style>
-  #cards-categorias {
-    opacity: 0;
-    animation: showContent 0.5s 1s linear 1 forwards;
-  }
-
-  #cards-categorias {
-    transform: translatex(-50px);
-    filter: blur(5px);
-  }
-
-  @keyframes showContent {
-    to {
-      transform: translateY(0px);
-      filter: blur(0px);
-      opacity: 1;
-    }
-  }
-
-  #cards-categorias {
-    animation-delay: 2.5s;
-  }
-</style>

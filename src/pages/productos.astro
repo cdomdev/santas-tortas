@@ -3,17 +3,17 @@ import "@/styles/globals.css";
 import Layout from "@/layouts/Layout.astro";
 import type { Producto } from "@/types";
 import { getProducts } from "@/lib/getProducts";
-import ViewProducts from "@/components/ViewProducts.astro";
+import ViewProducts from "@/components/ViewProductsPages";
 import Crumbs from "@/components/Crumbs.astro";
-export const prerender = true;
-let products: Producto[] = [];
-const response = await getProducts();
-products = response?.data || [];
+import "@/styles/globals.css";
+export const prerender = true
 
+const response = await getProducts();
+const products: Producto[] = response?.data || [];
 ---
 
 <Layout title="Tortas - postres - cupcakes - galletas">
-  <Crumbs pagina={["productos"]}/>
+  <Crumbs pagina={["productos"]} />
   <section class="pt-5 max-w-screen-xl mx-auto">
     <h1
       class="text-xl md:text-3xl text-center text-balance text-[#f1683a] font-bold mb-6"
@@ -38,21 +38,6 @@ products = response?.data || [];
     </div>
   </section>
   <section class="flex gap-2 max-w-screen-xl mx-auto">
-    <aside
-      id="cards-categorias"
-      class="w-full max-w-[20%] hidden md:flex flex-col px-4 py-5 gap-y-3"
-    >
-      <h2 class="font-bold text-base md:text-xl border-b pl-2">Categorias</h2>
-      <ol class="font-normal text-sm/10 border h-auto py-4 px-2">
-        <li ><input type="checkbox" class="mr-2 rounded-full">Todos los productos</li>
-        <li ><input type="checkbox" class="mr-2 rounded-full">Tortas</li>
-        <li ><input type="checkbox" class="mr-2 rounded-full">Postres</li>
-        <li ><input type="checkbox" class="mr-2 rounded-full">Cupcakes</li>
-        <li ><input type="checkbox" class="mr-2 rounded-full">Galletas</li>
-      </ol>
-    </aside>
-    <article class="w-full">
-      <ViewProducts products={products} />
-    </article>
+    <ViewProducts client:only products={products}   />
   </section>
 </Layout>

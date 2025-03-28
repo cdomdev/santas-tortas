@@ -2,9 +2,9 @@
 import "@/styles/globals.css";
 import Layout from "@/layouts/Layout.astro";
 import { getOferts } from "@/lib/getProducts";
-import ViewProducts from "@/components/ViewProducts.astro";
 import { metaData } from "@/content";
 import Crumbs from "@/components/Crumbs.astro";
+import ViewProducts from "@/components/ViewProductsPages";
 const response = await getOferts();
 const products = response?.data || [];
 ---
@@ -26,49 +26,6 @@ const products = response?.data || [];
     </p>
   </section>
   <section class="flex my-3 max-w-screen-xl mx-auto">
-    <aside
-      id="cards-categorias"
-      class="w-full max-w-[20%] hidden md:flex flex-col px-4 py-5 gap-y-3"
-    >
-      <h2 class="font-bold text-base md:text-xl border-b pl-2">Descuento</h2>
-      <ol class="font-normal text-sm/10 border h-auto py-4 px-2">
-        <li>
-          <input type="checkbox" class="mr-2 rounded-full" />Todos los productos
-        </li>
-        <li>
-          <input type="checkbox" class="mr-2 rounded-full" />Mayor a menor
-        </li>
-        <li>
-          <input type="checkbox" class="mr-2 rounded-full" />Menor a mayor
-        </li>
-      </ol>
-    </aside>
-    <article class="w-full">
-      <ViewProducts products={products} />
-    </article>
+    <ViewProducts products={products}  client:only />
   </section>
 </Layout>
-
-<style>
-  #cards-categorias {
-    opacity: 0;
-    animation: showContent 0.5s 1s linear 1 forwards;
-  }
-
-  #cards-categorias {
-    transform: translatex(-50px);
-    filter: blur(5px);
-  }
-
-  @keyframes showContent {
-    to {
-      transform: translateY(0px);
-      filter: blur(0px);
-      opacity: 1;
-    }
-  }
-
-  #cards-categorias {
-    animation-delay: 2.5s;
-  }
-</style>

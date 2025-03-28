@@ -5,6 +5,7 @@ import { formateValue } from "@/utils";
 import type { Producto } from "@/types";
 import { getProductsBy, getProducts } from "@/lib/getProducts";
 import { Gallery } from "@/components/detallesProductos/Gallery";
+import Crumbs from "@/components/Crumbs.astro";
 export const prerender = true;
 
 export async function getStaticPaths() {
@@ -19,78 +20,80 @@ const producto: Producto = response?.data?.[0] || null;
 ---
 
 <Layout title={`${producto?.title}`}>
-    <section class="pt-28 mx-auto max-w-screen-xl">
-      <article class="grid gap-3 grid-cols-1 md:grid-cols-2 sp-3">
-        <div
-          class="py-5 flex flex-col gap-y-6 items-center justify-start w-full min-h-96 h-fit transition border border-dashed bg-gray-50"
-        >
-          <Gallery
-            client:visible
-            images={producto?.images ? producto.images : []}
-          />
-        </div>
-        <div
-          class="border border-dashed p-4 flex flex-col gap-y-3 sm:max-w-[90%]"
-        >
-          <div class="flex justify-between pr-2 relative">
-            <h2 class="font-bold text-base md:text-2xl mt-2">
-              {producto?.title}
-            </h2>
-            <div
-              class={`${producto?.discount ? "block" : "hidden"} absolute right-2`}
-            >
-              <img
-                src="/bg-ofertas.webp"
-                alt="imagen-bacground-ofertas"
-                class="size-9"
-              />
-              <span
-                class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-2.5"
-              >
-                {producto?.discount}%
-              </span>
-            </div>
-          </div>
-
-          <p class="text-sm md:text-xl font-semibold my-2">
-            Precio: <strong
-              >{
-                producto?.price ? formateValue(producto.price) : "No disponible"
-              }</strong
-            >
-          </p>
-          <p class="text-sm md:text-base text-balance my-3">
-            {producto?.description}
-          </p>
-          {producto && <BtnAddCar producto={producto} client:load />}
-
-          <!-- ⚠️ Mensaje de Advertencia -->
-
-          <span
-            class={`bg-red-50 w-full p-5 ${producto && producto?.category.name === "personalized" ? "flex" : "hidden"}  items-center justify-center flex-col rounded-md mt-6`}
+  <Crumbs pagina={["productos", producto.title]} />
+  <section class="pt-5 mx-auto max-w-screen-xl">
+    <article class="grid gap-3 grid-cols-1 md:grid-cols-2 sp-3">
+      <div
+        class="py-5 flex flex-col gap-y-6 items-center justify-start w-full min-h-96 h-fit transition border border-dashed bg-gray-50"
+      >
+        <Gallery
+          client:visible
+          images={producto?.images ? producto.images : []}
+        />
+      </div>
+      <div
+        class="border border-dashed p-4 flex flex-col gap-y-3 sm:max-w-[90%]"
+      >
+        <div class="flex justify-between pr-2 relative">
+          <h2 class="font-bold text-base md:text-2xl mt-2">
+            {producto?.title}
+          </h2>
+          <div
+            class={`${producto?.discount ? "block" : "hidden"} absolute right-2`}
           >
-            <p class="text-sm mb-3">
-              Este producto pertenece a la categoría de personalizados. Si lo
-              agregas al carrito, se tomará como referencia para la creación de
-              tu pedido. Si deseas un diseño más
-              <a
-                href="/personalizados/form-datos-personalizado"
-                class="font-semibold underline text-blue-600 hover:text-blue-800 duration-200"
-              >
-                personalizado
-              </a>, puedes visitar la sección de personalizados y solicitar una
-              torta a tu estilo.
-            </p>
-
-            <a
-              id="buttons"
-              href="/personalizados/form-datos-personalizado"
-              class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200"
+            <img
+              src="/bg-ofertas.webp"
+              alt="imagen-bacground-ofertas"
+              class="size-9"
+            />
+            <span
+              class="font-bold text-base w-5 text-white px-5 border-dashed absolute z-3 top-2 right-2.5"
             >
-              Hacer mi pedido personalizado
-            </a>
-          </span>
+              {producto?.discount}%
+            </span>
+          </div>
         </div>
-      </article>
-    </section>
+
+        <p class="text-sm md:text-xl font-semibold my-2">
+          Precio: <strong
+            >{
+              producto?.price ? formateValue(producto.price) : "No disponible"
+            }</strong
+          >
+        </p>
+        <p class="text-sm md:text-base text-balance my-3">
+          {producto?.description}
+        </p>
+        {producto && <BtnAddCar producto={producto} client:load />}
+
+        <!-- ⚠️ Mensaje de Advertencia -->
+
+        <span
+          class={`bg-red-50 w-full p-5 ${producto && producto?.category.name === "personalized" ? "flex" : "hidden"}  items-center justify-center flex-col rounded-md mt-6`}
+        >
+          <p class="text-sm mb-3">
+            Este producto pertenece a la categoría de personalizados. Si lo
+            agregas al carrito, se tomará como referencia para la creación de tu
+            pedido. Si deseas un diseño más
+            <a
+              href="/personalizados/form-datos-personalizado"
+              class="font-semibold underline text-blue-600 hover:text-blue-800 duration-200"
+            >
+              personalizado
+            </a>, puedes visitar la sección de personalizados y solicitar una
+            torta a tu estilo.
+          </p>
+
+          <a
+            id="buttons"
+            href="/personalizados/form-datos-personalizado"
+            class="font-medium text-xs md:text-base px-3 py-2 block text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-200"
+          >
+            Hacer mi pedido personalizado
+          </a>
+        </span>
+      </div>
+    </article>
+  </section>
 </Layout>
+
