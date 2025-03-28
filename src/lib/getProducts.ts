@@ -1,11 +1,12 @@
 import { query } from "./strapi";
-export async function getProducts() {
-  const response = query(
-    "products?fields[0]=title&fields[1]=price&fields[2]=discount&fields[3]=stock&fields[4]=creationDate&fields[5]=description&fields[6]=slug&populate[images][fields][0]=url&populate[category][fields][0]=name",
-    "GET",
-    true
-  );
-  return (await response).data
+export async function getProducts(sort?: string | undefined) {
+  let url =
+    "products?fields[0]=title&fields[1]=price&fields[2]=discount&fields[3]=stock&fields[4]=creationDate&fields[5]=description&fields[6]=slug&populate[images][fields][0]=url&populate[category][fields][0]=name";
+  if (sort) {
+    url += sort;
+  }
+  const response = query(url, "GET", true);
+  return (await response).data;
 }
 
 export async function getProductsBy(slug: string) {
@@ -14,8 +15,7 @@ export async function getProductsBy(slug: string) {
     "GET",
     true
   );
-  return (await response).data
-  
+  return (await response).data;
 }
 
 export async function getOferts() {
@@ -24,5 +24,5 @@ export async function getOferts() {
     "GET",
     true
   );
-  return (await response).data
+  return (await response).data;
 }
