@@ -15,6 +15,7 @@ html, body, main {
 }
 
 
+#aside-filters,
 #box-tittle,
 #cards,
 #title,
@@ -28,8 +29,14 @@ html, body, main {
     filter: blur(20px);
 }
 
+
 #cards {
     transform: translatex(50px);
+    filter: blur(5px);
+}
+
+#aside-filters{
+    transform: translatex(-50px);
     filter: blur(5px);
 }
 
@@ -49,7 +56,7 @@ html, body, main {
     animation-delay: 1.6s;
 }
 
-#cards {
+#cards, #aside-filters {
     animation-delay: 2.5s;
 }
 
