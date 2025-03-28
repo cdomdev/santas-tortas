@@ -1,30 +1,17 @@
 import type { Producto, Usuario } from "@/types";
-import { useState, useEffect } from "react";
-import {
-  calcularTotal,
-  formateValue,
-  calcularSubTotal
-} from "@/utils";
+import { formateValue, calcularSubTotal } from "@/utils";
 
-export const Detalles = () => {
-  const [productos, setProductos] = useState<Producto[]>([]);
-  const [envio, setEnvio] = useState<string | null>(null);
-  
-  let valorEnvio = 15000;
 
-  useEffect(() => {
-    const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
-    setProductos(carrito);
+interface PropsCompra {
+  productos: Producto[];
+  envio: string | number;
+  total: string | number;
+}
+interface PropsUsuario {
+  datos?: Usuario;
+}
 
-    const datosEnvio = localStorage.getItem("value-car-forsend");
-    if (datosEnvio) {
-      setEnvio(datosEnvio);
-    }
-  }, []);
-
-  const totalConEnvio = calcularTotal(productos) + valorEnvio;
-  const SubtotalInt = formateValue(totalConEnvio.toString());
-
+export const DetallesCompra = ({ productos, envio, total }: PropsCompra) => {
   return (
     <>
       <h2 className="text-center md:text-lg font-semibold text-gray-600 uppercase py-2">
@@ -60,7 +47,9 @@ export const Detalles = () => {
                     {producto.discount}%
                   </td>
                   <td className="px-4 md:px-6 py-4">{producto.quantity}</td>
-                  <td className="px-4 md:px-6 py-4">{calcularSubTotal(producto)}</td>
+                  <td className="px-4 md:px-6 py-4">
+                    {calcularSubTotal(producto)}
+                  </td>
                 </tr>
               ))}
 
@@ -70,7 +59,7 @@ export const Detalles = () => {
                   <td className="px-4 md:px-6 py-4"></td>
                   <td className="px-4 md:px-6 py-4"></td>
                   <td className="px-4 md:px-6 py-4">
-                    {formateValue(valorEnvio.toString())}
+                    {formateValue(envio.toString())}
                   </td>
                 </tr>
               ) : null}
@@ -87,7 +76,7 @@ export const Detalles = () => {
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4"></td>
                 <td className="px-4 py-4 text-black font-semibold">
-                  $ {SubtotalInt}
+                  $ {formateValue(total.toString())}
                 </td>
               </tr>
             </tfoot>
@@ -98,17 +87,7 @@ export const Detalles = () => {
   );
 };
 
-
-
-
-export const DetallesUsuario = () => {
-  const [datos, setDatos] = useState<Usuario>();
-
-  useEffect(() => {
-    const datos = JSON.parse(sessionStorage.getItem("data") || "[]");
-    setDatos(datos);
-  }, []);
-
+export const DetallesUsuario = ({ datos }: PropsUsuario) => {
   return (
     <>
       <div className="border px-4">
@@ -143,7 +122,9 @@ export const DetallesUsuario = () => {
             <p className="text-center font-semibold text-gray-600 pt-1 border-b">
               Datos adicionales
             </p>
-            <p className=" text-gray-600 text-sm py-3 text-balance px-6">{datos?.message}</p>
+            <p className=" text-gray-600 text-sm py-3 text-balance px-6">
+              {datos?.message}
+            </p>
           </div>
         </div>
       </div>

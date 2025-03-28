@@ -1,36 +1,42 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import type { Personalizado } from "@/types/types";
+
+interface Values {
+  tematica: string;
+  relleno: string;
+  sabor: string;
+  porciones: string;
+  fecha_estimada: string;
+  mensaje: string;
+  image: File | null;
+}
 
 const FormDatosProducto = () => {
- 
-  const handleSubmit = (values: Personalizado, { setSubmitting }: any) => {
+  const handleSubmit = (values: Values, { setSubmitting }: any) => {
     setSubmitting(false);
-    window.sessionStorage.setItem(
-      "data-product-custom",
-      JSON.stringify(values)
-    );
-    window.location.href = "/personalizados/form-datos-envio";
-
+    window.sessionStorage.setItem("data", JSON.stringify(values));
+    window.location.href = "/personalizados/datos-de-usuario"
   };
+
   return (
     <Formik
       initialValues={{
         tematica: "",
         relleno: "",
         sabor: "",
-        fecha: "",
         porciones: "",
-        foto: null as File | null,
+        fecha_estimada: "",
         mensaje: "",
+        image: null as File | null,
       }}
-      validate={(values: Personalizado) => {
-        const errors: Partial<Personalizado> = {};
+      validate={(values: Values) => {
+        const errors: Partial<Values> = {};
         if (!values.tematica)
           errors.tematica = "¡Este campo no puede quedar vacío!";
         if (!values.relleno)
           errors.relleno = "¡Este campo no puede quedar vacío!";
         if (!values.sabor) errors.sabor = "¡Este campo no puede quedar vacío!";
-        if (!values.fecha) errors.fecha = "¡Este campo no puede quedar vacío!";
+        if (!values.fecha_estimada)
+          errors.fecha_estimada = "¡Este campo no puede quedar vacío!";
         if (!values.porciones)
           errors.porciones = "¡Este campo no puede quedar vacío!";
         if (!values.mensaje)
@@ -119,16 +125,16 @@ const FormDatosProducto = () => {
               </label>
               <Field
                 type="date"
-                name="fecha"
+                name="fecha_estimada"
                 id="fecha"
                 className="input wfull rounded-md border-gray-400 text-gray-600 focus:border-[#eb9f48] focus:ring-[#eb9f48]"
-                value={formik.values.fecha || ""}
+                value={formik.values.fecha_estimada || ""}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                  formik.setFieldValue("fecha", event.target.value)
+                  formik.setFieldValue("fecha_estimada", event.target.value)
                 }
               />
               <ErrorMessage
-                name="fecha"
+                name="fecha_estimada"
                 component="span"
                 className="text-red-600 text-xs"
               />
@@ -140,7 +146,7 @@ const FormDatosProducto = () => {
               <Field
                 type="number"
                 name="porciones"
-                min='1'
+                min="1"
                 id="floating_company"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#eb9f48] focus:outline-none focus:ring-0 focus:border-[#eb9f48] peer"
                 placeholder=" "
@@ -161,7 +167,7 @@ const FormDatosProducto = () => {
 
             <div className="relative z-0 w-full mb-5 group">
               <label
-                htmlFor="foto"
+                htmlFor="image"
                 className="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400"
               >
                 ¿Algún diseño en mente?
@@ -169,18 +175,18 @@ const FormDatosProducto = () => {
 
               <input
                 type="file"
-                id="foto"
+                id="image"
                 className="hidden"
                 onChange={(event) => {
                   const file = event.currentTarget.files
                     ? event.currentTarget.files[0]
                     : null;
-                  formik.setFieldValue("foto", file);
+                  formik.setFieldValue("image", file);
                 }}
               />
 
               <label
-                htmlFor="foto"
+                htmlFor="image"
                 className="cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-700 py-2.5 px-4 rounded-md w-full text-center text-sm flex items-center justify-center"
               >
                 <svg
@@ -203,8 +209,8 @@ const FormDatosProducto = () => {
               </label>
 
               <div className="mt-1 text-sm text-gray-500 text-center">
-                {formik.values.foto instanceof File
-                  ? formik.values.foto.name
+                {formik.values.image instanceof File
+                  ? formik.values.image.name
                   : "No hay archivo seleccionado"}
               </div>
             </div>

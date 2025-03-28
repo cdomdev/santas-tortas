@@ -9,18 +9,17 @@ import FormDatosProducto from "@/components/personalizados/FormDatosProducto";
     hacer el pedido de tu torta personalizada.
   </p>
 
-  <p class="text-sm md:text-base text-wrap pl-4 md:mt-0 md:pl-0 mt-2 leading-3" id="des">
+  <p
+    class="text-sm md:text-base text-wrap pl-4 md:mt-0 md:pl-0 mt-2 leading-3"
+    id="des"
+  >
     Si tienes alguna duda en el proceso de personalización, no dudes en
-    comunicarte a nuestro 
-    <a
-      href="/"
-      class="text-green-500 hover:underline duration-150">WhapsApp</a
+    comunicarte a nuestro
+    <a href="/" class="text-green-500 hover:underline duration-150">WhapsApp</a
     >, estamos para asesorarte.
   </p>
 
   <div class="p-6 mt-4">
-    <FormDatosProducto client:load  />
+    <FormDatosProducto client:visible />
   </div>
-
-  
 </LayoutPersonalizados>

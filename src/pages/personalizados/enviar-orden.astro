@@ -95,13 +95,8 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
     </tbody>
   </table>
 
-  
-
   <SendPerdonalizados client:only="react" />
-
-  
 </LayoutPersonalizados>
-
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -110,8 +105,8 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
       let dataOrden = window.sessionStorage.getItem("data-product-custom");
 
       if (dataUser && dataOrden) {
-        let user = JSON.parse(dataUser); 
-        let pedido = JSON.parse(dataOrden); 
+        let user = JSON.parse(dataUser);
+        let pedido = JSON.parse(dataOrden);
 
         const nameElement = document.getElementById("name");
         const tbody = document.getElementById("table-user-body");
@@ -157,7 +152,7 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
             <td class="px-4 md:px-6 py-4">${pedido.sabor || "N/A"}</td>
             <td class="px-4 md:px-6 py-4">${pedido.relleno || "N/A"}</td>
             <td class="px-4 md:px-6 py-4">${pedido.porciones || "N/A"}</td>
-            <td class="px-4 md:px-6 py-4">${pedido.fecha || "N/A"}</td>
+            <td class="px-4 md:px-6 py-4">${pedido.fecha_estimada || "N/A"}</td>
             <td class="px-4 md:px-6 py-4">${pedido.mensaje || "N/A"}</td>
           `;
           tbodyPedido.appendChild(row);

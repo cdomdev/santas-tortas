@@ -1,50 +1,48 @@
 import { useEffect, useState } from "react";
-import type { Usuario, Personalizado } from "@/types";
+import type { PersonalizedOrder } from "@/types";
 import { Toast } from "../Toast";
 import { handleToast } from "@/utils/handleToast";
+import { personalized } from "@/lib/personalizedOrder";
 
 const SendPersonalizado = () => {
-  const [datos, setDatos] = useState<Usuario>();
-  const [orden, setOrden] = useState<Personalizado>();
+  const [datos, setDatos] = useState<PersonalizedOrder>();
   const [toastMessage, setToastMessage] = useState<string>("");
   const [showToast, setShowToast] = useState<boolean>(false);
   const [bgToast, setBgToast] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setDatos(getDataOrder("data"));
-    setOrden(getDataOrder("data-product-custom"));
+    let data = JSON.parse(sessionStorage.getItem("data") || "[]");
+    setDatos(data);
   }, []);
 
-  const dataOrder = { ...datos, ...orden };
-
-  console.log(dataOrder)
-  const getDataOrder = (clave: string) => {
-    const datos = sessionStorage.getItem(clave);
-    if (datos) {
-      return JSON.parse(datos);
+  async function senOrder() {
+    try {
+      if (!datos) {
+        return null;
+      }
+      const response = await personalized(datos);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error);
     }
-  };
+    // setLoading(true);
+    // handleToast({
+    //   background: "toast-success",
+    //   message: "Algooo",
+    //   setShowToast,
+    //   setBgToast,
+    //   setToastMessage,
+    // });
 
-  function senOrder() {
-    setLoading(true);
-    handleToast({
-      background: 'toast-success',
-      message: 'Tu pedido personalizado fue enviado con éxito',
-      setShowToast,
-      setBgToast,
-      setToastMessage
-    });
-    
-    setLoading(false);
-    setTimeout(() => {
-      window.location.href = '/personalizados/success'    
-    }, 2000);
-
+    // setLoading(false);
+    // setTimeout(() => {
+    //   window.location.href = "/personalizados/envio-exitoso";
+    // }, 2000);
   }
 
   return (
-    <div className="py-3 w-full my-3">
+    <div className="py-3 w-full my-10">
       <Toast
         showToast={showToast}
         setShowToast={setShowToast}

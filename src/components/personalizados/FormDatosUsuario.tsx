@@ -1,16 +1,34 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { Usuario } from "@/types";
+import { useEffect, useState } from "react";
 
 type PropForm = {
   url: string;
-  step?: string 
+  step?: string;
+};
+
+interface PropDataUser {
+  email: string;
+  name: string;
+  surname: string;
+  address: string;
+  phone: string;
+  details_user: string;
 }
 
-const FormDatosUsuarios = ({url, step}: PropForm) => {
+const FormDatosUsuarios = ({ url, step }: PropForm) => {
+  const [datos, setDatos] = useState<PropDataUser>();
+  useEffect(() => {
+    let data = JSON.parse(sessionStorage.getItem("data") || "[]");
+    setDatos(data);
+  }, []);
+
   const handleSubmit = (values: Usuario) => {
-    window.sessionStorage.setItem('data', JSON.stringify(values));
-    window.localStorage.setItem('currentStep', `${step || null}`)
-    window.localStorage.setItem('value-car-forsend', 'OK')
+    const data = { ...values, datos };
+    window.sessionStorage.setItem("data", JSON.stringify(data));
+    sessionStorage.setItem('data-product-custom', JSON.stringify(datos))
+    window.localStorage.setItem("currentStep", `${step || null}`);
+    window.localStorage.setItem("value-car-forsend", "OK");
     window.location.href = `${url}`;
   };
 
@@ -47,7 +65,7 @@ const FormDatosUsuarios = ({url, step}: PropForm) => {
         onSubmit={handleSubmit}
       >
         {(formik) => (
-          <>           
+          <>
             <Form className="max-w-4xl mx-auto" onSubmit={formik.handleSubmit}>
               <div className="relative z-0 w-full mb-5 group">
                 <Field

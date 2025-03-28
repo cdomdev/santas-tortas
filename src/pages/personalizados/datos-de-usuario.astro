@@ -1,5 +1,5 @@
 ---
-import FormDatosUsuarios from "@/components/envio/FormDatosUsuario";
+import FormDatosUsuarios from "@/components/personalizados/FormDatosUsuario";
 import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
 ---
 
@@ -10,7 +10,7 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
   </p>
 
   <div class="w-full p-4 my-5 md:my-1">
-    <FormDatosUsuarios client:load url="/personalizados/send-order" />
+    <FormDatosUsuarios client:load url="/personalizados/enviar-orden" />
     <div class="flex justify-end pr-5 md:pr-16 gap-3 mt-6">
       <a
         href="/personalizados/form"

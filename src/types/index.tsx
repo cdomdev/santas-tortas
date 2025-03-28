@@ -1,1 +1,1 @@
-export type {Producto, UUID, Usuario, Personalizado} from './types'
+export type {Producto, Usuario, PersonalizedOrder} from './types'
