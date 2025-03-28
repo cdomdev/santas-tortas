@@ -1,5 +1,3 @@
-export type UUID = `${string}-${string}-${string}-${string}-${string}`;
-
 export type Producto = {
   id: number | string;
   title: string;
@@ -25,7 +23,6 @@ export type Images = {
 
 
 export type Usuario = {
-  id?: UUID;
   nombre: string;
   apellidos?: string;
   email: string;
@@ -37,17 +34,26 @@ export type Usuario = {
   codigoPostal?: string;
 };
 
-export type Personalizado = {
+
+export interface PersonalizedOrder {
+  email: string;
+  nombre: string;
+  apellidos: string;
+  telefono: string;
+  direccion: string;
+  message: string;
+  datos: DatosPedido;
+}
+
+export interface DatosPedido {
   tematica: string;
   relleno: string;
   sabor: string;
-  fecha: string;
-  porciones: string;
-  foto?: File | null;
+  porciones: number;
+  fecha_estimada: string; 
   mensaje: string;
-};
-
-
+  image: string | null; 
+}
 
 export interface GoogleAuthResponse {
   access_token: string;
