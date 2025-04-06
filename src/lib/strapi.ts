@@ -54,6 +54,7 @@ export async function query(
 
     // Si el error es de conexión o no tiene la estructura esperada
     return {
+      error: error,
       success: false,
       status: error.response?.status || 500,
       message: error.message || "Error desconocido en la solicitud",

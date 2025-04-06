@@ -68,7 +68,7 @@ const Login = () => {
         });
       }
     } catch (error) {
-      console.log("Error en el inicio de sesion");
+      console.log("Error en el inicio de sesion", error);
       setLoading(false);
       if (axios.isAxiosError(error) && error.response) {
         const { status } = error.response;
@@ -223,7 +223,7 @@ const Login = () => {
                 href="/restablecer-contrasenia/request"
                 className="underline text-blue-500 uppercase"
               >
-                ¿Olvidaste tu contraeña?
+                ¿Olvidaste tu contraseña?
               </a>
             </span>
             <span className="text-center block text-xs md:text-sm mb-5">
