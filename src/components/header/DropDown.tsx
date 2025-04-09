@@ -10,7 +10,6 @@ const DropDown = ({ isAuthenticated }: PropDrop) => {
 
   useEffect(() => {
     const handleDrop = () => {
-      console.log("Escuchando evento de cambio de sesión...");
       setAuth((prev) => !prev); 
     };
 
