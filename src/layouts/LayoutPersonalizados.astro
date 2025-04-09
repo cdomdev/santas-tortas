@@ -1,11 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
-const { subtitle, title } = Astro.props;
+import Crumbs from "@/components/Crumbs.astro";
+const { subtitle, title, page } = Astro.props;
 ---
 
 <Layout title={title}>
-  <ContainerSecctions class="text-center mb-5 pt-28">
+  <Crumbs pagina={["personalizados", page?.replaceAll('-', " ")]}/>
+  <ContainerSecctions class="text-center mb-5 pt-5">
     <h1 class="text-lg pt-2 md:text-2xl text-center text-[#f1683a] font-bold">
       Personliza tu torta, hacerlo es muy facil
     </h1>

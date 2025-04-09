@@ -1,12 +1,13 @@
 ---
 import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
+const { title } = Astro.props;
 ---
 
-<LayoutPersonalizados title="¡Pedido enviado con exito! 🎉">
+<LayoutPersonalizados title="¡Pedido enviado con exito! 🎉" page="envio-exitoso">
   <h3 class="font-semibold text-base md:text-xl mt-5 mb-2 md:mb-4 text-center">El pedido fue enviado 🎉</h3>
   <p class="text-sm md:text-base/6 mb-10">
     Tu pedido se ha enviado con exito, recibiras un mensaje de parte de nuestra
-    tienda confirmando los detalles restantes de tu producto persolizado.
+    tienda confirmando los detalles de tu pedido persolizado.
   </p>
   <div class="flex max-w-64 mx-auto">
     <button
@@ -29,7 +30,7 @@ import LayoutPersonalizados from "@/layouts/LayoutPersonalizados.astro";
         <path d="M5 12l4 4"></path>
         <path d="M5 12l4 -4"></path>
       </svg>
-      Volver al inicio
+      Volver a la tienda
     </button>
   </div>
 </LayoutPersonalizados>
