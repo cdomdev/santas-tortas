@@ -26,7 +26,6 @@ const FormResetPassword = ({ token }: FormResetPasswordProps) => {
       const dataPerse = JSON.parse(send);
       setSuccess(dataPerse);
     }
-    
   }, []);
 
   const handleSubmit = async (values: ValuesPassWords) => {
@@ -98,12 +97,35 @@ const FormResetPassword = ({ token }: FormResetPasswordProps) => {
             Tu contraseña se actuilizo con exito, ya puedes iniciar sesion en
             santas tortas
           </h1>
-          <a
-            href="/"
-            className="mt-4  text-center px-10 py-2  rounded-md hover:underline font-semibold hover:text-gray-700 transition duration-200"
-          >
-            Volver a la tienda
-          </a>
+          <div className="flex max-w-64 mx-auto pt-10">
+            <button
+              id="btn-clear"
+              onClick={() => {
+                sessionStorage.removeItem("processSucces");
+                window.location.href = "/";
+              }}
+              type="button"
+              className="flex items-center gap-x-1 justify-center font-medium text-xs md:text-base px-3 py-2 text-center w-full bg-white border text-black border-black hover:bg-[#f1683a] hover:text-white duration-300 group transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="24"
+                height="24"
+                className="group-hover:-translate-x-1"
+                stroke-width="2"
+              >
+                <path d="M5 12l14 0"></path>
+                <path d="M5 12l4 4"></path>
+                <path d="M5 12l4 -4"></path>
+              </svg>
+              Volver a la tienda
+            </button>
+          </div>
         </div>
       ) : (
         <div className="container-recovery">

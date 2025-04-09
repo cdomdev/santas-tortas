@@ -2,12 +2,14 @@
 import Layout from "@/layouts/Layout.astro";
 import ForgotPassword from "@/components/auth/ForgotPassword";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import Crumbs from "@/components/Crumbs.astro";
 const token = Astro.url.searchParams.get("code");
 
 ---
 
 <Layout title="Restablecer contraseña">
-  <section class="pt-32 bg-[#f4f4f4] min-h-dvh">
+  <section class=" bg-[#f4f4f4] min-h-dvh">
+    <Crumbs pagina={["restablecer sontraseña"]}/>
     <ContainerSecctions class="bg-white p-10">
       <ForgotPassword token={token ? token : ""} client:only />
     </ContainerSecctions>

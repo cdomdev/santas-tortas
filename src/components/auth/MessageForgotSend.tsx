@@ -6,7 +6,7 @@ interface PropMail {
 
 export const MessageForgotSend = ({ email, name }: PropMail) => {
   const removeData = () => {
-    localStorage.removeItem("isSuccessSend");
+    sessionStorage.removeItem("isSuccessSend");
   };
 
   return (
