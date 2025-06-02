@@ -29,9 +29,7 @@ const Login = () => {
     }
   }, []);
 
-  const handleSubmit = async (
-    values: PropLogin,
-    { resetForm }: { resetForm: () => void }
+  const handleSubmit = async (values: PropLogin,{ resetForm }: { resetForm: () => void }
   ) => {
     setLoading(true);
     try {
