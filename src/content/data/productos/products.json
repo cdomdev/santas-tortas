@@ -1,0 +1,476 @@
+[
+  {
+    "data": [
+      {
+        "id": 3,
+        "documentId": "dt5w4jkp6afz1gpf4ockz5fk",
+        "title": "Galletas de Almendra",
+        "price": 7500,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Galletas crocantes con almendras tostadas",
+        "slug": "galletas-de-almendra",
+        "images": [
+          {
+            "id": 2,
+            "documentId": "nrhh595dg6r22onbd2dki3g4",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741634925/images_8ad74a44eb.jpg"
+          }
+        ],
+        "category": {
+          "id": 9,
+          "documentId": "rf9ej9l7ydqxg0btp60m03j2",
+          "name": "galletas"
+        }
+      },
+      {
+        "id": 12,
+        "documentId": "d69tx0bw6489u6muldsa5ubl",
+        "title": "Cheesecake de Fresa",
+        "price": 12000,
+        "discount": 6,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Base crujiente con cremoso relleno de queso y fresas frescas.",
+        "slug": "cheesecake-de-fresa",
+        "images": [
+          {
+            "id": 11,
+            "documentId": "cxp6dmorw2vdq8q9mp9j1iqv",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638350/descarga_4_f748a8b444.jpg"
+          }
+        ],
+        "category": {
+          "id": 2,
+          "documentId": "qu7kkivxka4l7y94rfxx356f",
+          "name": "postres"
+        }
+      },
+      {
+        "id": 14,
+        "documentId": "p32d6747lv5u3bfa6rw6zxd6",
+        "title": "Brownie de Chocolate",
+        "price": 10000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Brownie húmedo con trozos de chocolate y nueces. ",
+        "slug": "brownie-de-chocolate",
+        "images": [
+          {
+            "id": 8,
+            "documentId": "fd8oapplh5uo6iub4zvdss6k",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638350/descarga_f7bf624a11.jpg"
+          }
+        ],
+        "category": {
+          "id": 2,
+          "documentId": "qu7kkivxka4l7y94rfxx356f",
+          "name": "postres"
+        }
+      },
+      {
+        "id": 16,
+        "documentId": "o3fd9ovzsd0pdahafpjpuwg1",
+        "title": "Flan de Caramelo ",
+        "price": 11000,
+        "discount": 7,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Suave flan de vainilla con caramelo casero.",
+        "slug": "flan-de-caramelo",
+        "images": [
+          {
+            "id": 10,
+            "documentId": "oibai66zgw41r5449i2otxda",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638350/descarga_1_bdad56b9a4.jpg"
+          }
+        ],
+        "category": {
+          "id": 2,
+          "documentId": "qu7kkivxka4l7y94rfxx356f",
+          "name": "postres"
+        }
+      },
+      {
+        "id": 18,
+        "documentId": "hnm68xc56w2nx57vlxe7j6bf",
+        "title": "Tiramisú Clásico",
+        "price": 14000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Capas de bizcocho empapado en café con crema de mascarpone.",
+        "slug": "tiramisu-clasico",
+        "images": [
+          {
+            "id": 9,
+            "documentId": "ukjy4r2xy92o7yn4f0k6dsu3",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638350/descarga_2_9267940d71.jpg"
+          }
+        ],
+        "category": {
+          "id": 2,
+          "documentId": "qu7kkivxka4l7y94rfxx356f",
+          "name": "postres"
+        }
+      },
+      {
+        "id": 20,
+        "documentId": "v32llp4boshqrc3fi7sb4pjb",
+        "title": "Galletas de Chispas de Chocolate",
+        "price": 6000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Clásicas galletas con chispas de chocolate. ",
+        "slug": "galletas-de-chispas-de-chocolate",
+        "images": [
+          {
+            "id": 12,
+            "documentId": "bya0psn9drskxjuo0z81zi6u",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638746/descarga_3_92c3e82700.jpg"
+          }
+        ],
+        "category": {
+          "id": 9,
+          "documentId": "rf9ej9l7ydqxg0btp60m03j2",
+          "name": "galletas"
+        }
+      },
+      {
+        "id": 22,
+        "documentId": "avawnnvxhu17n87usb4pxn36",
+        "title": "Galletas de Mantequilla",
+        "price": 7000,
+        "discount": 9,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Galletas suaves y doradas con un toque de vainilla.",
+        "slug": "galletas-de-mantequilla",
+        "images": [
+          {
+            "id": 6,
+            "documentId": "qt9gaipa74qmlrd788tvymrh",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741634925/galletas_de_mantequilla_713abf416b.jpg"
+          },
+          {
+            "id": 3,
+            "documentId": "hijz0r79hvu6g573bwal2pk7",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741634925/images_2_d1f9b73a95.jpg"
+          },
+          {
+            "id": 4,
+            "documentId": "ghmvw4hk4m0ht3e24xzv1ctg",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741634925/galletas_de_mantequilla_clasicas_3_1024x685_a1152d3ece.jpg"
+          }
+        ],
+        "category": {
+          "id": 9,
+          "documentId": "rf9ej9l7ydqxg0btp60m03j2",
+          "name": "galletas"
+        }
+      },
+      {
+        "id": 24,
+        "documentId": "sy3vpziemrlqbo0uxa9ukfpw",
+        "title": "Galletas Rellenas de Nutella",
+        "price": 8000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Galletas de cacao con centro de Nutella. ",
+        "slug": "galletas-rellenas-de-nutella",
+        "images": [
+          {
+            "id": 5,
+            "documentId": "vhg6cb8yttz8a70hi12wlp9e",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741634925/images_1_b63b12866e.jpg"
+          }
+        ],
+        "category": {
+          "id": 9,
+          "documentId": "rf9ej9l7ydqxg0btp60m03j2",
+          "name": "galletas"
+        }
+      },
+      {
+        "id": 26,
+        "documentId": "ger1ee39xracm1r7mjo75h0a",
+        "title": "Cupcake de Caramelo Salado",
+        "price": 9500,
+        "discount": 4,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Cupcake de vainilla con relleno de caramelo salado.",
+        "slug": "cupcake-de-caramelo-salado",
+        "images": [
+          {
+            "id": 13,
+            "documentId": "u77g262qx2tburmjf5cc8l8v",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638990/descarga_3_48555ab67e.jpg"
+          }
+        ],
+        "category": {
+          "id": 4,
+          "documentId": "rfefbs4hcmysymot6okj6zdy",
+          "name": "cupcakes"
+        }
+      },
+      {
+        "id": 29,
+        "documentId": "hzn3jibkdn82n91g4of78wbd",
+        "title": "Cupcake de Chocolate Intenso",
+        "price": 9000,
+        "discount": 10,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Muffin de chocolate con cobertura de ganache. ",
+        "slug": "cupcake-de-chocolate-intenso",
+        "images": [
+          {
+            "id": 14,
+            "documentId": "fme9f4r547bn7pq42kmzaepw",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638990/descarga_1bc01a74d6.jpg"
+          }
+        ],
+        "category": {
+          "id": 4,
+          "documentId": "rfefbs4hcmysymot6okj6zdy",
+          "name": "cupcakes"
+        }
+      },
+      {
+        "id": 31,
+        "documentId": "vhvo3srk09t4k648f1ibbrvm",
+        "title": "Cupcake de Vainilla Clásico",
+        "price": 8000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Esponjoso cupcake de vainilla con crema de mantequilla.",
+        "slug": "cupcake-de-vainilla-clasico",
+        "images": [
+          {
+            "id": 16,
+            "documentId": "dhpi0bgx6pjkt3nwpsnrcui9",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638990/images_d4c4161e68.jpg"
+          }
+        ],
+        "category": {
+          "id": 4,
+          "documentId": "rfefbs4hcmysymot6okj6zdy",
+          "name": "cupcakes"
+        }
+      },
+      {
+        "id": 33,
+        "documentId": "l3h7kuzw65uhquylrot8adcq",
+        "title": "Cupcake de Oreo ",
+        "price": 10000,
+        "discount": 1,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Muffin de vainilla con galleta Oreo triturada y crema de Oreo.",
+        "slug": "cupcake-de-oreo",
+        "images": [
+          {
+            "id": 15,
+            "documentId": "wq0krv4ze5rrukz9qfcsp2qd",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741638990/descarga_2_f7d9aa1483.jpg"
+          }
+        ],
+        "category": {
+          "id": 4,
+          "documentId": "rfefbs4hcmysymot6okj6zdy",
+          "name": "cupcakes"
+        }
+      },
+      {
+        "id": 35,
+        "documentId": "jr0vxedkasif5ae5zwy8awkb",
+        "title": "Torta de Zanahoria",
+        "price": 47000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": " Delicioso bizcocho de zanahoria con nueces y frosting de queso crema.",
+        "slug": "torta-de-zanahoria",
+        "images": [
+          {
+            "id": 19,
+            "documentId": "t74lm1lb3fu1wp0cjmxt3roo",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639350/images_9788b2767c.jpg"
+          }
+        ],
+        "category": {
+          "id": 6,
+          "documentId": "xyelsp63jrgaeu487vl720l5",
+          "name": "tortas"
+        }
+      },
+      {
+        "id": 37,
+        "documentId": "i7w0klkjwb1mu1e1ke4mr0su",
+        "title": "Torta Tres Leches",
+        "price": 40000,
+        "discount": 6,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Clásica torta humedecida con mezcla de leches y crema chantilly.",
+        "slug": "torta-tres-leches",
+        "images": [
+          {
+            "id": 20,
+            "documentId": "ai5r0sv9ia906hac4gfjq6xb",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639350/65_BA_3_Q3_JU_5_ESTAROBDLDZDG_6_XU_37a907178b.jpg"
+          }
+        ],
+        "category": {
+          "id": 6,
+          "documentId": "xyelsp63jrgaeu487vl720l5",
+          "name": "tortas"
+        }
+      },
+      {
+        "id": 39,
+        "documentId": "i8somkchp7d4m0kqlm1h4jul",
+        "title": "Torta Red Velvet ",
+        "price": 50000,
+        "discount": 10,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": " Suave bizcocho rojo con crema de queso y un toque de vainilla.",
+        "slug": "torta-red-velvet",
+        "images": [
+          {
+            "id": 17,
+            "documentId": "q8xezd727uegfff8hixcbb1x",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639350/images_2_95c98ff89a.jpg"
+          }
+        ],
+        "category": {
+          "id": 6,
+          "documentId": "xyelsp63jrgaeu487vl720l5",
+          "name": "tortas"
+        }
+      },
+      {
+        "id": 43,
+        "documentId": "lspp9p00kg28bwrk8a5t59hf",
+        "title": "Torta Clásica de Celebración",
+        "price": 115000,
+        "discount": 0,
+        "stock": 1,
+        "creationDate": "2025-03-10",
+        "description": "La elegancia y el buen sabor nunca pasan de moda. Nuestra Torta Clásica de Celebración ofrece una cobertura blanca de crema de leche y vainilla, con una textura esponjosa que deleita en cada bocado. Su decoración sutil la hace perfecta para cualquier ocasión, pero aquí viene lo especial: puedes personalizarla como quieras. En nuestra pastelería personalizada, puedes elegir sabores, colores y detalles únicos para que tu torta refleje tu estilo y haga tu celebración aún más especial. ¡Cuéntanos cómo la imaginas y la haremos realidad! 🎂✨\n",
+        "slug": "torta-clasica-de-celebracion",
+        "images": [
+          {
+            "id": 23,
+            "documentId": "m2uv224um6tpikgrfn7erj5n",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639655/Imagen_de_Whats_App_2025_03_03_a_las_14_11_46_a751cc3f_9be7e7fb18.jpg"
+          }
+        ],
+        "category": {
+          "id": 13,
+          "documentId": "crmix4tdq01r6omjlsrwurcd",
+          "name": "personalized"
+        }
+      },
+      {
+        "id": 45,
+        "documentId": "yahlk85xib4g3pa3thpgq0gu",
+        "title": "Torta Spidey Azul",
+        "price": 120000,
+        "discount": 0,
+        "stock": 1,
+        "creationDate": "2025-03-10",
+        "description": "¿Listo para una celebración con todo el poder de tu héroe favorito? La Torta Spidey Azul es perfecta para los fanáticos de Spiderman, con una vibrante cobertura azul y un irresistible sabor a frutos del bosque con un toque de vainilla. Pero aquí no hay límites: tú decides cómo será tu torta ideal. Cambia los colores, el diseño y el sabor para que se adapte 100% a tu estilo. En nuestra pastelería personalizada, cada torta es única, hecha a medida para que tu fiesta sea tan espectacular como la imaginas. ¿Cómo quieres la tuya? 🕷️🎉\n",
+        "slug": "torta-spidey-azul",
+        "images": [
+          {
+            "id": 24,
+            "documentId": "tl6zu3qfojqe463nhdlfb69c",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639654/Imagen_de_Whats_App_2025_03_03_a_las_14_11_46_2cb83275_1881cfb8d8.jpg"
+          }
+        ],
+        "category": {
+          "id": 13,
+          "documentId": "crmix4tdq01r6omjlsrwurcd",
+          "name": "personalized"
+        }
+      },
+      {
+        "id": 47,
+        "documentId": "b36dqcmh5z7349v1b1477yw3",
+        "title": "Torta Coca-Cola ",
+        "price": 130000,
+        "discount": 0,
+        "stock": 1,
+        "creationDate": "2025-03-10",
+        "description": "Si amas el inconfundible sabor de la Coca-Cola, esta torta está hecha para ti. Con una deliciosa combinación de chocolate y cola, su textura esponjosa y su vibrante decoración harán que tu celebración brille con estilo. Pero aquí viene lo mejor: tú decides cómo será tu torta perfecta. En nuestra pastelería personalizada, puedes elegir el sabor, los colores y los detalles decorativos para que tu torta sea única, tal como la imaginas. ¡Déjanos endulzar tu celebración con un diseño que se ajuste a tu historia! 🥤🎂",
+        "slug": "torta-coca-cola",
+        "images": [
+          {
+            "id": 21,
+            "documentId": "n1clhwhrnkr67b7fi51qiy9e",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639655/Imagen_de_Whats_App_2025_03_03_a_las_14_11_46_3d5c6969_e34a5fb19a.jpg"
+          }
+        ],
+        "category": {
+          "id": 13,
+          "documentId": "crmix4tdq01r6omjlsrwurcd",
+          "name": "personalized"
+        }
+      },
+      {
+        "id": 49,
+        "documentId": "bof679ymm9hea70y9ikhrmly",
+        "title": "Torta Gamer Épica",
+        "price": 120000,
+        "discount": 0,
+        "stock": 1,
+        "creationDate": "2025-03-10",
+        "description": "¿Eres un verdadero gamer? Celebra tu cumpleaños con una torta que refleje tu pasión. La Torta Gamer Épica combina una suave cobertura blanca con un exquisito sabor a vainilla premium, evocando la emoción de un nuevo nivel por desbloquear. Cada detalle está diseñado para representar tu amor por los videojuegos, pero lo mejor es que puedes personalizarla a tu estilo. ¡Elige colores, personajes y sabores para crear tu propia versión! Porque en nuestra pastelería personalizada, cada torta es una aventura hecha a la medida. ¿Listo para diseñar la tuya? 🎮✨",
+        "slug": "torta-gamer-epica",
+        "images": [
+          {
+            "id": 22,
+            "documentId": "e6ohqzki724hvhzp8mxs2uc2",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639655/Imagen_de_Whats_App_2025_03_03_a_las_14_11_46_c5f47946_e66d87a885.jpg"
+          }
+        ],
+        "category": {
+          "id": 13,
+          "documentId": "crmix4tdq01r6omjlsrwurcd",
+          "name": "personalized"
+        }
+      },
+      {
+        "id": 51,
+        "documentId": "a38w0eybf25qt0vm5vz1yecd",
+        "title": "Torta de Chocolate Supremo",
+        "price": 45000,
+        "discount": 0,
+        "stock": 10,
+        "creationDate": "2025-03-10",
+        "description": "Bizcocho esponjoso de chocolate con ganache de cacao puro.",
+        "slug": "torta-de-chocolate-supremo",
+        "images": [
+          {
+            "id": 18,
+            "documentId": "txy9iw4chycn7tgraklx6qlh",
+            "url": "https://res.cloudinary.com/dd7gtmrax/image/upload/v1741639350/descarga_fcbc4409c7.jpg"
+          }
+        ],
+        "category": {
+          "id": 6,
+          "documentId": "xyelsp63jrgaeu487vl720l5",
+          "name": "tortas"
+        }
+      }
+    ]
+  }
+]
